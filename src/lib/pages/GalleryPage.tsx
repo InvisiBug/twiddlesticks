@@ -1,4 +1,4 @@
-import { Badge, Card, PageShell, Navbar } from "../../components/ui";
+import { Badge, Card, PageShell, Navbar } from "@/lib/components";
 import type { GalleryPhoto } from "@/types";
 
 type GalleryPageProps = {

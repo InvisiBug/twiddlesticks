@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ButtonLink, Card, Field, PageShell, ThemeToggle } from "../../components/ui";
+import { ButtonLink, Card, Field, PageShell, ThemeToggle } from "@/lib/components";
 import { getCartItems, getTotalItems, getTotalPrice } from "@/lib/cart";
 import { formatMoney } from "@/lib/money";
 import type { Cart, Product } from "@/types";

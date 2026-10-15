@@ -13,3 +13,10 @@ export { ProductGrid } from "./home/ProductGrid";
 export { RelatedProductsSection } from "./productDetails/RelatedProductsSection";
 export { ShopHero } from "./ShopHero";
 export { Navbar } from "./Navbar";
+
+export { Badge } from "./baseComponents/Badge";
+export { Button, ButtonLink } from "./baseComponents/Button";
+export { Card, CardSection } from "./baseComponents/Card";
+export { Field } from "./baseComponents/Field";
+export { ThemeToggle } from "./baseComponents/ThemeToggle";
+export { PageShell } from "@/lib/layout";
