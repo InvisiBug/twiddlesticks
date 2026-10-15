@@ -77,7 +77,11 @@ function App() {
   };
 
   const handleGlobalImageClick = (event: MouseEvent<HTMLDivElement>) => {
-    if (!window.location.pathname.startsWith("/gallery")) {
+    const pathname = window.location.pathname;
+    const isGalleryRoute = pathname.startsWith("/gallery");
+    const isProductRoute = pathname.startsWith("/products/");
+
+    if (!isGalleryRoute && !isProductRoute) {
       return;
     }
 
@@ -89,6 +93,10 @@ function App() {
 
     const imageElement = clickTarget.closest("img");
     if (!(imageElement instanceof HTMLImageElement)) {
+      return;
+    }
+
+    if (isProductRoute && imageElement.dataset.lightboxTrigger !== "product-main") {
       return;
     }
 
@@ -120,7 +128,7 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-      {lightboxImage && window.location.pathname.startsWith("/gallery") ? (
+      {lightboxImage && (window.location.pathname.startsWith("/gallery") || window.location.pathname.startsWith("/products/")) ? (
         <div
           data-lightbox-modal="true"
           className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 p-4"

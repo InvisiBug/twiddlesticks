@@ -7,7 +7,7 @@ export const ProductGallery: React.FC<ProductDetailGalleryProps> = ({ productNam
     <section>
       <Card className="overflow-hidden">
         <div className="relative flex h-95 items-center justify-center bg-slate-100 p-3 dark:bg-slate-800 sm:h-125">
-          <img src={activeImage} alt={`${productName} view ${selectedImage + 1}`} className="h-full w-full object-contain" />
+          <img src={activeImage} alt={`${productName} view ${selectedImage + 1}`} className="h-full w-full cursor-zoom-in object-contain" data-lightbox-trigger="product-main" />
         </div>
       </Card>
       <div className="mt-4 grid grid-cols-3 gap-3">
