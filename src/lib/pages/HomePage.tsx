@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { CartPanel, FestivalSection, PageShell, ProductGrid, ShopHero, Navbar } from "@/lib/components";
+import { CartPanel, FestivalSection, PageShell, ProductGrid, Hero, Navbar } from "@/lib/components";
 import { getCartItems, getTotalItems, getTotalPrice } from "@/lib/cart";
 import type { Cart, Festival, Product } from "@/types";
 
@@ -11,7 +11,7 @@ export function HomePage({ cart, products, festivals, heroImages, theme, toggleT
   return (
     <PageShell maxWidth="7xl">
       <Navbar totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
-      <ShopHero heroImages={heroImages} />
+      <Hero heroImages={heroImages} />
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">
         <ProductGrid products={products} addToCart={addToCart} />

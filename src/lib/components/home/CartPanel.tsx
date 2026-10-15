@@ -4,7 +4,7 @@ import { Card } from "../baseComponents/Card";
 import { formatMoney } from "@/lib/money";
 import type { Cart, Product } from "@/types";
 
-export function CartPanel({ cart, cartItems, totalItems, totalPrice, addToCart, removeFromCart }: CartPanelProps) {
+export const CartPanel = ({ cart, cartItems, totalItems, totalPrice, addToCart, removeFromCart }: CartPanelProps) => {
   return (
     <Card className="h-fit p-5 lg:sticky lg:top-6">
       <h2 className="text-xl font-semibold tracking-tight">Your Bag</h2>
@@ -48,7 +48,7 @@ export function CartPanel({ cart, cartItems, totalItems, totalPrice, addToCart, 
       </div>
     </Card>
   );
-}
+};
 
 type CartPanelProps = {
   cart: Cart;

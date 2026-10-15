@@ -4,14 +4,14 @@ import type { Product } from "@/types";
 import { Button } from "../baseComponents/Button";
 import { Card } from "../baseComponents/Card";
 
-export function RelatedProductsSection({ products, addToCart }: RelatedProductsSectionProps) {
+export const RelatedProducts: React.FC<RelatedProductsSectionProps> = ({ products, addToCart }) => {
   return (
     <section className="mt-10">
       <div className="mb-4 flex items-end justify-between">
-        <h2 className="text-2xl font-semibold tracking-tight">Related items</h2>
-        <Link to="/" className="text-sm font-semibold text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white">
+        <h2 className="text-2xl font-semibold tracking-tight">Other Twiddles</h2>
+        {/* <Link to="/" className="text-sm font-semibold text-slate-700 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white">
           View all
-        </Link>
+        </Link> */}
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -39,7 +39,7 @@ export function RelatedProductsSection({ products, addToCart }: RelatedProductsS
       </div>
     </section>
   );
-}
+};
 
 type RelatedProductsSectionProps = {
   products: Product[];

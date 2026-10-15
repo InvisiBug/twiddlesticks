@@ -6,7 +6,7 @@ type ShopHeroProps = {
 
 const HERO_ROTATION_MS = 3500;
 
-export function ShopHero({ heroImages }: ShopHeroProps) {
+export const Hero = ({ heroImages }: ShopHeroProps) => {
   const images = useMemo(() => heroImages.filter(Boolean), [heroImages]);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
@@ -54,4 +54,4 @@ export function ShopHero({ heroImages }: ShopHeroProps) {
       </div>
     </header>
   );
-}
+};
