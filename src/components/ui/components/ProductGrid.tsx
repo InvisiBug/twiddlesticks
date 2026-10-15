@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom'
-import { Badge } from '../Badge'
-import { Button } from '../Button'
-import { Card, CardSection } from '../Card'
-import { formatMoney } from '../../../lib/money'
-import type { Product } from '../../../types'
+import { Link } from "react-router-dom";
+import { Badge } from "../Badge";
+import { Button } from "../Button";
+import { Card, CardSection } from "../Card";
+import { formatMoney } from "../../../lib/money";
+import type { Product } from "../../../types";
 
 type ProductGridProps = {
-  products: Product[]
-  addToCart: (id: number) => void
-}
+  products: Product[];
+  addToCart: (id: number) => void;
+};
 
 export function ProductGrid({ products, addToCart }: ProductGridProps) {
   return (
@@ -23,11 +23,7 @@ export function ProductGrid({ products, addToCart }: ProductGridProps) {
           <Card key={product.id} className="group overflow-hidden transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
             <Link to={`/products/${product.id}`} className="block">
               <div className="relative h-44 overflow-hidden">
-                <img
-                  src={product.images[0] ?? product.image}
-                  alt={`${product.name} placeholder`}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                />
+                <img src={product.images[0] ?? product.image} alt={`${product.name} placeholder`} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                 <Badge className="absolute left-3 top-3 bg-white/90 text-slate-700 dark:bg-slate-900/85 dark:text-slate-200">{product.tag}</Badge>
               </div>
 
@@ -39,8 +35,8 @@ export function ProductGrid({ products, addToCart }: ProductGridProps) {
                   <p className="text-xl font-semibold tracking-tight">{formatMoney(product.price)}</p>
                   <Button
                     onClick={(event) => {
-                      event.preventDefault()
-                      addToCart(product.id)
+                      event.preventDefault();
+                      addToCart(product.id);
                     }}
                     variant="secondary"
                     className="px-3 py-2"
@@ -54,5 +50,5 @@ export function ProductGrid({ products, addToCart }: ProductGridProps) {
         ))}
       </div>
     </section>
-  )
+  );
 }

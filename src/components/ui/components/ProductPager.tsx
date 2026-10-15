@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
-import type { Product } from '../../../types'
+import { Link } from "react-router-dom";
+import type { Product } from "../../../types";
 
 type ProductPagerProps = {
-  previousProduct: Product
-  nextProduct: Product
-}
+  previousProduct: Product;
+  nextProduct: Product;
+};
 
 export function ProductPager({ previousProduct, nextProduct }: ProductPagerProps) {
   return (
@@ -24,5 +24,5 @@ export function ProductPager({ previousProduct, nextProduct }: ProductPagerProps
         <p className="mt-1 font-semibold text-slate-900 dark:text-slate-100">{nextProduct.name}</p>
       </Link>
     </div>
-  )
+  );
 }

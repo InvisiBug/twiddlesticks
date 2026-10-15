@@ -1,35 +1,26 @@
-import { Link } from 'react-router-dom'
-import { Button } from '../Button'
-import { Card } from '../Card'
-import { formatMoney } from '../../../lib/money'
-import type { Cart, Product } from '../../../types'
+import { Link } from "react-router-dom";
+import { Button } from "../Button";
+import { Card } from "../Card";
+import { formatMoney } from "../../../lib/money";
+import type { Cart, Product } from "../../../types";
 
 type CartPanelProps = {
-  cart: Cart
-  cartItems: Product[]
-  totalItems: number
-  totalPrice: number
-  addToCart: (id: number) => void
-  removeFromCart: (id: number) => void
-}
+  cart: Cart;
+  cartItems: Product[];
+  totalItems: number;
+  totalPrice: number;
+  addToCart: (id: number) => void;
+  removeFromCart: (id: number) => void;
+};
 
-export function CartPanel({
-  cart,
-  cartItems,
-  totalItems,
-  totalPrice,
-  addToCart,
-  removeFromCart,
-}: CartPanelProps) {
+export function CartPanel({ cart, cartItems, totalItems, totalPrice, addToCart, removeFromCart }: CartPanelProps) {
   return (
     <Card className="h-fit p-5 lg:sticky lg:top-6">
       <h2 className="text-xl font-semibold tracking-tight">Your Bag</h2>
       <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{totalItems} item(s) selected</p>
 
       {cartItems.length === 0 ? (
-        <p className="mt-6 rounded-xl border border-dashed border-slate-300 px-4 py-5 text-sm text-slate-600 dark:border-slate-600 dark:text-slate-300">
-          Your bag is empty. Add an item to start checkout.
-        </p>
+        <p className="mt-6 rounded-xl border border-dashed border-slate-300 px-4 py-5 text-sm text-slate-600 dark:border-slate-600 dark:text-slate-300">Your bag is empty. Add an item to start checkout.</p>
       ) : (
         <div className="mt-5 space-y-3">
           {cartItems.map((item) => (
@@ -60,13 +51,10 @@ export function CartPanel({
           <span>{formatMoney(totalPrice)}</span>
         </div>
 
-        <Link
-          to="/checkout"
-          className="block w-full rounded-lg bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400"
-        >
+        <Link to="/checkout" className="block w-full rounded-lg bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white transition hover:bg-emerald-500 dark:bg-emerald-500 dark:hover:bg-emerald-400">
           Continue to checkout
         </Link>
       </div>
     </Card>
-  )
+  );
 }

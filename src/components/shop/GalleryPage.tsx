@@ -1,28 +1,17 @@
-import { Link } from "react-router-dom";
-import { Badge, Card, PageShell, ThemeToggle } from "../ui";
+import { Badge, Card, PageShell, ShopNavbar } from "../ui";
 import type { GalleryPhoto } from "../../types";
 
 type GalleryPageProps = {
   photos: GalleryPhoto[];
+  totalItems: number;
   theme: "light" | "dark";
   toggleTheme: () => void;
 };
 
-export function GalleryPage({ photos, theme, toggleTheme }: GalleryPageProps) {
+export function GalleryPage({ photos, totalItems, theme, toggleTheme }: GalleryPageProps) {
   return (
     <PageShell maxWidth="7xl">
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-white/70 bg-white/75 px-5 py-3 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/70">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Em Kay</p>
-          <p className="text-lg font-semibold tracking-tight">Build Gallery</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
-          <Link to="/" className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
-            Back to shop
-          </Link>
-        </div>
-      </div>
+      <ShopNavbar totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
 
       <header className="mb-6">
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">How I Build Each Product</h1>

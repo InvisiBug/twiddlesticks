@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
-import { ThemeToggle } from '../ThemeToggle'
+import { Link } from "react-router-dom";
+import { ThemeToggle } from "../ThemeToggle";
 
 type ProductDetailHeaderProps = {
-  totalItems: number
-  theme: 'light' | 'dark'
-  onToggleTheme: () => void
-}
+  totalItems: number;
+  theme: "light" | "dark";
+  onToggleTheme: () => void;
+};
 
 export function ProductDetailHeader({ totalItems, theme, onToggleTheme }: ProductDetailHeaderProps) {
   return (
@@ -15,13 +15,10 @@ export function ProductDetailHeader({ totalItems, theme, onToggleTheme }: Produc
       </Link>
       <div className="flex items-center gap-2">
         <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-        <Link
-          to="/checkout"
-          className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
-        >
+        <Link to="/checkout" className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white">
           Cart: {totalItems}
         </Link>
       </div>
     </nav>
-  )
+  );
 }

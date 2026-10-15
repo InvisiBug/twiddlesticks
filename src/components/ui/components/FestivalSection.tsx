@@ -1,9 +1,9 @@
-import { Card } from '../Card'
-import type { Festival } from '../../../types'
+import { Card } from "../Card";
+import type { Festival } from "../../../types";
 
 type FestivalSectionProps = {
-  festivals: Festival[]
-}
+  festivals: Festival[];
+};
 
 export function FestivalSection({ festivals }: FestivalSectionProps) {
   return (
@@ -28,5 +28,5 @@ export function FestivalSection({ festivals }: FestivalSectionProps) {
         ))}
       </div>
     </Card>
-  )
+  );
 }
