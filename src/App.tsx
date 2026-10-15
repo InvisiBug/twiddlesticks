@@ -1,6 +1,6 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CheckoutPage, GalleryPage, ProductDetailPage, ShopPage } from "./components/shop";
+import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "./components/shop";
 import { festivals, galleryPhotos, heroImages, products } from "./data/storefront";
 import { CART_STORAGE_KEY, addItemToCart, getInitialCart, getTotalItems, removeItemFromCart } from "./lib/cart";
 import type { Cart } from "./types";
@@ -113,7 +113,7 @@ function App() {
     <div onClickCapture={handleGlobalImageClick}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<ShopPage cart={cart} products={products} festivals={festivals} heroImages={heroImages} theme={theme} toggleTheme={toggleTheme} addToCart={addToCart} removeFromCart={removeFromCart} />} />
+          <Route path="/" element={<HomePage cart={cart} products={products} festivals={festivals} heroImages={heroImages} theme={theme} toggleTheme={toggleTheme} addToCart={addToCart} removeFromCart={removeFromCart} />} />
           <Route path="/checkout" element={<CheckoutPage cart={cart} products={products} stripePaymentLink={stripePaymentLink} theme={theme} toggleTheme={toggleTheme} />} />
           <Route path="/gallery" element={<GalleryPage photos={galleryPhotos} totalItems={getTotalItems(cart)} theme={theme} toggleTheme={toggleTheme} />} />
           <Route path="/products/:productId" element={<ProductDetailPage cart={cart} products={products} addToCart={addToCart} theme={theme} toggleTheme={toggleTheme} />} />

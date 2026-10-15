@@ -1,4 +1,4 @@
-import { Badge, Card, PageShell, ShopNavbar } from "../ui";
+import { Badge, Card, PageShell, Navbar } from "../ui";
 import type { GalleryPhoto } from "../../types";
 
 type GalleryPageProps = {
@@ -11,7 +11,7 @@ type GalleryPageProps = {
 export function GalleryPage({ photos, totalItems, theme, toggleTheme }: GalleryPageProps) {
   return (
     <PageShell maxWidth="7xl">
-      <ShopNavbar totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
+      <Navbar totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
 
       <header className="mb-6">
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">How I Build Each Product</h1>

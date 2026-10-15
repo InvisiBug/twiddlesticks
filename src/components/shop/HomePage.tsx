@@ -1,9 +1,9 @@
 import { useMemo } from "react";
-import { CartPanel, FestivalSection, PageShell, ProductGrid, ShopHero, ShopNavbar } from "../ui";
+import { CartPanel, FestivalSection, PageShell, ProductGrid, ShopHero, Navbar } from "../ui";
 import { getCartItems, getTotalItems, getTotalPrice } from "../../lib/cart";
 import type { Cart, Festival, Product } from "../../types";
 
-type ShopPageProps = {
+type HomePageProps = {
   cart: Cart;
   products: Product[];
   festivals: Festival[];
@@ -14,14 +14,14 @@ type ShopPageProps = {
   removeFromCart: (id: number) => void;
 };
 
-export function ShopPage({ cart, products, festivals, heroImages, theme, toggleTheme, addToCart, removeFromCart }: ShopPageProps) {
+export function HomePage({ cart, products, festivals, heroImages, theme, toggleTheme, addToCart, removeFromCart }: HomePageProps) {
   const cartItems = useMemo(() => getCartItems(cart, products), [cart, products]);
   const totalItems = useMemo(() => getTotalItems(cart), [cart]);
   const totalPrice = useMemo(() => getTotalPrice(cart, products), [cart, products]);
 
   return (
     <PageShell maxWidth="7xl">
-      <ShopNavbar totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
+      <Navbar totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
       <ShopHero heroImages={heroImages} />
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">

@@ -40,7 +40,7 @@ export function ShopHero({ heroImages }: ShopHeroProps) {
           <p className="mt-4 max-w-2xl text-slate-600 dark:text-slate-300">Explore twiddles and continue to checkout when your bag is ready.</p>
         </div>
 
-        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+        <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-slate-700 dark:bg-slate-800">
           {activeImage ? <img src={activeImage} alt={`Featured shop preview ${activeImageIndex + 1}`} className="absolute inset-0 h-full w-full object-contain object-center transition duration-700 ease-out" /> : null}
 
           {images.length > 1 ? (

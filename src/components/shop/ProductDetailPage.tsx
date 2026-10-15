@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { PageShell, ProductDetailGallery, ProductDetailInfo, ProductDetailNotFound, ProductPager, RelatedProductsSection, ShopNavbar } from "../ui";
+import { PageShell, ProductDetailGallery, ProductDetailInfo, ProductDetailNotFound, ProductPager, RelatedProductsSection, Navbar } from "../ui";
 import { getTotalItems } from "../../lib/cart";
 import type { Cart, Product } from "../../types";
 
@@ -37,7 +37,7 @@ export function ProductDetailPage({ products, cart, addToCart, theme, toggleThem
 
   return (
     <PageShell maxWidth="7xl">
-      <ShopNavbar totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
+      <Navbar totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
 
       <Link to="/" className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-900 dark:text-slate-200 dark:hover:text-white">
         <span aria-hidden="true">←</span>

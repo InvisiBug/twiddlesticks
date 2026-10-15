@@ -1,11 +1,15 @@
-export { CartPanel } from "./CartPanel";
+export { CartPanel } from "./home/CartPanel";
 export { FestivalSection } from "./FestivalSection";
-export { ProductDetailGallery } from "./ProductDetailGallery";
-export { ProductDetailHeader } from "./ProductDetailHeader";
-export { ProductDetailInfo } from "./ProductDetailInfo";
-export { ProductDetailNotFound } from "./ProductDetailNotFound";
-export { ProductPager } from "./ProductPager";
-export { ProductGrid } from "./ProductGrid";
-export { RelatedProductsSection } from "./RelatedProductsSection";
+
+// Product Details
+export { ProductDetailGallery } from "./productDetails/ProductDetailGallery";
+export { ProductDetailHeader } from "./productDetails/ProductDetailHeader";
+export { ProductDetailInfo } from "./productDetails/ProductDetailInfo";
+export { ProductDetailNotFound } from "./productDetails/ProductDetailNotFound";
+
+//
+export { ProductPager } from "./productDetails/ProductPager";
+export { ProductGrid } from "./home/ProductGrid";
+export { RelatedProductsSection } from "./productDetails/RelatedProductsSection";
 export { ShopHero } from "./ShopHero";
-export { ShopNavbar } from "./ShopNavbar";
+export { Navbar } from "./Navbar";

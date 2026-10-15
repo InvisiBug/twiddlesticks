@@ -1,4 +1,4 @@
-import { Card } from "./baseComponents/Card";
+import { Card } from "../baseComponents/Card";
 
 type ProductDetailGalleryProps = {
   productName: string;

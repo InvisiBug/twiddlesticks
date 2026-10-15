@@ -1,13 +1,13 @@
 import { Link, useLocation } from "react-router-dom";
 import { ThemeToggle } from "./baseComponents/ThemeToggle";
 
-type ShopNavbarProps = {
+type NavbarProps = {
   totalItems: number;
   theme: "light" | "dark";
   onToggleTheme: () => void;
 };
 
-export function ShopNavbar({ totalItems, theme, onToggleTheme }: ShopNavbarProps) {
+export function Navbar({ totalItems, theme, onToggleTheme }: NavbarProps) {
   const location = useLocation();
   const isGalleryPage = location.pathname === "/gallery";
 
