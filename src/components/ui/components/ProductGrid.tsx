@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Badge } from "../Badge";
-import { Button } from "../Button";
-import { Card, CardSection } from "../Card";
+import { Badge } from "./baseComponents/Badge";
+import { Button } from "./baseComponents/Button";
+import { Card, CardSection } from "./baseComponents/Card";
 import { formatMoney } from "../../../lib/money";
 import type { Product } from "../../../types";
 

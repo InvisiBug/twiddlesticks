@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ThemeToggle } from "../ThemeToggle";
+import { ThemeToggle } from "./baseComponents/ThemeToggle";
 
 type ProductDetailHeaderProps = {
   totalItems: number;

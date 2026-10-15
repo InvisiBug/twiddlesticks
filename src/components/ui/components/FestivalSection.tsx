@@ -1,4 +1,4 @@
-import { Card } from "../Card";
+import { Card } from "./baseComponents/Card";
 import type { Festival } from "../../../types";
 
 type FestivalSectionProps = {

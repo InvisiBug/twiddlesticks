@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { formatMoney } from "../../../lib/money";
 import type { Product } from "../../../types";
-import { Badge } from "../Badge";
-import { Button } from "../Button";
-import { Card } from "../Card";
+import { Badge } from "./baseComponents/Badge";
+import { Button } from "./baseComponents/Button";
+import { Card } from "./baseComponents/Card";
 
 type ProductDetailInfoProps = {
   product: Product;
