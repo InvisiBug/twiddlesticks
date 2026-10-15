@@ -1,12 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { ThemeToggle } from "./baseComponents/ThemeToggle";
 
-type NavbarProps = {
-  totalItems: number;
-  theme: "light" | "dark";
-  onToggleTheme: () => void;
-};
-
 export function Navbar({ totalItems, theme, onToggleTheme }: NavbarProps) {
   const location = useLocation();
   const isGalleryPage = location.pathname === "/gallery";
@@ -31,3 +25,9 @@ export function Navbar({ totalItems, theme, onToggleTheme }: NavbarProps) {
     </nav>
   );
 }
+
+type NavbarProps = {
+  totalItems: number;
+  theme: "light" | "dark";
+  onToggleTheme: () => void;
+};

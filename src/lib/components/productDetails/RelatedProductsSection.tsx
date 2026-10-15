@@ -4,11 +4,6 @@ import type { Product } from "@/types";
 import { Button } from "../baseComponents/Button";
 import { Card } from "../baseComponents/Card";
 
-type RelatedProductsSectionProps = {
-  products: Product[];
-  addToCart: (id: number) => void;
-};
-
 export function RelatedProductsSection({ products, addToCart }: RelatedProductsSectionProps) {
   return (
     <section className="mt-10">
@@ -45,3 +40,8 @@ export function RelatedProductsSection({ products, addToCart }: RelatedProductsS
     </section>
   );
 }
+
+type RelatedProductsSectionProps = {
+  products: Product[];
+  addToCart: (id: number) => void;
+};

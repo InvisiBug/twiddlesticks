@@ -1,12 +1,5 @@
 import { Card } from "../baseComponents/Card";
 
-type ProductDetailGalleryProps = {
-  productName: string;
-  images: string[];
-  selectedImage: number;
-  onSelectImage: (index: number) => void;
-};
-
 export function ProductDetailGallery({ productName, images, selectedImage, onSelectImage }: ProductDetailGalleryProps) {
   const activeImage = images[selectedImage] ?? images[0];
 
@@ -33,3 +26,10 @@ export function ProductDetailGallery({ productName, images, selectedImage, onSel
     </section>
   );
 }
+
+type ProductDetailGalleryProps = {
+  productName: string;
+  images: string[];
+  selectedImage: number;
+  onSelectImage: (index: number) => void;
+};

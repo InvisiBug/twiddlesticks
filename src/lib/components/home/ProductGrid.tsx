@@ -5,11 +5,6 @@ import { Card, CardSection } from "../baseComponents/Card";
 import { formatMoney } from "@/lib/money";
 import type { Product } from "@/types";
 
-type ProductGridProps = {
-  products: Product[];
-  addToCart: (id: number) => void;
-};
-
 export function ProductGrid({ products, addToCart }: ProductGridProps) {
   return (
     <section>
@@ -52,3 +47,8 @@ export function ProductGrid({ products, addToCart }: ProductGridProps) {
     </section>
   );
 }
+
+type ProductGridProps = {
+  products: Product[];
+  addToCart: (id: number) => void;
+};

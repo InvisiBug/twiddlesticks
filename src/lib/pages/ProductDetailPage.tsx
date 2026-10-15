@@ -4,14 +4,6 @@ import { PageShell, ProductDetailGallery, ProductDetailInfo, ProductDetailNotFou
 import { getTotalItems } from "@/lib/cart";
 import type { Cart, Product } from "@/types";
 
-type ProductDetailPageProps = {
-  products: Product[];
-  cart: Cart;
-  addToCart: (id: number) => void;
-  theme: "light" | "dark";
-  toggleTheme: () => void;
-};
-
 export function ProductDetailPage({ products, cart, addToCart, theme, toggleTheme }: ProductDetailPageProps) {
   const { productId } = useParams();
   const totalItems = useMemo(() => getTotalItems(cart), [cart]);
@@ -57,3 +49,11 @@ export function ProductDetailPage({ products, cart, addToCart, theme, toggleThem
     </PageShell>
   );
 }
+
+type ProductDetailPageProps = {
+  products: Product[];
+  cart: Cart;
+  addToCart: (id: number) => void;
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+};

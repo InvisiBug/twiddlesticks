@@ -5,14 +5,6 @@ import { getCartItems, getTotalItems, getTotalPrice } from "@/lib/cart";
 import { formatMoney } from "@/lib/money";
 import type { Cart, Product } from "@/types";
 
-type CheckoutPageProps = {
-  cart: Cart;
-  products: Product[];
-  stripePaymentLink: string;
-  theme: "light" | "dark";
-  toggleTheme: () => void;
-};
-
 export function CheckoutPage({ cart, products, stripePaymentLink, theme, toggleTheme }: CheckoutPageProps) {
   const cartItems = useMemo(() => getCartItems(cart, products), [cart, products]);
   const totalItems = useMemo(() => getTotalItems(cart), [cart]);
@@ -104,3 +96,11 @@ export function CheckoutPage({ cart, products, stripePaymentLink, theme, toggleT
     </PageShell>
   );
 }
+
+type CheckoutPageProps = {
+  cart: Cart;
+  products: Product[];
+  stripePaymentLink: string;
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+};

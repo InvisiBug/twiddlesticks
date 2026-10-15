@@ -4,15 +4,6 @@ import { Card } from "../baseComponents/Card";
 import { formatMoney } from "@/lib/money";
 import type { Cart, Product } from "@/types";
 
-type CartPanelProps = {
-  cart: Cart;
-  cartItems: Product[];
-  totalItems: number;
-  totalPrice: number;
-  addToCart: (id: number) => void;
-  removeFromCart: (id: number) => void;
-};
-
 export function CartPanel({ cart, cartItems, totalItems, totalPrice, addToCart, removeFromCart }: CartPanelProps) {
   return (
     <Card className="h-fit p-5 lg:sticky lg:top-6">
@@ -58,3 +49,12 @@ export function CartPanel({ cart, cartItems, totalItems, totalPrice, addToCart, 
     </Card>
   );
 }
+
+type CartPanelProps = {
+  cart: Cart;
+  cartItems: Product[];
+  totalItems: number;
+  totalPrice: number;
+  addToCart: (id: number) => void;
+  removeFromCart: (id: number) => void;
+};

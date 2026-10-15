@@ -5,11 +5,6 @@ import { Badge } from "../baseComponents/Badge";
 import { Button } from "../baseComponents/Button";
 import { Card } from "../baseComponents/Card";
 
-type ProductDetailInfoProps = {
-  product: Product;
-  addToCart: (id: number) => void;
-};
-
 export function ProductDetailInfo({ product, addToCart }: ProductDetailInfoProps) {
   return (
     <section className="space-y-5">
@@ -41,3 +36,8 @@ export function ProductDetailInfo({ product, addToCart }: ProductDetailInfoProps
     </section>
   );
 }
+
+type ProductDetailInfoProps = {
+  product: Product;
+  addToCart: (id: number) => void;
+};

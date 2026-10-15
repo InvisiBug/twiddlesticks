@@ -1,13 +1,6 @@
 import { Badge, Card, PageShell, Navbar } from "@/lib/components";
 import type { GalleryPhoto } from "@/types";
 
-type GalleryPageProps = {
-  photos: GalleryPhoto[];
-  totalItems: number;
-  theme: "light" | "dark";
-  toggleTheme: () => void;
-};
-
 export function GalleryPage({ photos, totalItems, theme, toggleTheme }: GalleryPageProps) {
   return (
     <PageShell maxWidth="7xl">
@@ -41,3 +34,10 @@ export function GalleryPage({ photos, totalItems, theme, toggleTheme }: GalleryP
     </PageShell>
   );
 }
+
+type GalleryPageProps = {
+  photos: GalleryPhoto[];
+  totalItems: number;
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+};

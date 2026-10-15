@@ -1,18 +1,7 @@
 import { useMemo } from "react";
-import { CartPanel, FestivalSection, PageShell, ProductGrid, ShopHero, Navbar } from "../../components/ui";
-import { getCartItems, getTotalItems, getTotalPrice } from "../cart";
-import type { Cart, Festival, Product } from "../../types";
-
-type HomePageProps = {
-  cart: Cart;
-  products: Product[];
-  festivals: Festival[];
-  heroImages: string[];
-  theme: "light" | "dark";
-  toggleTheme: () => void;
-  addToCart: (id: number) => void;
-  removeFromCart: (id: number) => void;
-};
+import { CartPanel, FestivalSection, PageShell, ProductGrid, ShopHero, Navbar } from "@/lib/components";
+import { getCartItems, getTotalItems, getTotalPrice } from "@/lib/cart";
+import type { Cart, Festival, Product } from "@/types";
 
 export function HomePage({ cart, products, festivals, heroImages, theme, toggleTheme, addToCart, removeFromCart }: HomePageProps) {
   const cartItems = useMemo(() => getCartItems(cart, products), [cart, products]);
@@ -32,3 +21,14 @@ export function HomePage({ cart, products, festivals, heroImages, theme, toggleT
     </PageShell>
   );
 }
+
+type HomePageProps = {
+  cart: Cart;
+  products: Product[];
+  festivals: Festival[];
+  heroImages: string[];
+  theme: "light" | "dark";
+  toggleTheme: () => void;
+  addToCart: (id: number) => void;
+  removeFromCart: (id: number) => void;
+};

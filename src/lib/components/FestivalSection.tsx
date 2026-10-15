@@ -1,5 +1,5 @@
 import { Card } from "./baseComponents/Card";
-import type { Festival } from "../../../types";
+import type { Festival } from "@/types";
 
 type FestivalSectionProps = {
   festivals: Festival[];

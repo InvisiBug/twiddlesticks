@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "../baseComponents/ThemeToggle";
 
-type ProductDetailHeaderProps = {
-  totalItems: number;
-  theme: "light" | "dark";
-  onToggleTheme: () => void;
-};
-
 export function ProductDetailHeader({ totalItems, theme, onToggleTheme }: ProductDetailHeaderProps) {
   return (
     <nav className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-white/70 bg-white/75 px-5 py-3 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/70">
@@ -22,3 +16,9 @@ export function ProductDetailHeader({ totalItems, theme, onToggleTheme }: Produc
     </nav>
   );
 }
+
+type ProductDetailHeaderProps = {
+  totalItems: number;
+  theme: "light" | "dark";
+  onToggleTheme: () => void;
+};

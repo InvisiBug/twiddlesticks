@@ -1,10 +1,5 @@
 import { cn } from "./cn";
 
-type ThemeToggleProps = {
-  theme: "light" | "dark";
-  onToggle: () => void;
-};
-
 export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
   const isDark = theme === "dark";
 
@@ -23,3 +18,8 @@ export function ThemeToggle({ theme, onToggle }: ThemeToggleProps) {
     </button>
   );
 }
+
+type ThemeToggleProps = {
+  theme: "light" | "dark";
+  onToggle: () => void;
+};
