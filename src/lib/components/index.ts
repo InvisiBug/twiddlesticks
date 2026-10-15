@@ -15,6 +15,7 @@ export { FestivalSection } from "./FestivalSection";
 // Base
 export { Navbar } from "./Navbar";
 export { ThemeToggle } from "./baseComponents/ThemeToggle";
+export { CookieBanner } from "./CookieBanner";
 
 export { Badge } from "./baseComponents/Badge";
 export { Button, ButtonLink } from "./baseComponents/Button";

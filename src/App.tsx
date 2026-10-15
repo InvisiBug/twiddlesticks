@@ -1,6 +1,7 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "./lib/pages";
+import { CookieBanner, type CookieConsent } from "./lib/components";
 import { festivals, galleryPhotos, heroImages, products } from "./data/storefront";
 import { CART_STORAGE_KEY, addItemToCart, getInitialCart, getTotalItems, removeItemFromCart } from "./lib/cart";
 import type { Cart } from "./types";
@@ -8,12 +9,22 @@ import type { Cart } from "./types";
 const defaultStripeLink = "";
 const stripePaymentLink = import.meta.env.VITE_STRIPE_PAYMENT_LINK ?? defaultStripeLink;
 const THEME_STORAGE_KEY = "twiddlesticks-theme";
+const COOKIE_CONSENT_STORAGE_KEY = "twiddlesticks-cookie-consent";
 
 type Theme = "light" | "dark";
 
 type LightboxImage = {
   src: string;
   alt: string;
+};
+
+const getInitialCookieConsent = (): CookieConsent | null => {
+  const savedConsent = localStorage.getItem(COOKIE_CONSENT_STORAGE_KEY);
+  if (savedConsent === "accepted" || savedConsent === "essential") {
+    return savedConsent;
+  }
+
+  return null;
 };
 
 const getInitialTheme = (): Theme => {
@@ -29,6 +40,7 @@ function App() {
   const [cart, setCart] = useState<Cart>(getInitialCart);
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [lightboxImage, setLightboxImage] = useState<LightboxImage | null>(null);
+  const [cookieConsent, setCookieConsent] = useState<CookieConsent | null>(getInitialCookieConsent);
 
   useEffect(() => {
     localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
@@ -74,6 +86,11 @@ function App() {
 
   const closeLightbox = () => {
     setLightboxImage(null);
+  };
+
+  const handleCookieChoice = (choice: CookieConsent) => {
+    setCookieConsent(choice);
+    localStorage.setItem(COOKIE_CONSENT_STORAGE_KEY, choice);
   };
 
   const handleGlobalImageClick = (event: MouseEvent<HTMLDivElement>) => {
@@ -148,6 +165,8 @@ function App() {
           <img src={lightboxImage.src} alt={lightboxImage.alt} className="max-h-[90vh] w-auto max-w-full rounded-xl border border-slate-600 object-contain shadow-2xl" data-lightbox-modal="true" />
         </div>
       ) : null}
+
+      {!cookieConsent ? <CookieBanner onChoose={handleCookieChoice} /> : null}
     </div>
   );
 }
