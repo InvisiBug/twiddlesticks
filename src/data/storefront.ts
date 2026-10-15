@@ -1,28 +1,28 @@
 import type { Festival, GalleryPhoto, Product } from "../types";
 
 // Hero Images
-import proBlack from "../components/ui/assets/hero/pro-black.jpg";
-import proWhite from "../components/ui/assets/hero/pro-white.jpg";
-import hero1 from "../components/ui/assets/hero/hero1.jpg";
-import hero2 from "../components/ui/assets/hero/hero2.jpg";
-import hero3 from "../components/ui/assets/hero/hero3.jpg";
+import proBlack from "@/lib/assets/hero/pro-black.jpg";
+import proWhite from "@/lib/assets/hero/pro-white.jpg";
+import hero1 from "@/lib/assets/hero/hero1.jpg";
+import hero2 from "@/lib/assets/hero/hero2.jpg";
+import hero3 from "@/lib/assets/hero/hero3.jpg";
 
 // Spiral
-import spiral from "../components/ui/assets/spiral/spiral.jpg";
-import spiral1 from "../components/ui/assets/spiral/spiral1.jpg";
+import spiral from "@/lib/assets/spiral/spiral.jpg";
+import spiral1 from "@/lib/assets/spiral/spiral1.jpg";
 
 // Circle
-import circle from "../components/ui/assets/circle/circle.jpg";
+import circle from "@/lib/assets/circle/circle.jpg";
 
 // LED
-import led1 from "../components/ui/assets/led/led-1.jpg";
-import led2 from "../components/ui/assets/led/led-2.jpg";
-import led3 from "../components/ui/assets/led/led-3.jpg";
-import led4 from "../components/ui/assets/led/led-4.jpg";
+import led1 from "@/lib/assets/led/led-1.jpg";
+import led2 from "@/lib/assets/led/led-2.jpg";
+import led3 from "@/lib/assets/led/led-3.jpg";
+import led4 from "@/lib/assets/led/led-4.jpg";
 
 //triangle
-import triangle1 from "../components/ui/assets/triangle/triangle-1.jpg";
-import triangle2 from "../components/ui/assets/triangle/triangle-2.jpg";
+import triangle1 from "@/lib/assets/triangle/triangle-1.jpg";
+import triangle2 from "@/lib/assets/triangle/triangle-2.jpg";
 
 export const heroImages = [proBlack, proWhite, hero1, hero2, hero3];
 

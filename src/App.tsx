@@ -1,6 +1,6 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "./components/shop";
+import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "./lib/pages";
 import { festivals, galleryPhotos, heroImages, products } from "./data/storefront";
 import { CART_STORAGE_KEY, addItemToCart, getInitialCart, getTotalItems, removeItemFromCart } from "./lib/cart";
 import type { Cart } from "./types";

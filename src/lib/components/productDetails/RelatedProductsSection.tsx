@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { formatMoney } from "../../../../lib/money";
-import type { Product } from "../../../../types";
+import { formatMoney } from "@/lib/money";
+import type { Product } from "@/types";
 import { Button } from "../baseComponents/Button";
 import { Card } from "../baseComponents/Card";
 

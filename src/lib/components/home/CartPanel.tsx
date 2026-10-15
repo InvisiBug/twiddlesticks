@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "../baseComponents/Button";
 import { Card } from "../baseComponents/Card";
-import { formatMoney } from "../../../../lib/money";
-import type { Cart, Product } from "../../../../types";
+import { formatMoney } from "@/lib/money";
+import type { Cart, Product } from "@/types";
 
 type CartPanelProps = {
   cart: Cart;

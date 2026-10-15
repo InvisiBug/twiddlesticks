@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { PageShell, ProductDetailGallery, ProductDetailInfo, ProductDetailNotFound, ProductPager, RelatedProductsSection, Navbar } from "../ui";
-import { getTotalItems } from "../../lib/cart";
+import { PageShell, ProductDetailGallery, ProductDetailInfo, ProductDetailNotFound, ProductPager, RelatedProductsSection, Navbar } from "../../components/ui";
+import { getTotalItems } from "../cart";
 import type { Cart, Product } from "../../types";
 
 type ProductDetailPageProps = {

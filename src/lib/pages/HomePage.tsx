@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import { CartPanel, FestivalSection, PageShell, ProductGrid, ShopHero, Navbar } from "../ui";
-import { getCartItems, getTotalItems, getTotalPrice } from "../../lib/cart";
+import { CartPanel, FestivalSection, PageShell, ProductGrid, ShopHero, Navbar } from "../../components/ui";
+import { getCartItems, getTotalItems, getTotalPrice } from "../cart";
 import type { Cart, Festival, Product } from "../../types";
 
 type HomePageProps = {
