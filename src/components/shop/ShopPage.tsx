@@ -8,6 +8,8 @@ type ShopPageProps = {
   products: Product[]
   festivals: Festival[]
   heroImage: string
+  theme: 'light' | 'dark'
+  toggleTheme: () => void
   addToCart: (id: number) => void
   removeFromCart: (id: number) => void
 }
@@ -17,6 +19,8 @@ export function ShopPage({
   products,
   festivals,
   heroImage,
+  theme,
+  toggleTheme,
   addToCart,
   removeFromCart,
 }: ShopPageProps) {
@@ -26,7 +30,7 @@ export function ShopPage({
 
   return (
     <PageShell maxWidth="7xl">
-        <ShopNavbar totalItems={totalItems} />
+        <ShopNavbar totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
         <ShopHero heroImage={heroImage} />
         <FestivalSection festivals={festivals} />
 

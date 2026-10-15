@@ -23,7 +23,7 @@ export function PageShell({
   return (
     <main
       className={cn(
-        'min-h-screen bg-[radial-gradient(circle_at_top,#fff7ed_0%,#f8fafc_35%,#f1f5f9_100%)] text-slate-900',
+        'min-h-screen bg-[radial-gradient(circle_at_top,#fff7ed_0%,#f8fafc_35%,#f1f5f9_100%)] text-slate-900 dark:bg-[radial-gradient(circle_at_top,#1f2937_0%,#0f172a_45%,#020617_100%)] dark:text-slate-100',
         className,
       )}
     >

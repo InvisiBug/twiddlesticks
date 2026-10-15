@@ -15,7 +15,7 @@ export function ProductGrid({ products, addToCart }: ProductGridProps) {
     <section>
       <div className="mb-4 flex items-end justify-between">
         <h2 className="text-2xl font-semibold tracking-tight">Shop Items</h2>
-        <p className="text-sm text-slate-600">Free local pickup available</p>
+        <p className="text-sm text-slate-600 dark:text-slate-300">Free local pickup available</p>
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
@@ -28,12 +28,12 @@ export function ProductGrid({ products, addToCart }: ProductGridProps) {
                   alt={`${product.name} placeholder`}
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
-                <Badge className="absolute left-3 top-3 bg-white/90 text-slate-700">{product.tag}</Badge>
+                <Badge className="absolute left-3 top-3 bg-white/90 text-slate-700 dark:bg-slate-900/85 dark:text-slate-200">{product.tag}</Badge>
               </div>
 
               <CardSection>
                 <h3 className="text-lg font-semibold tracking-tight">{product.name}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-slate-600">{product.description}</p>
+                <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{product.description}</p>
 
                 <div className="mt-4 flex items-center justify-between">
                   <p className="text-xl font-semibold tracking-tight">{formatMoney(product.price)}</p>

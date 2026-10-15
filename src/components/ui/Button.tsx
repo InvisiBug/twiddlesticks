@@ -16,9 +16,9 @@ type AnchorProps = SharedProps & AnchorHTMLAttributes<HTMLAnchorElement>
 
 const variantClasses: Record<Variant, string> = {
   primary: 'bg-emerald-600 text-white hover:bg-emerald-500',
-  secondary: 'bg-slate-900 text-white hover:bg-slate-700',
-  outline: 'border border-slate-300 text-slate-800 hover:bg-slate-100',
-  pill: 'rounded-full bg-slate-900 text-white hover:bg-slate-700',
+  secondary: 'bg-slate-900 text-white hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white',
+  outline: 'border border-slate-300 text-slate-800 hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800',
+  pill: 'rounded-full bg-slate-900 text-white hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white',
 }
 
 const baseClasses = 'rounded-lg px-4 py-3 text-center text-sm font-semibold transition'

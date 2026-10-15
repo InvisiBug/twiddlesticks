@@ -16,9 +16,11 @@ type ProductDetailPageProps = {
   products: Product[]
   cart: Cart
   addToCart: (id: number) => void
+  theme: 'light' | 'dark'
+  toggleTheme: () => void
 }
 
-export function ProductDetailPage({ products, cart, addToCart }: ProductDetailPageProps) {
+export function ProductDetailPage({ products, cart, addToCart, theme, toggleTheme }: ProductDetailPageProps) {
   const { productId } = useParams()
   const totalItems = useMemo(() => getTotalItems(cart), [cart])
 
@@ -45,7 +47,7 @@ export function ProductDetailPage({ products, cart, addToCart }: ProductDetailPa
 
   return (
     <PageShell maxWidth="7xl">
-        <ProductDetailHeader totalItems={totalItems} />
+        <ProductDetailHeader totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
 
         <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <ProductDetailGallery

@@ -25,8 +25,10 @@ export function ProductDetailGallery({
           <button
             key={`${productName}-${index}`}
             onClick={() => onSelectImage(index)}
-            className={`overflow-hidden rounded-xl border bg-white ${
-              selectedImage === index ? 'border-slate-900 ring-2 ring-slate-300' : 'border-slate-200'
+            className={`overflow-hidden rounded-xl border bg-white dark:bg-slate-900 ${
+              selectedImage === index
+                ? 'border-slate-900 ring-2 ring-slate-300 dark:border-slate-100 dark:ring-slate-600'
+                : 'border-slate-200 dark:border-slate-700'
             }`}
           >
             <img src={image} alt={`${productName} thumbnail ${index + 1}`} className="h-24 w-full object-cover" />
