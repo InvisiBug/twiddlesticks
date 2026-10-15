@@ -1,145 +1,117 @@
-import candlePlaceholder from '../components/ui/assets/placeholder-candle.svg'
-import detailA from '../components/ui/assets/placeholder-detail-a.svg'
-import detailB from '../components/ui/assets/placeholder-detail-b.svg'
-import detailC from '../components/ui/assets/placeholder-detail-c.svg'
-import heroPlaceholder from '../components/ui/assets/hero-market-placeholder.svg'
-import mugPlaceholder from '../components/ui/assets/placeholder-mug.svg'
-import totePlaceholder from '../components/ui/assets/placeholder-tote.svg'
-import type { Festival, Product } from '../types'
+import galleryPhotoSeeds from "./gallery-photos.json";
+
+import type { Festival, GalleryPhoto, Product } from "../types";
+import hero1 from "../components/ui/assets/hero/hero1.jpg";
+import hero2 from "../components/ui/assets/hero/hero2.jpg";
+import hero3 from "../components/ui/assets/hero/hero3.jpg";
+
+// Hero Images
+import proBlack from "../components/ui/assets/pro-black.jpg";
+
+// Spiral
+import spiral from "../components/ui/assets/spiral.jpg";
+import spiral1 from "../components/ui/assets/spiral1.jpg";
+
+// Circle
+import circle from "../components/ui/assets/circle.jpg";
+
+// LED
+import led1 from "../components/ui/assets/led/led-1.jpg";
+import led2 from "../components/ui/assets/led/led-2.jpg";
+import led3 from "../components/ui/assets/led/led-3.jpg";
+import led4 from "../components/ui/assets/led/led-4.jpg";
+
+export const heroImages = [proBlack, hero1, hero2, hero3];
+
+type GalleryPhotoSeed = {
+  id: number;
+  imageKey: string;
+  title: string;
+  caption: string;
+  stage: string;
+};
+
+const galleryPhotoImageMap: Record<string, string> = {
+  hero1,
+  hero2,
+  spiral,
+  spiral1,
+  circle,
+  proBlack,
+};
+
+export const galleryPhotos: GalleryPhoto[] = (galleryPhotoSeeds as GalleryPhotoSeed[]).map((photo) => {
+  const src = galleryPhotoImageMap[photo.imageKey];
+
+  if (!src) {
+    throw new Error(`Unknown gallery image key: ${photo.imageKey}`);
+  }
+
+  return {
+    id: photo.id,
+    src,
+    title: photo.title,
+    caption: photo.caption,
+    stage: photo.stage,
+  };
+});
+
+export const festivals: Festival[] = [
+  {
+    name: "Leeds Luggling Convention",
+    date: "Nov 2, 2026",
+    location: "Leeds",
+    hours: "10:00 AM - 4:00 PM",
+    note: "Come try prototypes in person and collect pre-ordered pieces.",
+  },
+  {
+    name: "BJC",
+    date: "Apr 16, 2026",
+    location: "South of london somewhere",
+    hours: "its like 5 days",
+    note: "Featuring flowception crew LED space",
+  },
+  {
+    name: "Slack fest",
+    date: "Summer 2027",
+    location: "Manchester",
+    hours: "4 Days",
+    note: "My first and ongoing favourite circus festival. The Flowception dome will also be there",
+  },
+];
 
 export const products: Product[] = [
   {
     id: 1,
-    name: 'Handmade Mug',
-    price: 24,
-    description: 'Ceramic mug, glazed and fired by hand.',
-    longDescription:
-      'A hand-thrown ceramic mug with a comfortable handle and satin glaze. Built for everyday coffee and tea rituals.',
-    tag: 'Bestseller',
-    image: mugPlaceholder,
-    images: [mugPlaceholder, detailA, detailB],
-    details: ['12 oz capacity', 'Microwave safe', 'Top-rack dishwasher safe'],
+    name: "Spiral Twiddle",
+    price: 30,
+    description: "The original spiral twiddle",
+    longDescription: "This twiddle spins slower and for longer than other variants due to the thinness of the core",
+    tag: "My fave",
+    images: [spiral, spiral1],
+    image: spiral,
+    details: ["250mm long", "3mm core diameter", "50 grams"],
   },
   {
     id: 2,
-    name: 'Canvas Tote',
-    price: 18,
-    description: 'Thick cotton tote for books, groceries, or everyday use.',
-    longDescription:
-      'Durable cotton canvas tote with reinforced seams and long handles. Folds flat for travel and market runs.',
-    tag: 'New',
-    image: totePlaceholder,
-    images: [totePlaceholder, detailB, detailC],
-    details: ['100% cotton canvas', 'Machine washable', 'Fits up to 15-inch laptop'],
+    name: "Circle Twiddle",
+    price: 30,
+    description: "The new circle twiddle",
+    longDescription: "Slightly heavier than the spiral version, most people prefer this type.",
+    tag: "Bestseller",
+    images: [circle],
+    image: circle,
+    details: ["250mm long", "3mm core diameter", "500 grams"],
   },
   {
     id: 3,
-    name: 'Scented Candle',
-    price: 16,
-    description: 'Soy wax candle with a soft cedar and vanilla scent.',
-    longDescription:
-      'Small-batch soy wax candle poured in reusable glass. Soft throw designed for bedrooms, offices, and cozy corners.',
-    tag: 'Limited',
-    image: candlePlaceholder,
-    images: [candlePlaceholder, detailC, detailA],
-    details: ['40 hour burn time', 'Soy wax blend', 'Phthalate-free fragrance'],
+    name: "LED Twiddle",
+    price: 50,
+    description: "The dark mode twiddle",
+    longDescription: "This twiddle lights up with LED lights, perfect for dark mode enthusiasts.",
+    tag: "Expensive",
+    images: [led1, led2, led3, led4],
+    image: led1,
+    details: ["Battery operated", "LED lights", "Durable plastic body"],
   },
-  {
-    id: 4,
-    name: 'Stoneware Bowl',
-    price: 28,
-    description: 'Wide handmade bowl for ramen, salads, and grain bowls.',
-    longDescription:
-      'Stoneware bowl with a broad rim and sturdy base. Perfect for hearty meals and easy plating.',
-    tag: 'Popular',
-    image: mugPlaceholder,
-    images: [mugPlaceholder, detailB, detailA],
-    details: ['Approx. 7.5 inch diameter', 'Oven safe up to 350 F', 'Food-safe glaze'],
-  },
-  {
-    id: 5,
-    name: 'Market Apron',
-    price: 34,
-    description: 'Heavy cotton apron with two deep front pockets.',
-    longDescription:
-      'Workhorse market apron cut from durable cotton with an adjustable neck strap and roomy pockets.',
-    tag: 'Small Batch',
-    image: totePlaceholder,
-    images: [totePlaceholder, detailA, detailC],
-    details: ['Adjustable neck strap', 'Double front pockets', 'One size fits most'],
-  },
-  {
-    id: 6,
-    name: 'Travel Tumbler',
-    price: 22,
-    description: 'Lidded tumbler designed for coffee and tea on the go.',
-    longDescription:
-      'Lightweight travel tumbler with secure lid and clean silhouette. Fits most cup holders.',
-    tag: 'Restock',
-    image: mugPlaceholder,
-    images: [mugPlaceholder, detailC, detailB],
-    details: ['14 oz capacity', 'BPA-free lid', 'Hand wash recommended'],
-  },
-  {
-    id: 7,
-    name: 'Gift Set Trio',
-    price: 42,
-    description: 'Curated bundle of candle, tote, and ceramic mini cup.',
-    longDescription:
-      'Gift-ready set featuring three customer favorites in one bundle, wrapped and ready for special occasions.',
-    tag: 'Bundle',
-    image: candlePlaceholder,
-    images: [candlePlaceholder, detailA, detailB],
-    details: ['Includes 3 items', 'Seasonal wrapping included', 'Best value bundle'],
-  },
-  {
-    id: 8,
-    name: 'Linen Table Runner',
-    price: 26,
-    description: 'Soft woven runner to style dining and coffee tables.',
-    longDescription:
-      'Textured linen runner that adds warmth and contrast to tablescapes while staying easy to clean.',
-    tag: 'New',
-    image: totePlaceholder,
-    images: [totePlaceholder, detailB, detailC],
-    details: ['72 inch length', 'Linen blend', 'Machine wash cold'],
-  },
-  {
-    id: 9,
-    name: 'Mini Candle Pair',
-    price: 19,
-    description: 'Two small candles in seasonal scents for gifting.',
-    longDescription:
-      'A pair of mini candles in rotating scents. Ideal for testing fragrances or gifting to friends.',
-    tag: 'Giftable',
-    image: candlePlaceholder,
-    images: [candlePlaceholder, detailC, detailA],
-    details: ['Set of 2', '20 hour burn each', 'Reusable tins'],
-  },
-]
-
-export const festivals: Festival[] = [
-  {
-    name: 'Riverfront Makers Market',
-    date: 'Nov 2, 2026',
-    location: 'Portland Waterfront Park',
-    hours: '10:00 AM - 4:00 PM',
-    note: 'Great for local pickup and first-time product tryouts.',
-  },
-  {
-    name: 'Autumn Craft Fair',
-    date: 'Nov 16, 2026',
-    location: 'Pearl District Event Hall',
-    hours: '11:00 AM - 5:00 PM',
-    note: 'Smell the candles, feel materials, and pick up your order in person.',
-  },
-  {
-    name: 'Holiday Night Bazaar',
-    date: 'Dec 6, 2026',
-    location: 'SE Community Warehouse',
-    hours: '5:00 PM - 9:00 PM',
-    note: 'Limited edition items available first at this event.',
-  },
-]
-
-export const heroImage = heroPlaceholder
+];

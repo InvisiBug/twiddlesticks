@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "imageKey": "hero1",
+    "title": "Material Prep",
+    "caption": "Sorting cords and shell pieces before cutting and balancing each twiddle.",
+    "stage": "Prep"
+  },
+  {
+    "id": 2,
+    "imageKey": "hero2",
+    "title": "First Assembly",
+    "caption": "Early assembly pass while testing rotation feel and thumb grip comfort.",
+    "stage": "Assembly"
+  }
+]

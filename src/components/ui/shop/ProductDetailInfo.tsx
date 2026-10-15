@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom'
-import { formatMoney } from '../../../lib/money'
-import type { Product } from '../../../types'
-import { Badge } from '../Badge'
-import { Button } from '../Button'
-import { Card } from '../Card'
+import { Link } from "react-router-dom";
+import { formatMoney } from "../../../lib/money";
+import type { Product } from "../../../types";
+import { Badge } from "../Badge";
+import { Button } from "../Button";
+import { Card } from "../Card";
 
 type ProductDetailInfoProps = {
-  product: Product
-  addToCart: (id: number) => void
-}
+  product: Product;
+  addToCart: (id: number) => void;
+};
 
 export function ProductDetailInfo({ product, addToCart }: ProductDetailInfoProps) {
   return (
@@ -34,13 +34,10 @@ export function ProductDetailInfo({ product, addToCart }: ProductDetailInfoProps
         <Button onClick={() => addToCart(product.id)} variant="secondary" className="sm:min-w-40">
           Add to bag
         </Button>
-        <Link
-          to="/checkout"
-          className="rounded-lg border border-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800 sm:min-w-40"
-        >
+        <Link to="/checkout" className="rounded-lg border border-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800 sm:min-w-40">
           Go to checkout
         </Link>
       </div>
     </section>
-  )
+  );
 }

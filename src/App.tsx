@@ -1,101 +1,147 @@
-import { useEffect, useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { CheckoutPage, ProductDetailPage, ShopPage } from './components/shop'
-import { festivals, heroImage, products } from './data/storefront'
-import {
-  CART_STORAGE_KEY,
-  addItemToCart,
-  getInitialCart,
-  removeItemFromCart,
-} from './lib/cart'
-import type { Cart } from './types'
+import { useEffect, useState, type MouseEvent } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { CheckoutPage, GalleryPage, ProductDetailPage, ShopPage } from "./components/shop";
+import { festivals, galleryPhotos, heroImages, products } from "./data/storefront";
+import { CART_STORAGE_KEY, addItemToCart, getInitialCart, removeItemFromCart } from "./lib/cart";
+import type { Cart } from "./types";
 
-const defaultStripeLink = ''
-const stripePaymentLink = import.meta.env.VITE_STRIPE_PAYMENT_LINK ?? defaultStripeLink
-const THEME_STORAGE_KEY = 'twiddlesticks-theme'
+const defaultStripeLink = "";
+const stripePaymentLink = import.meta.env.VITE_STRIPE_PAYMENT_LINK ?? defaultStripeLink;
+const THEME_STORAGE_KEY = "twiddlesticks-theme";
 
-type Theme = 'light' | 'dark'
+type Theme = "light" | "dark";
+
+type LightboxImage = {
+  src: string;
+  alt: string;
+};
 
 const getInitialTheme = (): Theme => {
-  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY)
-  if (savedTheme === 'light' || savedTheme === 'dark') {
-    return savedTheme
+  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  if (savedTheme === "light" || savedTheme === "dark") {
+    return savedTheme;
   }
 
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-}
-
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+};
 
 function App() {
-  const [cart, setCart] = useState<Cart>(getInitialCart)
-  const [theme, setTheme] = useState<Theme>(getInitialTheme)
+  const [cart, setCart] = useState<Cart>(getInitialCart);
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [lightboxImage, setLightboxImage] = useState<LightboxImage | null>(null);
 
   useEffect(() => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart))
-  }, [cart])
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  }, [cart]);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', theme === 'dark')
-    localStorage.setItem(THEME_STORAGE_KEY, theme)
-  }, [theme])
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  }, [theme]);
+
+  useEffect(() => {
+    if (!lightboxImage) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setLightboxImage(null);
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [lightboxImage]);
 
   const addToCart = (id: number) => {
-    setCart((prev) => addItemToCart(prev, id))
-  }
+    setCart((prev) => addItemToCart(prev, id));
+  };
 
   const removeFromCart = (id: number) => {
-    setCart((prev) => removeItemFromCart(prev, id))
-  }
+    setCart((prev) => removeItemFromCart(prev, id));
+  };
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'))
-  }
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  const closeLightbox = () => {
+    setLightboxImage(null);
+  };
+
+  const handleGlobalImageClick = (event: MouseEvent<HTMLDivElement>) => {
+    if (!window.location.pathname.startsWith("/gallery")) {
+      return;
+    }
+
+    const clickTarget = event.target as HTMLElement;
+
+    if (clickTarget.closest('[data-lightbox-modal="true"]')) {
+      return;
+    }
+
+    const imageElement = clickTarget.closest("img");
+    if (!(imageElement instanceof HTMLImageElement)) {
+      return;
+    }
+
+    const src = imageElement.currentSrc || imageElement.src;
+    if (!src) {
+      return;
+    }
+
+    const linkAncestor = imageElement.closest("a");
+    if (linkAncestor) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    setLightboxImage({
+      src,
+      alt: imageElement.alt?.trim() || "Image preview",
+    });
+  };
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <ShopPage
-              cart={cart}
-              products={products}
-              festivals={festivals}
-              heroImage={heroImage}
-              theme={theme}
-              toggleTheme={toggleTheme}
-              addToCart={addToCart}
-              removeFromCart={removeFromCart}
-            />
-          }
-        />
-        <Route
-          path="/checkout"
-          element={
-            <CheckoutPage
-              cart={cart}
-              products={products}
-              stripePaymentLink={stripePaymentLink}
-              theme={theme}
-              toggleTheme={toggleTheme}
-            />
-          }
-        />
-        <Route
-          path="/products/:productId"
-          element={
-            <ProductDetailPage
-              cart={cart}
-              products={products}
-              addToCart={addToCart}
-              theme={theme}
-              toggleTheme={toggleTheme}
-            />
-          }
-        />
-      </Routes>
-    </BrowserRouter>
-  )
+    <div onClickCapture={handleGlobalImageClick}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ShopPage cart={cart} products={products} festivals={festivals} heroImages={heroImages} theme={theme} toggleTheme={toggleTheme} addToCart={addToCart} removeFromCart={removeFromCart} />} />
+          <Route path="/checkout" element={<CheckoutPage cart={cart} products={products} stripePaymentLink={stripePaymentLink} theme={theme} toggleTheme={toggleTheme} />} />
+          <Route path="/gallery" element={<GalleryPage photos={galleryPhotos} theme={theme} toggleTheme={toggleTheme} />} />
+          <Route path="/products/:productId" element={<ProductDetailPage cart={cart} products={products} addToCart={addToCart} theme={theme} toggleTheme={toggleTheme} />} />
+        </Routes>
+      </BrowserRouter>
+
+      {lightboxImage && window.location.pathname.startsWith("/gallery") ? (
+        <div
+          data-lightbox-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image preview"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              closeLightbox();
+            }
+          }}
+        >
+          <button type="button" className="absolute right-4 top-4 rounded-full border border-slate-500 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-100 transition hover:border-white hover:text-white" onClick={closeLightbox}>
+            Close
+          </button>
+
+          <img src={lightboxImage.src} alt={lightboxImage.alt} className="max-h-[90vh] w-auto max-w-full rounded-xl border border-slate-600 object-contain shadow-2xl" data-lightbox-modal="true" />
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
-export default App
+export default App;
