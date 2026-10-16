@@ -1,6 +1,6 @@
 import { Card } from "../baseComponents/Card";
 
-export const ProductGallery: React.FC<ProductDetailGalleryProps> = ({ productName, images, selectedImage, onSelectImage }) => {
+const ProductGallery: React.FC<ProductDetailGalleryProps> = ({ productName, images, selectedImage, onSelectImage }) => {
   const activeImage = images[selectedImage] ?? images[0];
 
   return (
@@ -26,6 +26,8 @@ export const ProductGallery: React.FC<ProductDetailGalleryProps> = ({ productNam
     </section>
   );
 };
+
+export default ProductGallery;
 
 type ProductDetailGalleryProps = {
   productName: string;

@@ -1,12 +1,6 @@
 import { Button } from "./baseComponents/Button";
 
-export type CookieConsent = "accepted" | "essential";
-
-type CookieBannerProps = {
-  onChoose: (choice: CookieConsent) => void;
-};
-
-export const CookieBanner: React.FC<CookieBannerProps> = ({ onChoose }) => {
+const CookieBanner: React.FC<CookieBannerProps> = ({ onChoose }) => {
   return (
     <aside
       className="fixed inset-x-3 bottom-3 z-50 mx-auto w-full max-w-3xl rounded-2xl border border-slate-200 bg-white/95 p-4 shadow-2xl backdrop-blur dark:border-slate-700 dark:bg-slate-900/95 sm:inset-x-6 sm:bottom-6 sm:p-5"
@@ -31,4 +25,12 @@ export const CookieBanner: React.FC<CookieBannerProps> = ({ onChoose }) => {
       </div>
     </aside>
   );
+};
+
+export default CookieBanner;
+
+export type CookieConsent = "accepted" | "essential";
+
+type CookieBannerProps = {
+  onChoose: (choice: CookieConsent) => void;
 };

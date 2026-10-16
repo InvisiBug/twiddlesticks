@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { Badge } from "../baseComponents/Badge";
-import { Button } from "../baseComponents/Button";
+import { Badge, Button } from "@/lib/components";
 import { Card, CardSection } from "../baseComponents/Card";
 import { formatMoney } from "@/lib/money";
 import type { Product } from "@/types";

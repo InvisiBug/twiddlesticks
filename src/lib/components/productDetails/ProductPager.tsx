@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import type { Product } from "@/types";
 
-export function ProductPager({ previousProduct, nextProduct }: ProductPagerProps) {
+const ProductPager = ({ previousProduct, nextProduct }: ProductPagerProps) => {
   return (
     <div className="grid gap-3 border-t border-slate-200 pt-5 dark:border-slate-700 sm:grid-cols-2">
       <Link
@@ -20,7 +20,10 @@ export function ProductPager({ previousProduct, nextProduct }: ProductPagerProps
       </Link>
     </div>
   );
-}
+};
+
+export default ProductPager;
+
 type ProductPagerProps = {
   previousProduct: Product;
   nextProduct: Product;

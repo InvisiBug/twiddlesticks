@@ -1,23 +1,22 @@
 // Product Details
-export { ProductGallery } from "./productDetails/ProductGallery";
-export { ProductDetailHeader } from "./productDetails/ProductDetailHeader";
-export { ProductDetailInfo } from "./productDetails/ProductDetailInfo";
-export { ProductDetailNotFound } from "./productDetails/ProductDetailNotFound";
-export { ProductPager } from "./productDetails/ProductPager";
-export { RelatedProducts } from "./productDetails/RelatedProductsSection";
+export { default as ProductGallery } from "./productDetails/ProductGallery";
+export { default as ProductDetailInfo } from "./productDetails/ProductDetailInfo";
+export { default as ProductDetailNotFound } from "./productDetails/ProductDetailNotFound";
+export { default as ProductPager } from "./productDetails/ProductPager";
+export { default as RelatedProducts } from "./productDetails/RelatedProductsSection";
 
 // Home
-export { Hero } from "./home/Hero";
-export { ProductGrid } from "./home/ProductGrid";
-export { CartPanel } from "./home/CartPanel";
-export { FestivalSection } from "./FestivalSection";
+export { default as Hero } from "./home/Hero";
+export { default as ProductGrid } from "./home/ProductGrid";
+export { default as CartPanel } from "./home/CartPanel";
+export { default as FestivalSection } from "./FestivalSection";
 
 // Base
-export { Navbar } from "./Navbar";
-export { ThemeToggle } from "./baseComponents/ThemeToggle";
-export { CookieBanner } from "./CookieBanner";
+export { default as Navbar } from "./Navbar";
+export { default as ThemeToggle } from "./baseComponents/ThemeToggle";
+export { default as CookieBanner } from "./CookieBanner";
 
-export { Badge } from "./baseComponents/Badge";
+export { default as Badge } from "./baseComponents/Badge";
 export { Button, ButtonLink } from "./baseComponents/Button";
 export { Card, CardSection } from "./baseComponents/Card";
 export { Field } from "./baseComponents/Field";

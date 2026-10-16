@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { formatMoney } from "@/lib/money";
 import type { Product } from "@/types";
-import { Button } from "../baseComponents/Button";
-import { Card } from "../baseComponents/Card";
+import { Button, Card } from "@/lib/components";
 
-export const RelatedProducts: React.FC<RelatedProductsSectionProps> = ({ products, addToCart }) => {
+const RelatedProducts: React.FC<RelatedProductsSectionProps> = ({ products, addToCart }) => {
   return (
     <section className="mt-10">
       <div className="mb-4 flex items-end justify-between">
@@ -18,7 +17,7 @@ export const RelatedProducts: React.FC<RelatedProductsSectionProps> = ({ product
         {products.map((related) => (
           <Card key={related.id} className="overflow-hidden">
             <Link to={`/products/${related.id}`} className="block">
-              <img src={related.images[0] ?? related.image} alt={related.name} className="h-44 w-full object-cover" />
+              <img src={related.images[0]} alt={related.name} className="h-44 w-full object-cover" />
             </Link>
             <div className="space-y-3 p-4">
               <div>
@@ -40,6 +39,8 @@ export const RelatedProducts: React.FC<RelatedProductsSectionProps> = ({ product
     </section>
   );
 };
+
+export default RelatedProducts;
 
 type RelatedProductsSectionProps = {
   products: Product[];

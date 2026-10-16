@@ -1,11 +1,7 @@
 import { Card } from "./baseComponents/Card";
 import type { Festival } from "@/types";
 
-type FestivalSectionProps = {
-  festivals: Festival[];
-};
-
-export function FestivalSection({ festivals }: FestivalSectionProps) {
+const FestivalSection = ({ festivals }: FestivalSectionProps) => {
   return (
     <Card className="mt-6 rounded-3xl border-amber-100 p-5 dark:border-amber-900/60 sm:p-6">
       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -29,4 +25,10 @@ export function FestivalSection({ festivals }: FestivalSectionProps) {
       </div>
     </Card>
   );
-}
+};
+
+export default FestivalSection;
+
+type FestivalSectionProps = {
+  festivals: Festival[];
+};

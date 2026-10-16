@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { formatMoney } from "@/lib/money";
 import type { Product } from "@/types";
-import { Badge } from "../baseComponents/Badge";
-import { Button } from "../baseComponents/Button";
-import { Card } from "../baseComponents/Card";
 
-export function ProductDetailInfo({ product, addToCart }: ProductDetailInfoProps) {
+import { Badge, Button, Card } from "@/lib/components";
+
+const ProductDetailInfo = ({ product, addToCart }: ProductDetailInfoProps) => {
   return (
     <section className="space-y-5">
       <Badge className="bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900">{product.tag}</Badge>
@@ -35,7 +34,9 @@ export function ProductDetailInfo({ product, addToCart }: ProductDetailInfoProps
       </div>
     </section>
   );
-}
+};
+
+export default ProductDetailInfo;
 
 type ProductDetailInfoProps = {
   product: Product;

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Card } from "@/lib/components/baseComponents/Card";
+import { Card } from "@/lib/components";
 import { PageShell } from "@/lib/layout";
 
 const ProductDetailNotFound = () => {
