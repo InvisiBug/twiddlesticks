@@ -1,8 +1,8 @@
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "./lib/pages";
 import { CookieBanner, type CookieConsent } from "./lib/components";
-import { festivals, galleryPhotos, heroImages, products } from "./data/storefront";
+import { festivals, galleryPhotos, heroImages, onlineOrdersEnabled, products } from "./data/storefront";
 import { CART_STORAGE_KEY, addItemToCart, getInitialCart, getTotalItems, removeItemFromCart } from "./lib/cart";
 import type { Cart } from "./types";
 
@@ -166,18 +166,33 @@ function App() {
     });
   };
 
-  const themedProducts = getThemedProducts(theme, products);
-  const themedHeroImages = getThemedImageList(heroImages, theme);
-  const themedGalleryPhotos = getThemedGalleryPhotos(theme, galleryPhotos);
+  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme]);
+  const themedHeroImages = useMemo(() => getThemedImageList(heroImages, theme), [theme]);
+  const themedGalleryPhotos = useMemo(() => getThemedGalleryPhotos(theme, galleryPhotos), [theme]);
 
   return (
     <div onClickCapture={handleGlobalImageClick}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage cart={cart} products={themedProducts} festivals={festivals} heroImages={themedHeroImages} theme={theme} toggleTheme={toggleTheme} addToCart={addToCart} removeFromCart={removeFromCart} />} />
+          <Route
+            path="/"
+            element={
+              <HomePage
+                cart={cart}
+                products={themedProducts}
+                festivals={festivals}
+                heroImages={themedHeroImages}
+                theme={theme}
+                toggleTheme={toggleTheme}
+                addToCart={addToCart}
+                removeFromCart={removeFromCart}
+                onlineOrdersEnabled={onlineOrdersEnabled}
+              />
+            }
+          />
           <Route path="/checkout" element={<CheckoutPage cart={cart} products={themedProducts} stripePaymentLink={stripePaymentLink} theme={theme} toggleTheme={toggleTheme} />} />
-          <Route path="/gallery" element={<GalleryPage photos={themedGalleryPhotos} totalItems={getTotalItems(cart)} theme={theme} toggleTheme={toggleTheme} />} />
-          <Route path="/products/:productId" element={<ProductDetailPage cart={cart} products={themedProducts} addToCart={addToCart} theme={theme} toggleTheme={toggleTheme} />} />
+          <Route path="/gallery" element={<GalleryPage photos={themedGalleryPhotos} totalItems={getTotalItems(cart)} theme={theme} toggleTheme={toggleTheme} onlineOrdersEnabled={onlineOrdersEnabled} />} />
+          <Route path="/products/:productId" element={<ProductDetailPage cart={cart} products={themedProducts} addToCart={addToCart} theme={theme} toggleTheme={toggleTheme} onlineOrdersEnabled={onlineOrdersEnabled} />} />
         </Routes>
       </BrowserRouter>
 

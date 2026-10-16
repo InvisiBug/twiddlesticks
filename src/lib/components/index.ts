@@ -2,7 +2,6 @@
 export { default as ProductGallery } from "./productDetails/ProductGallery";
 export { default as ProductDetailInfo } from "./productDetails/ProductDetailInfo";
 export { default as ProductDetailNotFound } from "./productDetails/ProductDetailNotFound";
-export { default as ProductPager } from "./productDetails/ProductPager";
 export { default as RelatedProducts } from "./productDetails/RelatedProductsSection";
 
 // Home

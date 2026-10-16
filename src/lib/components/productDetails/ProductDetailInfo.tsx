@@ -3,7 +3,7 @@ import { formatMoney } from "@/lib/money";
 import type { Product } from "@/types";
 import { Badge, Button, Card } from "@/lib/components";
 
-const ProductDetailInfo = ({ product, addToCart }: ProductDetailInfoProps) => {
+const ProductDetailInfo = ({ product, addToCart, onlineOrdersEnabled }: ProductDetailInfoProps) => {
   return (
     <section className="space-y-5">
       <Badge className="bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900">{product.tag}</Badge>
@@ -23,14 +23,18 @@ const ProductDetailInfo = ({ product, addToCart }: ProductDetailInfoProps) => {
         </ul>
       </Card>
 
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <Button onClick={() => addToCart(product.id)} variant="secondary" className="sm:min-w-40">
-          Add to bag
-        </Button>
-        <Link to="/checkout" className="rounded-lg border border-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800 sm:min-w-40">
-          Go to checkout
-        </Link>
-      </div>
+      {onlineOrdersEnabled ? (
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Button onClick={() => addToCart(product.id)} variant="secondary" className="sm:min-w-40">
+            Add to bag
+          </Button>
+          <Link to="/checkout" className="rounded-lg border border-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800 sm:min-w-40">
+            Go to checkout
+          </Link>
+        </div>
+      ) : (
+        <p className="rounded-xl border border-dashed border-slate-300 px-4 py-4 text-sm font-medium text-slate-600 dark:border-slate-600 dark:text-slate-300">Online orders coming soon.</p>
+      )}
     </section>
   );
 };
@@ -40,4 +44,5 @@ export default ProductDetailInfo;
 type ProductDetailInfoProps = {
   product: Product;
   addToCart: (id: number) => void;
+  onlineOrdersEnabled: boolean;
 };

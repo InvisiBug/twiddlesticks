@@ -1,14 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { PageShell, ProductGallery, ProductDetailInfo, ProductDetailNotFound, ProductPager, RelatedProducts, Navbar } from "@/lib/components";
+import { PageShell, ProductGallery, ProductDetailInfo, ProductDetailNotFound, RelatedProducts } from "@/lib/components";
 import { getTotalItems } from "@/lib/cart";
 import type { Cart, Product } from "@/types";
 
-const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, cart, addToCart, theme, toggleTheme }) => {
+const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, cart, addToCart, theme, toggleTheme, onlineOrdersEnabled }) => {
   const { productId } = useParams();
   const totalItems = useMemo(() => getTotalItems(cart), [cart]);
 
   const product = useMemo(() => products.find((entry) => entry.id === Number(productId)), [products, productId]);
+  const relatedProducts = useMemo(() => products.filter((entry) => entry.id !== product?.id), [products, product?.id]);
 
   const [selectedImage, setSelectedImage] = useState(0);
 
@@ -21,15 +22,8 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, cart, a
     return <ProductDetailNotFound />;
   }
 
-  const relatedProducts = products.filter((entry) => entry.id !== product.id).slice(0, 3);
-
-  // const currentIndex = products.findIndex((entry) => entry.id === product.id);
-  // const previousProduct = currentIndex > 0 ? products[currentIndex - 1] : products[products.length - 1];
-  // const nextProduct = currentIndex < products.length - 1 ? products[currentIndex + 1] : products[0];
-
   return (
-    <PageShell maxWidth="7xl">
-      <Navbar totalItems={totalItems} theme={theme} onToggleTheme={toggleTheme} />
+    <PageShell maxWidth="7xl" navbar={{ totalItems, theme, onToggleTheme: toggleTheme, onlineOrdersEnabled }}>
 
       <Link to="/" className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-900 dark:text-slate-200 dark:hover:text-white">
         <span aria-hidden="true">←</span>
@@ -40,12 +34,11 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, cart, a
         <ProductGallery productName={product.name} images={product.images} selectedImage={selectedImage} onSelectImage={setSelectedImage} />
 
         <section className="space-y-5">
-          <ProductDetailInfo product={product} addToCart={addToCart} />
-          {/* <ProductPager previousProduct={previousProduct} nextProduct={nextProduct} /> */}
+          <ProductDetailInfo product={product} addToCart={addToCart} onlineOrdersEnabled={onlineOrdersEnabled} />
         </section>
       </div>
 
-      <RelatedProducts products={relatedProducts} addToCart={addToCart} />
+      <RelatedProducts products={relatedProducts} addToCart={addToCart} onlineOrdersEnabled={onlineOrdersEnabled} />
     </PageShell>
   );
 };
@@ -58,4 +51,5 @@ type ProductDetailPageProps = {
   addToCart: (id: number) => void;
   theme: "light" | "dark";
   toggleTheme: () => void;
+  onlineOrdersEnabled: boolean;
 };

@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { ThemeToggle } from "@/lib/components";
 
-const Navbar = ({ totalItems, theme, onToggleTheme }: NavbarProps) => {
+const Navbar = ({ totalItems, theme, onToggleTheme, onlineOrdersEnabled }: NavbarProps) => {
   const location = useLocation();
   const isGalleryPage = location.pathname === "/gallery";
 
@@ -17,9 +17,11 @@ const Navbar = ({ totalItems, theme, onToggleTheme }: NavbarProps) => {
             Gallery
           </Link>
         ) : null}
-        <Link to="/checkout" className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white">
-          Cart: {totalItems}
-        </Link>
+        {onlineOrdersEnabled ? (
+          <Link to="/checkout" className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white">
+            Cart: {totalItems}
+          </Link>
+        ) : null}
         <ThemeToggle theme={theme} onToggle={onToggleTheme} />
       </div>
     </nav>
@@ -32,4 +34,5 @@ type NavbarProps = {
   totalItems: number;
   theme: "light" | "dark";
   onToggleTheme: () => void;
+  onlineOrdersEnabled: boolean;
 };
