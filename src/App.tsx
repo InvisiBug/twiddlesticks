@@ -10,6 +10,10 @@ const defaultStripeLink = "";
 const stripePaymentLink = import.meta.env.VITE_STRIPE_PAYMENT_LINK ?? defaultStripeLink;
 const THEME_STORAGE_KEY = "twiddlesticks-theme";
 const COOKIE_CONSENT_STORAGE_KEY = "twiddlesticks-cookie-consent";
+const themedImageMap = import.meta.glob("/src/lib/images/**/*.{jpg,jpeg,png,webp}", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
 
 type Theme = "light" | "dark";
 
@@ -35,6 +39,34 @@ const getInitialTheme = (): Theme => {
 
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 };
+
+const getThemedAsset = (asset: string, theme: Theme) => {
+  if (!asset || theme !== "dark") {
+    return asset;
+  }
+
+  const normalizedAsset = asset.replace(/\\/g, "/");
+  const relativePath = normalizedAsset.replace(/^.*\/src\/lib\/images\//, "");
+  const darkAssetPath = relativePath.replace(/^light\//, "dark/");
+  const darkAsset = themedImageMap[`/src/lib/images/${darkAssetPath}`];
+
+  return darkAsset ?? asset;
+};
+
+const getThemedImageList = (images: string[], theme: Theme) => images.map((image) => getThemedAsset(image, theme));
+
+const getThemedProducts = (theme: Theme, products: typeof import("./data/storefront").products) =>
+  products.map((product) => ({
+    ...product,
+    image: getThemedAsset(product.images[0] ?? "", theme),
+    images: getThemedImageList(product.images, theme),
+  }));
+
+const getThemedGalleryPhotos = (theme: Theme, photos: typeof import("./data/storefront").galleryPhotos) =>
+  photos.map((photo) => ({
+    ...photo,
+    src: getThemedAsset(photo.src, theme),
+  }));
 
 function App() {
   const [cart, setCart] = useState<Cart>(getInitialCart);
@@ -134,14 +166,18 @@ function App() {
     });
   };
 
+  const themedProducts = getThemedProducts(theme, products);
+  const themedHeroImages = getThemedImageList(heroImages, theme);
+  const themedGalleryPhotos = getThemedGalleryPhotos(theme, galleryPhotos);
+
   return (
     <div onClickCapture={handleGlobalImageClick}>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage cart={cart} products={products} festivals={festivals} heroImages={heroImages} theme={theme} toggleTheme={toggleTheme} addToCart={addToCart} removeFromCart={removeFromCart} />} />
-          <Route path="/checkout" element={<CheckoutPage cart={cart} products={products} stripePaymentLink={stripePaymentLink} theme={theme} toggleTheme={toggleTheme} />} />
-          <Route path="/gallery" element={<GalleryPage photos={galleryPhotos} totalItems={getTotalItems(cart)} theme={theme} toggleTheme={toggleTheme} />} />
-          <Route path="/products/:productId" element={<ProductDetailPage cart={cart} products={products} addToCart={addToCart} theme={theme} toggleTheme={toggleTheme} />} />
+          <Route path="/" element={<HomePage cart={cart} products={themedProducts} festivals={festivals} heroImages={themedHeroImages} theme={theme} toggleTheme={toggleTheme} addToCart={addToCart} removeFromCart={removeFromCart} />} />
+          <Route path="/checkout" element={<CheckoutPage cart={cart} products={themedProducts} stripePaymentLink={stripePaymentLink} theme={theme} toggleTheme={toggleTheme} />} />
+          <Route path="/gallery" element={<GalleryPage photos={themedGalleryPhotos} totalItems={getTotalItems(cart)} theme={theme} toggleTheme={toggleTheme} />} />
+          <Route path="/products/:productId" element={<ProductDetailPage cart={cart} products={themedProducts} addToCart={addToCart} theme={theme} toggleTheme={toggleTheme} />} />
         </Routes>
       </BrowserRouter>
 

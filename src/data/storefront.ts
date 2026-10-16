@@ -1,11 +1,8 @@
 import type { Festival, GalleryPhoto, Product } from "../types";
 
 // Hero Images
-import proBlack from "@/lib/images/light/hero/pro-black.jpg";
-import proWhite from "@/lib/images/light/hero/pro-white.jpg";
 import hero1 from "@/lib/images/light/hero/hero1.jpg";
 import hero2 from "@/lib/images/light/hero/hero2.jpg";
-import hero3 from "@/lib/images/light/hero/hero3.jpg";
 
 // Clear LED
 import clearLED1 from "@/lib/images/light/clearLED/led-1.jpg";
@@ -22,15 +19,16 @@ import spiral2 from "@/lib/images/light/spiral/2.jpg";
 
 // Circle
 import circle from "@/lib/images/light/circle/cover.jpg";
+import circle1 from "@/lib/images/light/circle/1.jpg";
 
 // Triangle
-import triangle1 from "@/lib/images/light/triangle/triangle-1.jpg";
-import triangle2 from "@/lib/images/light/triangle/triangle-2.jpg";
+import triangleCover from "@/lib/images/light/triangle/cover.jpg";
+import triangle1 from "@/lib/images/light/triangle/triangle1.jpg";
 
 // Stand
 import standCover from "@/lib/images/light/stand/cover.jpg";
 
-export const heroImages = [proBlack, proWhite, hero1, hero2, hero3];
+export const heroImages = [hero1, hero2];
 
 export const festivals: Festival[] = [
   {
@@ -104,7 +102,7 @@ export const products: Product[] = [
     description: "The triangle twiddle",
     longDescription: "Kinda sucks but I made one so here it is.",
     tag: "Kinda sucks",
-    images: [triangle1, triangle2],
+    images: [triangleCover, triangle1],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
   },
   {
