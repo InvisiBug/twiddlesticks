@@ -5,7 +5,6 @@ export type Product = {
   description: string;
   longDescription: string;
   tag: string;
-  image: string;
   images: string[];
   details: string[];
 };

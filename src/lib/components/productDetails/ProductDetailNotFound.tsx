@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Card } from "@/lib/components/baseComponents/Card";
 import { PageShell } from "@/lib/layout";
 
-export function ProductDetailNotFound() {
+const ProductDetailNotFound = () => {
   return (
     <PageShell maxWidth="4xl" containerClassName="py-10">
       <Card className="p-8 text-center">
@@ -14,4 +14,6 @@ export function ProductDetailNotFound() {
       </Card>
     </PageShell>
   );
-}
+};
+
+export default ProductDetailNotFound;

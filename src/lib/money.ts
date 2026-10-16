@@ -1,6 +1,6 @@
-export const money = new Intl.NumberFormat("en-US", {
+export const money = new Intl.NumberFormat("en-UK", {
   style: "currency",
-  currency: "USD",
+  currency: "GBP",
   maximumFractionDigits: 0,
 });
 

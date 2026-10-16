@@ -4,7 +4,7 @@ import { PageShell, ProductGallery, ProductDetailInfo, ProductDetailNotFound, Pr
 import { getTotalItems } from "@/lib/cart";
 import type { Cart, Product } from "@/types";
 
-export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, cart, addToCart, theme, toggleTheme }) => {
+const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, cart, addToCart, theme, toggleTheme }) => {
   const { productId } = useParams();
   const totalItems = useMemo(() => getTotalItems(cart), [cart]);
 
@@ -21,7 +21,6 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, 
     return <ProductDetailNotFound />;
   }
 
-  const gallery = product.images.length ? product.images : [product.image];
   const relatedProducts = products.filter((entry) => entry.id !== product.id).slice(0, 3);
 
   // const currentIndex = products.findIndex((entry) => entry.id === product.id);
@@ -38,7 +37,7 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, 
       </Link>
 
       <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-        <ProductGallery productName={product.name} images={gallery} selectedImage={selectedImage} onSelectImage={setSelectedImage} />
+        <ProductGallery productName={product.name} images={product.images} selectedImage={selectedImage} onSelectImage={setSelectedImage} />
 
         <section className="space-y-5">
           <ProductDetailInfo product={product} addToCart={addToCart} />
@@ -50,6 +49,8 @@ export const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, 
     </PageShell>
   );
 };
+
+export default ProductDetailPage;
 
 type ProductDetailPageProps = {
   products: Product[];

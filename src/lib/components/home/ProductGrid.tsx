@@ -5,7 +5,9 @@ import { Card, CardSection } from "../baseComponents/Card";
 import { formatMoney } from "@/lib/money";
 import type { Product } from "@/types";
 
-export function ProductGrid({ products, addToCart }: ProductGridProps) {
+const ProductGrid = ({ products, addToCart }: ProductGridProps) => {
+  const sortedProducts = [...products].sort((a, b) => a.id - b.id);
+
   return (
     <section>
       <div className="mb-4 flex items-end justify-between">
@@ -14,11 +16,11 @@ export function ProductGrid({ products, addToCart }: ProductGridProps) {
       </div>
 
       <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-        {products.map((product) => (
+        {sortedProducts.map((product) => (
           <Card key={product.id} className="group overflow-hidden transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
             <Link to={`/products/${product.id}`} className="block">
               <div className="relative h-44 overflow-hidden">
-                <img src={product.images[0] ?? product.image} alt={`${product.name} placeholder`} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                <img src={product.images[0]} alt={`${product.name} placeholder`} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
                 <Badge className="absolute left-3 top-3 bg-white/90 text-slate-700 dark:bg-slate-900/85 dark:text-slate-200">{product.tag}</Badge>
               </div>
 
@@ -46,7 +48,9 @@ export function ProductGrid({ products, addToCart }: ProductGridProps) {
       </div>
     </section>
   );
-}
+};
+
+export default ProductGrid;
 
 type ProductGridProps = {
   products: Product[];

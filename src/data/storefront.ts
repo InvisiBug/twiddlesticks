@@ -7,22 +7,28 @@ import hero1 from "@/lib/assets/hero/hero1.jpg";
 import hero2 from "@/lib/assets/hero/hero2.jpg";
 import hero3 from "@/lib/assets/hero/hero3.jpg";
 
+// Clear LED
+import clearLED1 from "@/lib/assets/clearLED/led-1.jpg";
+import clearLED2 from "@/lib/assets/clearLED/led-2.jpg";
+import clearLED3 from "@/lib/assets/clearLED/led-3.jpg";
+import clearLED4 from "@/lib/assets/clearLED/led-4.jpg";
+
+// Coloured LED
+
 // Spiral
-import spiral from "@/lib/assets/spiral/spiral.jpg";
-import spiral1 from "@/lib/assets/spiral/spiral1.jpg";
+import spiralCover from "@/lib/assets/spiral/cover.jpg";
+import spiral1 from "@/lib/assets/spiral/1.jpg";
+import spiral2 from "@/lib/assets/spiral/2.jpg";
 
 // Circle
-import circle from "@/lib/assets/circle/circle.jpg";
+import circle from "@/lib/assets/circle/cover.jpg";
 
-// LED
-import led1 from "@/lib/assets/led/led-1.jpg";
-import led2 from "@/lib/assets/led/led-2.jpg";
-import led3 from "@/lib/assets/led/led-3.jpg";
-import led4 from "@/lib/assets/led/led-4.jpg";
-
-//triangle
+// Triangle
 import triangle1 from "@/lib/assets/triangle/triangle-1.jpg";
 import triangle2 from "@/lib/assets/triangle/triangle-2.jpg";
+
+// Stand
+import standCover from "@/lib/assets/stand/cover.jpg";
 
 export const heroImages = [proBlack, proWhite, hero1, hero2, hero3];
 
@@ -53,47 +59,63 @@ export const festivals: Festival[] = [
 export const products: Product[] = [
   {
     id: 1,
+    name: "Clear LED Twiddle",
+    price: 50,
+    description: "The dark mode twiddle",
+    longDescription: "This twiddle lights up with LED lights, perfect for dark mode enthusiasts.",
+    tag: "Expensive",
+    images: [clearLED1, clearLED2, clearLED3, clearLED4],
+    details: ["Battery operated", "LED lights", "Durable plastic body"],
+  },
+  {
+    id: 2,
+    name: "Black LED Twiddle",
+    price: 50,
+    description: "The dark mode twiddle",
+    longDescription: "This version has a black body and a clear window to allow the light through",
+    tag: "Super Cool",
+    images: [clearLED1, clearLED2, clearLED3, clearLED4],
+    details: ["Battery operated", "LED lights", "Durable plastic body"],
+  },
+  {
+    id: 3,
     name: "Spiral Twiddle",
     price: 30,
     description: "The original spiral twiddle",
     longDescription: "This twiddle spins slower and for longer than other variants due to the thinness of the core",
     tag: "My fave",
-    images: [spiral, spiral1],
-    image: spiral,
+    images: [spiralCover, spiral1, spiral2],
     details: ["250mm long", "3mm core diameter", "50 grams"],
   },
   {
-    id: 2,
+    id: 4,
     name: "Circle Twiddle",
     price: 30,
     description: "The new circle twiddle",
     longDescription: "Slightly heavier than the spiral version, most people prefer this type.",
     tag: "Bestseller",
     images: [circle],
-    image: circle,
     details: ["250mm long", "3mm core diameter", "500 grams"],
   },
   {
-    id: 3,
-    name: "LED Twiddle",
-    price: 50,
-    description: "The dark mode twiddle",
-    longDescription: "This twiddle lights up with LED lights, perfect for dark mode enthusiasts.",
-    tag: "Expensive",
-    images: [led1, led2, led3, led4],
-    image: led1,
-    details: ["Battery operated", "LED lights", "Durable plastic body"],
-  },
-  {
-    id: 4,
+    id: 5,
     name: "Triangle",
     price: 30,
     description: "The triangle twiddle",
     longDescription: "Kinda sucks but I made one so here it is.",
     tag: "Kinda sucks",
     images: [triangle1, triangle2],
-    image: triangle1,
     details: ["Battery operated", "LED lights", "Durable plastic body"],
+  },
+  {
+    id: 6,
+    name: "Stand",
+    price: 10,
+    description: "The stand for twiddles",
+    longDescription: "Do you have too many twiddles lying around? This stand helps keep them organized.",
+    tag: "It's a stand",
+    images: [standCover],
+    details: ["Needs no batteries", "The ultimate in twiddle organisation"],
   },
 ];
 
@@ -114,7 +136,7 @@ export const galleryPhotos: GalleryPhoto[] = [
   },
   {
     id: 3,
-    src: spiral,
+    src: spiralCover,
     title: "Spiral Tuning",
     caption: "Checking the balance and spin of the first spiral prototype before polishing.",
     stage: "Tuning",
