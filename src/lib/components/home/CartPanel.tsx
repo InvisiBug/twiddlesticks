@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { Button } from "../baseComponents/Button";
-import { Card } from "../baseComponents/Card";
+import { Button, Card } from "@/lib/components";
 import { formatMoney } from "@/lib/money";
 import type { Cart, Product } from "@/types";
 

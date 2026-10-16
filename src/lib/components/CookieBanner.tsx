@@ -1,4 +1,4 @@
-import { Button } from "./baseComponents/Button";
+import { Button } from "@/lib/components";
 
 const CookieBanner: React.FC<CookieBannerProps> = ({ onChoose }) => {
   return (

@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { formatMoney } from "@/lib/money";
 import type { Product } from "@/types";
-
 import { Badge, Button, Card } from "@/lib/components";
 
 const ProductDetailInfo = ({ product, addToCart }: ProductDetailInfoProps) => {

@@ -1,4 +1,4 @@
-import { Card } from "./baseComponents/Card";
+import { Card } from "@/lib/components";
 import type { Festival } from "@/types";
 
 const FestivalSection = ({ festivals }: FestivalSectionProps) => {

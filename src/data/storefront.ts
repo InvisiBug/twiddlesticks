@@ -1,34 +1,34 @@
 import type { Festival, GalleryPhoto, Product } from "../types";
 
 // Hero Images
-import proBlack from "@/lib/images/hero/pro-black.jpg";
-import proWhite from "@/lib/images/hero/pro-white.jpg";
-import hero1 from "@/lib/images/hero/hero1.jpg";
-import hero2 from "@/lib/images/hero/hero2.jpg";
-import hero3 from "@/lib/images/hero/hero3.jpg";
+import proBlack from "@/lib/images/light/hero/pro-black.jpg";
+import proWhite from "@/lib/images/light/hero/pro-white.jpg";
+import hero1 from "@/lib/images/light/hero/hero1.jpg";
+import hero2 from "@/lib/images/light/hero/hero2.jpg";
+import hero3 from "@/lib/images/light/hero/hero3.jpg";
 
 // Clear LED
-import clearLED1 from "@/lib/images/clearLED/led-1.jpg";
-import clearLED2 from "@/lib/images/clearLED/led-2.jpg";
-import clearLED3 from "@/lib/images/clearLED/led-3.jpg";
-import clearLED4 from "@/lib/images/clearLED/led-4.jpg";
+import clearLED1 from "@/lib/images/light/clearLED/led-1.jpg";
+import clearLED2 from "@/lib/images/light/clearLED/led-2.jpg";
+import clearLED3 from "@/lib/images/light/clearLED/led-3.jpg";
+import clearLED4 from "@/lib/images/light/clearLED/led-4.jpg";
 
 // Coloured LED
 
 // Spiral
-import spiralCover from "@/lib/images/spiral/cover.jpg";
-import spiral1 from "@/lib/images/spiral/1.jpg";
-import spiral2 from "@/lib/images/spiral/2.jpg";
+import spiralCover from "@/lib/images/light/spiral/cover.jpg";
+import spiral1 from "@/lib/images/light/spiral/1.jpg";
+import spiral2 from "@/lib/images/light/spiral/2.jpg";
 
 // Circle
-import circle from "@/lib/images/circle/cover.jpg";
+import circle from "@/lib/images/light/circle/cover.jpg";
 
 // Triangle
-import triangle1 from "@/lib/images/triangle/triangle-1.jpg";
-import triangle2 from "@/lib/images/triangle/triangle-2.jpg";
+import triangle1 from "@/lib/images/light/triangle/triangle-1.jpg";
+import triangle2 from "@/lib/images/light/triangle/triangle-2.jpg";
 
 // Stand
-import standCover from "@/lib/images/stand/cover.jpg";
+import standCover from "@/lib/images/light/stand/cover.jpg";
 
 export const heroImages = [proBlack, proWhite, hero1, hero2, hero3];
 

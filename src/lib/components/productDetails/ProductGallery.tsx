@@ -1,4 +1,4 @@
-import { Card } from "../baseComponents/Card";
+import { Card } from "@/lib/components";
 
 const ProductGallery: React.FC<ProductDetailGalleryProps> = ({ productName, images, selectedImage, onSelectImage }) => {
   const activeImage = images[selectedImage] ?? images[0];
