@@ -1,6 +1,6 @@
 import type { Festival, GalleryPhoto, Product } from "../types";
 
-export const onlineOrdersEnabled = true;
+export const onlineOrdersEnabled = false;
 
 // Hero Images
 import hero1 from "@/lib/images/light/hero/hero1.jpg";
