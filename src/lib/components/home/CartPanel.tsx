@@ -1,19 +1,22 @@
 import { Link } from "react-router-dom";
-import { Button, Card } from "@/lib/components";
+import { Button, Card, InstagramOrderBanner } from "@/lib/components";
+import { useStorefront } from "@/lib/context";
 import { formatMoney } from "@/lib/money";
 import type { Cart, Product } from "@/types";
 
-const CartPanel = ({ cart, cartItems, totalItems, totalPrice, addToCart, removeFromCart, onlineOrdersEnabled }: CartPanelProps) => {
+const CartPanel = ({ cart, cartItems, totalItems, totalPrice, addToCart, removeFromCart }: CartPanelProps) => {
+  const { onlineOrdersEnabled } = useStorefront();
+
   return (
     <Card className="h-fit p-5 lg:sticky lg:top-6">
+      <h2 className="text-xl mb-5 font-semibold tracking-tight">Your Bag</h2>
       {!onlineOrdersEnabled ? (
         <>
-          <h2 className="text-xl font-semibold tracking-tight">Your Bag</h2>
-          <p className="mt-3 rounded-xl border border-dashed border-slate-300 px-4 py-5 text-sm text-slate-600 dark:border-slate-600 dark:text-slate-300">Online orders coming soon.</p>
+          {/* <p className="mt-3 mb-3 rounded-xl border border-dashed border-slate-300 px-4 py-5 text-sm text-slate-600 dark:border-slate-600 dark:text-slate-300">Online orders coming soon.</p> */}
+          <InstagramOrderBanner />
         </>
       ) : (
         <>
-          <h2 className="text-xl font-semibold tracking-tight">Your Bag</h2>
           <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{totalItems} item(s) selected</p>
 
           {cartItems.length === 0 ? (
@@ -64,7 +67,6 @@ type CartPanelProps = {
   cartItems: Product[];
   totalItems: number;
   totalPrice: number;
-  onlineOrdersEnabled: boolean;
   addToCart: (id: number) => void;
   removeFromCart: (id: number) => void;
 };

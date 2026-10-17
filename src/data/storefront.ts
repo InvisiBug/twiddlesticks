@@ -1,6 +1,7 @@
 import type { Festival, GalleryPhoto, Product } from "../types";
 
 export const onlineOrdersEnabled = false;
+export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 
 // Hero Images
 import hero1 from "@/lib/images/light/hero/hero1.jpg";

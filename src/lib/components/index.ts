@@ -8,6 +8,7 @@ export { default as RelatedProducts } from "./productDetails/RelatedProductsSect
 export { default as Hero } from "./home/Hero";
 export { default as ProductGrid } from "./home/ProductGrid";
 export { default as CartPanel } from "./home/CartPanel";
+export { default as InstagramOrderBanner } from "./home/InstagramOrderBanner";
 export { default as FestivalSection } from "./FestivalSection";
 
 // Base
