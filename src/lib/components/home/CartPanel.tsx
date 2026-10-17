@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button, Card, InstagramOrderBanner } from "@/lib/components";
-import { useStorefront } from "@/lib/context";
+import { useContext } from "@/lib/context";
 import { formatMoney } from "@/lib/money";
 import type { Cart, Product } from "@/types";
 
 const CartPanel = ({ cart, cartItems, totalItems, totalPrice, addToCart, removeFromCart }: CartPanelProps) => {
-  const { onlineOrdersEnabled } = useStorefront();
+  const { onlineOrdersEnabled } = useContext();
 
   return (
     <Card className="h-fit p-5 lg:sticky lg:top-6">

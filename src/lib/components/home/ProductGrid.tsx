@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { Card, CardSection, Badge, Button } from "@/lib/components";
-import { useStorefront } from "@/lib/context";
+import { useContext } from "@/lib/context";
 import { formatMoney } from "@/lib/money";
 import type { Product } from "@/types";
 
 const ProductGrid = ({ products, addToCart }: ProductGridProps) => {
-  const { onlineOrdersEnabled } = useStorefront();
+  const { onlineOrdersEnabled } = useContext();
 
   const sortedProducts = [...products].sort((a, b) => a.id - b.id);
 

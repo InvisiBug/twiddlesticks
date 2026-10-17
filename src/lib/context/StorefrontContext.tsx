@@ -1,26 +1,26 @@
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, useContext as useReactContext, type ReactNode } from "react";
 
-type StorefrontContextValue = {
+type contextValue = {
   onlineOrdersEnabled: boolean;
   instagramOrderUrl: string;
 };
 
-const StorefrontContext = createContext<StorefrontContextValue | null>(null);
+const context = createContext<contextValue | null>(null);
 
 export const ContextProvider = ({ children, value }: ContextProviderProps) => {
-  return <StorefrontContext.Provider value={value}>{children}</StorefrontContext.Provider>;
+  return <context.Provider value={value}>{children}</context.Provider>;
 };
 
-export const useStorefront = () => {
-  const context = useContext(StorefrontContext);
-  if (!context) {
-    throw new Error("useStorefront must be used within a ContextProvider");
+export const useContext = () => {
+  const configuredContext = useReactContext(context);
+  if (!configuredContext) {
+    throw new Error("useContext must be used within a ContextProvider");
   }
 
-  return context;
+  return configuredContext;
 };
 
 type ContextProviderProps = {
   children: ReactNode;
-  value: StorefrontContextValue;
+  value: contextValue;
 };

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { formatMoney } from "@/lib/money";
-import { useStorefront } from "@/lib/context";
+import { useContext } from "@/lib/context";
 import type { Product } from "@/types";
 import { Button, Card } from "@/lib/components";
 
 const RelatedProducts: React.FC<RelatedProductsSectionProps> = ({ products, addToCart }) => {
-  const { onlineOrdersEnabled } = useStorefront();
+  const { onlineOrdersEnabled } = useContext();
 
   const maxProductsToShow = 4;
   const [randomProducts, setRandomProducts] = useState<Product[]>([]);

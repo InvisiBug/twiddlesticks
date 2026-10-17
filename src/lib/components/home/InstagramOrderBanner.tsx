@@ -1,7 +1,7 @@
-import { useStorefront } from "@/lib/context";
+import { useContext } from "@/lib/context";
 
 const InstagramOrderBanner = () => {
-  const { instagramOrderUrl } = useStorefront();
+  const { instagramOrderUrl } = useContext();
 
   return (
     <a

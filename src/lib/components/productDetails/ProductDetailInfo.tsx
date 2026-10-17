@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { formatMoney } from "@/lib/money";
-import { useStorefront } from "@/lib/context";
+import { useContext } from "@/lib/context";
 import type { Product } from "@/types";
 import { Badge, Button, Card } from "@/lib/components";
 
 const ProductDetailInfo = ({ product, addToCart }: ProductDetailInfoProps) => {
-  const { onlineOrdersEnabled } = useStorefront();
+  const { onlineOrdersEnabled } = useContext();
 
   return (
     <section className="space-y-5">

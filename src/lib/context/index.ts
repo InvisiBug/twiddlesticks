@@ -1,1 +1,1 @@
-export { ContextProvider, useStorefront } from "./StorefrontContext";
+export { ContextProvider, useContext } from "./StorefrontContext";

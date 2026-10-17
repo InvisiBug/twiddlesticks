@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
 import { ThemeToggle } from "@/lib/components";
-import { useStorefront } from "@/lib/context";
+import { useContext } from "@/lib/context";
 
 const Navbar = ({ totalItems, theme, onToggleTheme }: NavbarProps) => {
-  const { onlineOrdersEnabled } = useStorefront();
+  const { onlineOrdersEnabled } = useContext();
 
   const location = useLocation();
   const isGalleryPage = location.pathname === "/gallery";

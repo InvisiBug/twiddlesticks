@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 import { CartPanel, FestivalSection, PageShell, ProductGrid, Hero, InstagramOrderBanner } from "@/lib/components";
 import { getCartItems, getTotalItems, getTotalPrice } from "@/lib/cart";
-import { useStorefront } from "@/lib/context";
+import { useContext } from "@/lib/context";
 import type { Cart, Festival, Product } from "@/types";
 
 export function HomePage({ cart, products, festivals, heroImages, theme, toggleTheme, addToCart, removeFromCart }: HomePageProps) {
-  const { onlineOrdersEnabled } = useStorefront();
+  const { onlineOrdersEnabled } = useContext();
 
   const cartItems = useMemo(() => getCartItems(cart, products), [cart, products]);
   const totalItems = useMemo(() => getTotalItems(cart), [cart]);
