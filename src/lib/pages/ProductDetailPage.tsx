@@ -1,15 +1,21 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useContext } from "@/lib/context";
 import { PageShell, ProductGallery, ProductDetailInfo, ProductDetailNotFound, RelatedProducts } from "@/lib/components";
 import { getTotalItems } from "@/lib/cart";
-import type { Cart, Product } from "@/types";
+import type { Cart } from "@/types";
+import { getThemedProducts } from "../helpers";
+import { products } from "@/data/storefront";
 
-const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, cart, addToCart, theme, toggleTheme }) => {
+const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ cart, addToCart }) => {
+  const { theme } = useContext();
   const { productId } = useParams();
   const totalItems = useMemo(() => getTotalItems(cart), [cart]);
 
-  const product = useMemo(() => products.find((entry) => entry.id === Number(productId)), [products, productId]);
-  const relatedProducts = useMemo(() => products.filter((entry) => entry.id !== product?.id), [products, product?.id]);
+  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme]);
+
+  const product = useMemo(() => themedProducts.find((entry) => entry.id === Number(productId)), [themedProducts, productId]);
+  const relatedProducts = useMemo(() => themedProducts.filter((entry) => entry.id !== product?.id), [themedProducts, product?.id]);
 
   const [selectedImage, setSelectedImage] = useState(0);
 
@@ -23,7 +29,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, cart, a
   }
 
   return (
-    <PageShell maxWidth="7xl" navbar={{ totalItems, theme, onToggleTheme: toggleTheme }}>
+    <PageShell maxWidth="7xl" navbar={{ totalItems }}>
       <Link to="/" className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-900 dark:text-slate-200 dark:hover:text-white">
         <span aria-hidden="true">←</span>
         Back to home
@@ -45,9 +51,6 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ products, cart, a
 export default ProductDetailPage;
 
 type ProductDetailPageProps = {
-  products: Product[];
   cart: Cart;
   addToCart: (id: number) => void;
-  theme: "light" | "dark";
-  toggleTheme: () => void;
 };

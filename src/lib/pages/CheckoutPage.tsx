@@ -1,31 +1,26 @@
 import { useMemo } from "react";
+import { useContext } from "@/lib/context";
 import { Link } from "react-router-dom";
-import { ButtonLink, Card, Field, PageShell, ThemeToggle } from "@/lib/components";
+import { ButtonLink, Card, Field, PageShell } from "@/lib/components";
 import { getCartItems, getTotalItems, getTotalPrice } from "@/lib/cart";
 import { formatMoney } from "@/lib/money";
 import type { Cart, Product } from "@/types";
+import { getThemedProducts } from "../helpers";
+import { products } from "@/data/storefront";
 
-export function CheckoutPage({ cart, products, stripePaymentLink, theme, toggleTheme }: CheckoutPageProps) {
-  const cartItems = useMemo(() => getCartItems(cart, products), [cart, products]);
+export function CheckoutPage({ cart, stripePaymentLink }: CheckoutPageProps) {
+  const { theme } = useContext();
+
+  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme]);
+
+  const cartItems = useMemo(() => getCartItems(cart, themedProducts), [cart, themedProducts]);
   const totalItems = useMemo(() => getTotalItems(cart), [cart]);
-  const totalPrice = useMemo(() => getTotalPrice(cart, products), [cart, products]);
+  const totalPrice = useMemo(() => getTotalPrice(cart, themedProducts), [cart, themedProducts]);
+
   const stripeReady = stripePaymentLink.startsWith("https://buy.stripe.com/");
 
   return (
     <PageShell maxWidth="6xl">
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-white/70 bg-white/75 px-5 py-3 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/70">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Willow Market</p>
-          <p className="text-lg font-semibold tracking-tight">Secure Checkout</p>
-        </div>
-        <div className="flex items-center gap-2">
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
-          <Link to="/" className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
-            Back to shop
-          </Link>
-        </div>
-      </div>
-
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <Card className="p-6">
           <h1 className="text-2xl font-semibold tracking-tight">Checkout</h1>
@@ -99,8 +94,5 @@ export function CheckoutPage({ cart, products, stripePaymentLink, theme, toggleT
 
 type CheckoutPageProps = {
   cart: Cart;
-  products: Product[];
   stripePaymentLink: string;
-  theme: "light" | "dark";
-  toggleTheme: () => void;
 };

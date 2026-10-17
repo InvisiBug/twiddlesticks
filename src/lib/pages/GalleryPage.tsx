@@ -1,21 +1,27 @@
+import { useMemo } from "react";
 import { Badge, Card, PageShell } from "@/lib/components";
 import type { GalleryPhoto } from "@/types";
+import { useContext } from "@/lib/context";
+import { galleryPhotos } from "@/data/storefront";
+import { getThemedGalleryPhotos } from "../helpers";
 
-export function GalleryPage({ photos, totalItems, theme, toggleTheme }: GalleryPageProps) {
+export function GalleryPage({ totalItems }: GalleryPageProps) {
+  const { theme } = useContext();
+  const themedGalleryPhotos = useMemo(() => getThemedGalleryPhotos(theme, galleryPhotos), [theme]);
   return (
-    <PageShell maxWidth="7xl" navbar={{ totalItems, theme, onToggleTheme: toggleTheme }}>
+    <PageShell maxWidth="7xl" navbar={{ totalItems }}>
       <header className="mb-6">
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">How I Build Each Product</h1>
         <p className="mt-2 max-w-3xl text-slate-600 dark:text-slate-300">A photo timeline from materials to finished twiddles. Add new photos in the galleryPhotos array to keep this page updated.</p>
       </header>
 
-      {photos.length === 0 ? (
+      {themedGalleryPhotos.length === 0 ? (
         <Card className="p-6">
           <p className="text-sm text-slate-600 dark:text-slate-300">No build photos yet. Add entries to galleryPhotos in storefront data to publish your first update.</p>
         </Card>
       ) : (
         <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {photos.map((photo) => (
+          {themedGalleryPhotos.map((photo) => (
             <Card key={photo.id} className="overflow-hidden">
               <div className="relative aspect-4/5 overflow-hidden bg-slate-100 dark:bg-slate-800">
                 <img src={photo.src} alt={photo.title} className="absolute inset-0 h-full w-full object-cover object-center transition duration-300 hover:scale-[1.02]" />
@@ -34,8 +40,5 @@ export function GalleryPage({ photos, totalItems, theme, toggleTheme }: GalleryP
 }
 
 type GalleryPageProps = {
-  photos: GalleryPhoto[];
   totalItems: number;
-  theme: "light" | "dark";
-  toggleTheme: () => void;
 };

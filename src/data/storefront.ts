@@ -1,6 +1,6 @@
 import type { Festival, GalleryPhoto, Product } from "../types";
 
-export const onlineOrdersEnabled = false;
+export const onlineOrdersEnabled = true;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 
 // Hero Images

@@ -1,14 +1,13 @@
-import { createContext, useContext as useReactContext, type ReactNode } from "react";
+import { createContext, useContext as useReactContext, type ReactNode, useState } from "react";
 
-type contextValue = {
-  onlineOrdersEnabled: boolean;
-  instagramOrderUrl: string;
-};
+import { getInitialTheme, type Theme } from "../helpers";
 
 const context = createContext<contextValue | null>(null);
 
 export const ContextProvider = ({ children, value }: ContextProviderProps) => {
-  return <context.Provider value={value}>{children}</context.Provider>;
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+
+  return <context.Provider value={{ ...value, theme, setTheme }}>{children}</context.Provider>;
 };
 
 export const useContext = () => {
@@ -22,5 +21,15 @@ export const useContext = () => {
 
 type ContextProviderProps = {
   children: ReactNode;
-  value: contextValue;
+  value: {
+    onlineOrdersEnabled: boolean;
+    instagramOrderUrl: string;
+  };
+};
+
+type contextValue = {
+  onlineOrdersEnabled: boolean;
+  instagramOrderUrl: string;
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
 };

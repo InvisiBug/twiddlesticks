@@ -26,3 +26,5 @@ export type GalleryPhoto = {
 };
 
 export type Cart = Record<number, number>;
+
+export type Theme = "light" | "dark";
