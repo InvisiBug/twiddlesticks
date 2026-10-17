@@ -90,19 +90,10 @@ function App() {
               }
             />
             <Route path="/checkout" element={<CheckoutPage cart={cart} products={themedProducts} stripePaymentLink={stripePaymentLink} theme={theme} toggleTheme={() => setTheme((prev) => getToggledTheme(prev))} />} />
-            <Route path="/gallery" element={<GalleryPage photos={themedGalleryPhotos} totalItems={getTotalItems(cart)} theme={theme} toggleTheme={() => setTheme((prev) => getToggledTheme(prev))} onlineOrdersEnabled={onlineOrdersEnabled} />} />
+            <Route path="/gallery" element={<GalleryPage photos={themedGalleryPhotos} totalItems={getTotalItems(cart)} theme={theme} toggleTheme={() => setTheme((prev) => getToggledTheme(prev))} />} />
             <Route
               path="/products/:productId"
-              element={
-                <ProductDetailPage
-                  cart={cart}
-                  products={themedProducts}
-                  addToCart={(id) => setCart((prev) => addItemToCart(prev, id))}
-                  theme={theme}
-                  toggleTheme={() => setTheme((prev) => getToggledTheme(prev))}
-                  onlineOrdersEnabled={onlineOrdersEnabled}
-                />
-              }
+              element={<ProductDetailPage cart={cart} products={themedProducts} addToCart={(id) => setCart((prev) => addItemToCart(prev, id))} theme={theme} toggleTheme={() => setTheme((prev) => getToggledTheme(prev))} />}
             />
           </Routes>
         </BrowserRouter>

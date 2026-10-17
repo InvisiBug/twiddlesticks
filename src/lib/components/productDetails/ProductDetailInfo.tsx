@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { formatMoney } from "@/lib/money";
+import { useStorefront } from "@/lib/context";
 import type { Product } from "@/types";
 import { Badge, Button, Card } from "@/lib/components";
 
-const ProductDetailInfo = ({ product, addToCart, onlineOrdersEnabled }: ProductDetailInfoProps) => {
+const ProductDetailInfo = ({ product, addToCart }: ProductDetailInfoProps) => {
+  const { onlineOrdersEnabled } = useStorefront();
+
   return (
     <section className="space-y-5">
       <Badge className="bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900">{product.tag}</Badge>
@@ -44,5 +47,4 @@ export default ProductDetailInfo;
 type ProductDetailInfoProps = {
   product: Product;
   addToCart: (id: number) => void;
-  onlineOrdersEnabled: boolean;
 };

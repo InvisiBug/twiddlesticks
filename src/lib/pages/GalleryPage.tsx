@@ -1,9 +1,9 @@
 import { Badge, Card, PageShell } from "@/lib/components";
 import type { GalleryPhoto } from "@/types";
 
-export function GalleryPage({ photos, totalItems, theme, toggleTheme, onlineOrdersEnabled }: GalleryPageProps) {
+export function GalleryPage({ photos, totalItems, theme, toggleTheme }: GalleryPageProps) {
   return (
-    <PageShell maxWidth="7xl" navbar={{ totalItems, theme, onToggleTheme: toggleTheme, onlineOrdersEnabled }}>
+    <PageShell maxWidth="7xl" navbar={{ totalItems, theme, onToggleTheme: toggleTheme }}>
       <header className="mb-6">
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">How I Build Each Product</h1>
         <p className="mt-2 max-w-3xl text-slate-600 dark:text-slate-300">A photo timeline from materials to finished twiddles. Add new photos in the galleryPhotos array to keep this page updated.</p>
@@ -38,5 +38,4 @@ type GalleryPageProps = {
   totalItems: number;
   theme: "light" | "dark";
   toggleTheme: () => void;
-  onlineOrdersEnabled: boolean;
 };

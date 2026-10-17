@@ -12,12 +12,12 @@ export function HomePage({ cart, products, festivals, heroImages, theme, toggleT
   const totalPrice = useMemo(() => getTotalPrice(cart, products), [cart, products]);
 
   return (
-    <PageShell maxWidth="7xl" navbar={{ totalItems, theme, onToggleTheme: toggleTheme, onlineOrdersEnabled: onlineOrdersEnabled }}>
+    <PageShell maxWidth="7xl" navbar={{ totalItems, theme, onToggleTheme: toggleTheme }}>
       {!onlineOrdersEnabled ? <InstagramOrderBanner /> : null}
       <Hero heroImages={heroImages} />
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">
-        <ProductGrid products={products} addToCart={addToCart} onlineOrdersEnabled={onlineOrdersEnabled} />
+        <ProductGrid products={products} addToCart={addToCart} />
         <CartPanel cart={cart} cartItems={cartItems} totalItems={totalItems} totalPrice={totalPrice} addToCart={addToCart} removeFromCart={removeFromCart} />
       </div>
       <FestivalSection festivals={festivals} />

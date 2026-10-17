@@ -1,7 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import { ThemeToggle } from "@/lib/components";
+import { useStorefront } from "@/lib/context";
 
-const Navbar = ({ totalItems, theme, onToggleTheme, onlineOrdersEnabled }: NavbarProps) => {
+const Navbar = ({ totalItems, theme, onToggleTheme }: NavbarProps) => {
+  const { onlineOrdersEnabled } = useStorefront();
+
   const location = useLocation();
   const isGalleryPage = location.pathname === "/gallery";
 
@@ -34,5 +37,4 @@ type NavbarProps = {
   totalItems: number;
   theme: "light" | "dark";
   onToggleTheme: () => void;
-  onlineOrdersEnabled: boolean;
 };
