@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import { Badge, Card, PageShell } from "@/lib/components";
-import type { GalleryPhoto } from "@/types";
 import { useContext } from "@/lib/context";
 import { galleryPhotos } from "@/data/storefront";
 import { getThemedGalleryPhotos } from "../helpers";

@@ -1,8 +1,5 @@
 import type { Festival, GalleryPhoto, Product } from "../types";
 
-export const onlineOrdersEnabled = true;
-export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
-
 // Hero Images
 import hero1 from "@/lib/images/light/hero/hero1.jpg";
 import hero2 from "@/lib/images/light/hero/hero2.jpg";
@@ -30,6 +27,10 @@ import triangle1 from "@/lib/images/light/triangle/triangle1.jpg";
 
 // Stand
 import standCover from "@/lib/images/light/stand/cover.jpg";
+
+// Variables
+export const onlineOrdersEnabled = false;
+export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 
 export const heroImages = [hero1, hero2];
 

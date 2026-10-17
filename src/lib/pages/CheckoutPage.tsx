@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ButtonLink, Card, Field, PageShell } from "@/lib/components";
 import { getCartItems, getTotalItems, getTotalPrice } from "@/lib/cart";
 import { formatMoney } from "@/lib/money";
-import type { Cart, Product } from "@/types";
+import type { Cart } from "@/types";
 import { getThemedProducts } from "../helpers";
 import { products } from "@/data/storefront";
 

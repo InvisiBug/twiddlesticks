@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "./lib/pages";
-import { CookieBanner, type CookieConsent } from "./lib/components";
-import { festivals, instagramOrderUrl, onlineOrdersEnabled } from "./data/storefront";
-import { CART_STORAGE_KEY, addItemToCart, getInitialCart, getTotalItems, removeItemFromCart } from "./lib/cart";
+import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "@/lib/pages";
+import { CookieBanner, type CookieConsent } from "@/lib/components";
+import { festivals, instagramOrderUrl, onlineOrdersEnabled } from "@/data/storefront";
+import { CART_STORAGE_KEY, addItemToCart, getInitialCart, getTotalItems, removeItemFromCart } from "@/lib/cart";
 import { ContextProvider } from "@/lib/context";
 import { extractLightboxImageFromClick, getInitialCookieConsent, getStripePaymentLink, persistCookieConsent, type LightboxImage } from "@/lib/helpers";
 import type { Cart } from "./types";
