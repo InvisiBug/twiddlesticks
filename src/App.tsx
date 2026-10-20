@@ -6,7 +6,7 @@ import { festivals, instagramOrderUrl, onlineOrdersEnabled } from "@/data/storef
 import { ContextProvider } from "@/lib/context";
 import { extractLightboxImageFromClick, getInitialCookieConsent, persistCookieConsent } from "@/lib/helpers";
 import type { LightboxImage, CookieConsent } from "./types";
-import AppConfig from "./AppConfig";
+import AppConfig from "./appConfig";
 
 function App() {
   const [lightboxImage, setLightboxImage] = useState<LightboxImage | null>(null);

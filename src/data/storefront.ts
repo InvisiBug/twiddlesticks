@@ -29,7 +29,7 @@ import triangle1 from "@/lib/images/light/triangle/triangle1.jpg";
 import standCover from "@/lib/images/light/stand/cover.jpg";
 
 // Variables
-export const onlineOrdersEnabled = true;
+export const onlineOrdersEnabled = false;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 
 export const heroImages = [hero1, hero2];
@@ -101,7 +101,7 @@ export const products: Product[] = [
   },
   {
     id: 5,
-    name: "Triangle",
+    name: "Triangle Twiddle",
     price: 30,
     description: "The triangle twiddle",
     longDescription: "Kinda sucks but I made one so here it is.",

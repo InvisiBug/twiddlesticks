@@ -17,6 +17,7 @@ export { default as ThemeToggle } from "./baseComponents/ThemeToggle";
 export { default as CookieBanner } from "./CookieBanner";
 
 export { default as Badge } from "./baseComponents/Badge";
+export { default as AddToBagButton } from "./baseComponents/AddToBagButton";
 export { Button, ButtonLink } from "./baseComponents/Button";
 export { Card, CardSection } from "./baseComponents/Card";
 export { Field } from "./baseComponents/Field";

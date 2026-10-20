@@ -1,21 +1,17 @@
 import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Badge, Button, Card } from "@/lib/components";
-import { formatMoney, addItemToCart } from "@/lib/helpers";
+import { AddToBagButton, Badge, Card } from "@/lib/components";
+import { formatMoney } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
 import { getThemedProducts } from "@/lib/helpers";
 
 const ProductDetailInfo = () => {
   const { productId } = useParams();
-  const { onlineOrdersEnabled, cart, setCart, theme, products } = useContext();
+  const { onlineOrdersEnabled, theme, products } = useContext();
 
   const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme, products]);
   const product = useMemo(() => themedProducts.find((entry) => entry.id === Number(productId)), [themedProducts, productId]);
-
-  const handleAddToCart = (id: number) => {
-    setCart(addItemToCart(cart, id));
-  };
 
   if (!product) {
     return null;
@@ -42,9 +38,7 @@ const ProductDetailInfo = () => {
 
       {onlineOrdersEnabled ? (
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button onClick={() => handleAddToCart(product.id)} variant="secondary" className="sm:min-w-40">
-            Add to bag
-          </Button>
+          <AddToBagButton productId={product.id} className="sm:min-w-40" />
           <Link to="/checkout" className="rounded-lg border border-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800 sm:min-w-40">
             Go to checkout
           </Link>

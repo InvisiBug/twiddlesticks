@@ -38,17 +38,20 @@ const CartPanel = ({ totalPrice }: CartPanelProps) => {
             <div className="mt-5 space-y-3">
               {cartItems.map((item) => (
                 <Card key={item.id} className="rounded-xl p-3">
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center justify-between gap-3">
                     <div>
                       <p className="font-medium">{item.name}</p>
                       <p className="text-sm text-slate-500 dark:text-slate-400">{formatMoney(item.price)} each</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Button onClick={() => handleRemoveFromCart(item.id)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm">
+
+                    <div className="flex gap-2 items-center ">
+                      <Button onClick={() => handleRemoveFromCart(item.id)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm leading-none flex items-center justify-center">
                         -
                       </Button>
+
                       <span className="w-5 text-center text-sm font-medium">{cart[item.id]}</span>
-                      <Button onClick={() => handleAddToCart(item.id)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm">
+
+                      <Button onClick={() => handleAddToCart(item.id)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm leading-none flex items-center justify-center">
                         +
                       </Button>
                     </div>

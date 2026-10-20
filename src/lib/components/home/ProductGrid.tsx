@@ -1,17 +1,13 @@
 import { Link } from "react-router-dom";
-import { Card, CardSection, Badge, Button } from "@/lib/components";
+import { Card, CardSection, Badge, AddToBagButton } from "@/lib/components";
 import { useContext } from "@/lib/context";
-import { formatMoney, addItemToCart } from "@/lib/helpers";
+import { formatMoney } from "@/lib/helpers";
 import type { Product } from "@/types";
 
 const ProductGrid = ({ products }: ProductGridProps) => {
-  const { onlineOrdersEnabled, cart, setCart } = useContext();
+  const { onlineOrdersEnabled } = useContext();
 
   const sortedProducts = [...products].sort((a, b) => a.id - b.id);
-
-  const handleAddToCart = (id: number) => {
-    setCart(addItemToCart(cart, id));
-  };
 
   return (
     <section>
@@ -36,16 +32,7 @@ const ProductGrid = ({ products }: ProductGridProps) => {
                 <div className="mt-4 flex items-center justify-between">
                   <p className="text-xl font-semibold tracking-tight">{formatMoney(product.price)}</p>
                   {onlineOrdersEnabled ? (
-                    <Button
-                      onClick={(event) => {
-                        event.preventDefault();
-                        handleAddToCart(product.id);
-                      }}
-                      variant="secondary"
-                      className="px-3 py-2"
-                    >
-                      Add to bag
-                    </Button>
+                    <AddToBagButton productId={product.id} preventNavigation className="sm:min-w-40" />
                   ) : (
                     <p className="max-w-2/3 rounded-md border border-dashed border-slate-300 px-3 py-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-600 dark:text-slate-300">Online Orders Coming soon</p>
                   )}

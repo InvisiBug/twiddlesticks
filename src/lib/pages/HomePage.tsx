@@ -18,11 +18,12 @@ export const HomePage = ({ festivals }: HomePageProps) => {
       {!onlineOrdersEnabled ? <InstagramOrderBanner /> : null}
       <Hero heroImages={themedHeroImages} />
 
-      <FestivalSection festivals={festivals} />
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">
         <ProductGrid products={themedProducts} />
         <CartPanel totalItems={getTotalItems(cart)} totalPrice={totalPrice} />
       </div>
+
+      <FestivalSection festivals={festivals} />
     </PageShell>
   );
 };
