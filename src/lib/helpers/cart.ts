@@ -1,4 +1,4 @@
-import type { Cart, Product } from "../../types";
+import type { Cart, Product } from "@/types";
 
 export const CART_STORAGE_KEY = "willow-market-cart";
 

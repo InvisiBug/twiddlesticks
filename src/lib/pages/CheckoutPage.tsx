@@ -1,11 +1,8 @@
 import { useMemo } from "react";
-import { useContext } from "@/lib/context";
-import { getStripePaymentLink } from "@/lib/helpers";
 import { Link } from "react-router-dom";
+import { getStripePaymentLink, getThemedProducts, getCartItems, getTotalItems, getTotalPrice, formatMoney } from "@/lib/helpers";
 import { ButtonLink, Card, Field, PageShell } from "@/lib/components";
-import { getCartItems, getTotalItems, getTotalPrice, formatMoney } from "@/lib/helpers";
-
-import { getThemedProducts } from "../helpers";
+import { useContext } from "@/lib/context";
 
 export const CheckoutPage = () => {
   const { theme, cart, products } = useContext();

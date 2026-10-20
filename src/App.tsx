@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "@/lib/pages";
-import { CookieBanner, type CookieConsent } from "@/lib/components";
+import { CookieBanner } from "@/lib/components";
 import { festivals, instagramOrderUrl, onlineOrdersEnabled } from "@/data/storefront";
 import { ContextProvider } from "@/lib/context";
 import { extractLightboxImageFromClick, getInitialCookieConsent, persistCookieConsent } from "@/lib/helpers";
-import type { LightboxImage } from "./types";
+import type { LightboxImage, CookieConsent } from "./types";
 import AppConfig from "./AppConfig";
 
 function App() {

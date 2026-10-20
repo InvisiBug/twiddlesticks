@@ -15,10 +15,11 @@ export { default as FestivalSection } from "./FestivalSection";
 export { default as Navbar } from "./Navbar";
 export { default as ThemeToggle } from "./baseComponents/ThemeToggle";
 export { default as CookieBanner } from "./CookieBanner";
-export type { CookieConsent } from "./CookieBanner";
 
 export { default as Badge } from "./baseComponents/Badge";
 export { Button, ButtonLink } from "./baseComponents/Button";
 export { Card, CardSection } from "./baseComponents/Card";
 export { Field } from "./baseComponents/Field";
 export { PageShell } from "@/lib/layout";
+
+export { cn } from "./baseComponents/cn";

@@ -2,10 +2,7 @@ import { Link } from "react-router-dom";
 import { Button, Card, InstagramOrderBanner } from "@/lib/components";
 import { useContext } from "@/lib/context";
 import { useMemo } from "react";
-import { getThemedProducts, getCartItems } from "@/lib/helpers";
-
-import { formatMoney, removeItemFromCart, addItemToCart } from "@/lib/helpers";
-import { getTotalItems } from "@/lib/helpers";
+import { getThemedProducts, getCartItems, getTotalItems, formatMoney, removeItemFromCart, addItemToCart } from "@/lib/helpers";
 
 const CartPanel = ({ totalPrice }: CartPanelProps) => {
   const { onlineOrdersEnabled, cart, setCart, theme, products } = useContext();

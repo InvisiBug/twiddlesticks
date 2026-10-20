@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Badge, Card, PageShell } from "@/lib/components";
 import { useContext } from "@/lib/context";
 import { galleryPhotos } from "@/data/storefront";
-import { getThemedGalleryPhotos } from "../helpers";
+import { getThemedGalleryPhotos } from "@/lib/helpers";
 
 export const GalleryPage = () => {
   const { theme } = useContext();

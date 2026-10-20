@@ -1,7 +1,7 @@
-import { Card } from "@/lib/components";
 import { useMemo } from "react";
-import { getThemedProducts } from "@/lib/helpers";
 import { useParams } from "react-router-dom";
+import { Card } from "@/lib/components";
+import { getThemedProducts } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
 
 const ProductGallery: React.FC<ProductDetailGalleryProps> = ({ images, selectedImage, onSelectImage }) => {

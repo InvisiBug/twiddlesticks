@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { cn } from "../components/baseComponents/cn";
-import Navbar from "../components/Navbar";
+import { cn } from "@/lib/components";
+import { Navbar } from "@/lib/components";
 
 export function PageShell({ children, maxWidth = "7xl", className, containerClassName }: PageShellProps) {
   return (

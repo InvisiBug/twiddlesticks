@@ -1,10 +1,8 @@
 import { useMemo } from "react";
 import { CartPanel, FestivalSection, PageShell, ProductGrid, Hero, InstagramOrderBanner } from "@/lib/components";
-import { getTotalItems, getTotalPrice } from "@/lib/helpers";
+import { getTotalItems, getTotalPrice, getThemedImageList, getThemedProducts } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
 import type { Festival } from "@/types";
-import { getThemedProducts } from "@/lib/helpers";
-import { getThemedImageList } from "@/lib/helpers";
 import { heroImages } from "@/data/storefront";
 
 export const HomePage = ({ festivals }: HomePageProps) => {

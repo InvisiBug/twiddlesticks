@@ -1,9 +1,9 @@
+import { useMemo } from "react";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Badge, Button, Card } from "@/lib/components";
 import { formatMoney, addItemToCart } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
-import { useParams } from "react-router-dom";
-import { useMemo } from "react";
 import { getThemedProducts } from "@/lib/helpers";
 
 const ProductDetailInfo = () => {

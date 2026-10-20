@@ -1,6 +1,6 @@
 import { createContext, useContext as useReactContext, type ReactNode, useState } from "react";
-import { getInitialTheme, getInitialCart } from "../helpers";
 import type { Theme, Cart } from "@/types";
+import { getInitialTheme, getInitialCart } from "../helpers";
 import { products } from "@/data/storefront";
 
 const context = createContext<contextValue | null>(null);
