@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { CartPanel, FestivalSection, PageShell, ProductGrid, Hero, InstagramOrderBanner } from "@/lib/components";
-import { getCartItems, getTotalItems, getTotalPrice } from "@/lib/cart";
+import { getCartItems, getTotalItems, getTotalPrice } from "@/lib/helpers";
 import { products } from "@/data/storefront";
 import { useContext } from "@/lib/context";
 import type { Cart, Festival } from "@/types";

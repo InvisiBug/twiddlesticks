@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { formatMoney } from "@/lib/money";
+import { Badge, Button, Card } from "@/lib/components";
+import { formatMoney } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
 import type { Product } from "@/types";
-import { Badge, Button, Card } from "@/lib/components";
 
 const ProductDetailInfo = ({ product, addToCart }: ProductDetailInfoProps) => {
   const { onlineOrdersEnabled } = useContext();

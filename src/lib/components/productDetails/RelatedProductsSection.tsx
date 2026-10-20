@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { formatMoney } from "@/lib/money";
+import { formatMoney } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
 import type { Product } from "@/types";
 import { Button, Card } from "@/lib/components";

@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { useContext } from "@/lib/context";
 import { PageShell, ProductGallery, ProductDetailInfo, ProductDetailNotFound, RelatedProducts } from "@/lib/components";
-import { getTotalItems } from "@/lib/cart";
+import { useContext } from "@/lib/context";
+import { getTotalItems } from "@/lib/helpers/cart";
 import type { Cart } from "@/types";
-import { getThemedProducts } from "../helpers";
+import { getThemedProducts } from "@/lib/helpers";
 import { products } from "@/data/storefront";
 
 const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ cart, addToCart }) => {

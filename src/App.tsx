@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "@/lib/pages";
 import { CookieBanner, type CookieConsent } from "@/lib/components";
 import { festivals, instagramOrderUrl, onlineOrdersEnabled } from "@/data/storefront";
-import { CART_STORAGE_KEY, addItemToCart, getInitialCart, getTotalItems, removeItemFromCart } from "@/lib/cart";
+import { CART_STORAGE_KEY, addItemToCart, getInitialCart, getTotalItems, removeItemFromCart } from "@/lib/helpers";
 import { ContextProvider } from "@/lib/context";
 import { extractLightboxImageFromClick, getInitialCookieConsent, getStripePaymentLink, persistCookieConsent } from "@/lib/helpers";
 import type { Cart, LightboxImage } from "./types";
@@ -58,6 +58,11 @@ function App() {
               <Route path="/checkout" element={<CheckoutPage cart={cart} stripePaymentLink={stripePaymentLink} />} />
               <Route path="/gallery" element={<GalleryPage totalItems={getTotalItems(cart)} />} />
               <Route path="/products/:productId" element={<ProductDetailPage cart={cart} addToCart={(id) => setCart((prev) => addItemToCart(prev, id))} />} />
+
+              {/* <Route path="/" element={<HomePage festivals={festivals} addToCart={(id) => setCart((prev) => addItemToCart(prev, id))} removeFromCart={(id) => setCart((prev) => removeItemFromCart(prev, id))} />} />
+              <Route path="/checkout" element={<CheckoutPage stripePaymentLink={stripePaymentLink} />} />
+              <Route path="/gallery" element={<GalleryPage totalItems={getTotalItems(cart)} />} />
+              <Route path="/products/:productId" element={<ProductDetailPage addToCart={(id) => setCart((prev) => addItemToCart(prev, id))} />} /> */}
             </Routes>
           </BrowserRouter>
 

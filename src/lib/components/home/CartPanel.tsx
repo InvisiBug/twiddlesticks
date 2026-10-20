@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button, Card, InstagramOrderBanner } from "@/lib/components";
 import { useContext } from "@/lib/context";
-import { formatMoney } from "@/lib/money";
+import { formatMoney } from "@/lib/helpers";
 import type { Cart, Product } from "@/types";
 
 const CartPanel = ({ cart, cartItems, totalItems, totalPrice, addToCart, removeFromCart }: CartPanelProps) => {

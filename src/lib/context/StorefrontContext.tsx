@@ -1,14 +1,14 @@
 import { createContext, useContext as useReactContext, type ReactNode, useState } from "react";
-
-import { getInitialTheme } from "../helpers";
-import { type Theme } from "@/types";
+import { getInitialTheme, getInitialCart } from "../helpers";
+import type { Theme, Cart } from "@/types";
 
 const context = createContext<contextValue | null>(null);
 
 export const ContextProvider = ({ children, value }: ContextProviderProps) => {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [cart, setCart] = useState<Cart>(getInitialCart);
 
-  return <context.Provider value={{ ...value, theme, setTheme }}>{children}</context.Provider>;
+  return <context.Provider value={{ ...value, theme, setTheme, cart, setCart }}>{children}</context.Provider>;
 };
 
 export const useContext = () => {
@@ -33,4 +33,6 @@ type contextValue = {
   instagramOrderUrl: string;
   theme: Theme;
   setTheme: (theme: Theme) => void;
+  cart: Cart;
+  setCart: (cart: Cart) => void;
 };
