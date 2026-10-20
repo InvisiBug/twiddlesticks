@@ -1,16 +1,19 @@
 import { Link, useLocation } from "react-router-dom";
 import { ThemeToggle } from "@/lib/components";
 import { useContext } from "@/lib/context";
+import { useMemo } from "react";
+import { getTotalItems } from "@/lib/helpers";
 import { getToggledTheme } from "@/lib/helpers";
 
-const Navbar = ({ totalItems }: NavbarProps) => {
-  const { onlineOrdersEnabled, theme, setTheme } = useContext();
+const Navbar = () => {
+  const location = useLocation();
+  const { onlineOrdersEnabled, theme, setTheme, cart } = useContext();
+  const totalItems = useMemo(() => getTotalItems(cart), [cart]);
 
   const onToggleTheme = () => {
     setTheme(getToggledTheme(theme));
   };
 
-  const location = useLocation();
   const isGalleryPage = location.pathname === "/gallery";
 
   return (
@@ -37,7 +40,3 @@ const Navbar = ({ totalItems }: NavbarProps) => {
 };
 
 export default Navbar;
-
-type NavbarProps = {
-  totalItems: number;
-};

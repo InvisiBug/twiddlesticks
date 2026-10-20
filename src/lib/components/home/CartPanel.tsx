@@ -1,11 +1,27 @@
 import { Link } from "react-router-dom";
 import { Button, Card, InstagramOrderBanner } from "@/lib/components";
 import { useContext } from "@/lib/context";
-import { formatMoney } from "@/lib/helpers";
-import type { Cart, Product } from "@/types";
+import { useMemo } from "react";
+import { getThemedProducts, getCartItems } from "@/lib/helpers";
+import { products } from "@/data/storefront";
+import { formatMoney, removeItemFromCart, addItemToCart } from "@/lib/helpers";
+import { getTotalItems } from "@/lib/helpers";
 
-const CartPanel = ({ cart, cartItems, totalItems, totalPrice, addToCart, removeFromCart }: CartPanelProps) => {
-  const { onlineOrdersEnabled } = useContext();
+const CartPanel = ({ totalPrice }: CartPanelProps) => {
+  const { onlineOrdersEnabled, cart, setCart, theme } = useContext();
+
+  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme]);
+  const cartItems = useMemo(() => getCartItems(cart, themedProducts), [cart, themedProducts]);
+
+  const totalItems = getTotalItems(cart);
+
+  const handleRemoveFromCart = (id: number) => {
+    setCart(removeItemFromCart(cart, id));
+  };
+
+  const handleAddToCart = (id: number) => {
+    setCart(addItemToCart(cart, id));
+  };
 
   return (
     <Card className="h-fit p-5 lg:sticky lg:top-6">
@@ -31,11 +47,11 @@ const CartPanel = ({ cart, cartItems, totalItems, totalPrice, addToCart, removeF
                       <p className="text-sm text-slate-500 dark:text-slate-400">{formatMoney(item.price)} each</p>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Button onClick={() => removeFromCart(item.id)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm">
+                      <Button onClick={() => handleRemoveFromCart(item.id)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm">
                         -
                       </Button>
                       <span className="w-5 text-center text-sm font-medium">{cart[item.id]}</span>
-                      <Button onClick={() => addToCart(item.id)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm">
+                      <Button onClick={() => handleAddToCart(item.id)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm">
                         +
                       </Button>
                     </div>
@@ -63,10 +79,6 @@ const CartPanel = ({ cart, cartItems, totalItems, totalPrice, addToCart, removeF
 export default CartPanel;
 
 type CartPanelProps = {
-  cart: Cart;
-  cartItems: Product[];
   totalItems: number;
   totalPrice: number;
-  addToCart: (id: number) => void;
-  removeFromCart: (id: number) => void;
 };

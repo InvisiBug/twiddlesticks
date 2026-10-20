@@ -1,20 +1,24 @@
 import { useMemo } from "react";
 import { useContext } from "@/lib/context";
+import { getStripePaymentLink } from "@/lib/helpers";
 import { Link } from "react-router-dom";
 import { ButtonLink, Card, Field, PageShell } from "@/lib/components";
 import { getCartItems, getTotalItems, getTotalPrice, formatMoney } from "@/lib/helpers";
-import type { Cart } from "@/types";
+
 import { getThemedProducts } from "../helpers";
 import { products } from "@/data/storefront";
 
-export function CheckoutPage({ cart, stripePaymentLink }: CheckoutPageProps) {
-  const { theme } = useContext();
+export const CheckoutPage = () => {
+  const { theme, cart } = useContext();
 
   const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme]);
 
   const cartItems = useMemo(() => getCartItems(cart, themedProducts), [cart, themedProducts]);
+
   const totalItems = useMemo(() => getTotalItems(cart), [cart]);
   const totalPrice = useMemo(() => getTotalPrice(cart, themedProducts), [cart, themedProducts]);
+
+  const stripePaymentLink = getStripePaymentLink(import.meta.env.VITE_STRIPE_PAYMENT_LINK);
 
   const stripeReady = stripePaymentLink.startsWith("https://buy.stripe.com/");
 
@@ -89,9 +93,5 @@ export function CheckoutPage({ cart, stripePaymentLink }: CheckoutPageProps) {
       </div>
     </PageShell>
   );
-}
-
-type CheckoutPageProps = {
-  cart: Cart;
-  stripePaymentLink: string;
 };
+export default CheckoutPage;

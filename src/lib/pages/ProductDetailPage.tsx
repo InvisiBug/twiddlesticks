@@ -2,15 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PageShell, ProductGallery, ProductDetailInfo, ProductDetailNotFound, RelatedProducts } from "@/lib/components";
 import { useContext } from "@/lib/context";
-import { getTotalItems } from "@/lib/helpers/cart";
-import type { Cart } from "@/types";
 import { getThemedProducts } from "@/lib/helpers";
 import { products } from "@/data/storefront";
 
-const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ cart, addToCart }) => {
+const ProductDetailPage: React.FC = () => {
   const { theme } = useContext();
   const { productId } = useParams();
-  const totalItems = useMemo(() => getTotalItems(cart), [cart]);
 
   const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme]);
 
@@ -29,7 +26,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ cart, addToCart }
   }
 
   return (
-    <PageShell maxWidth="7xl" navbar={{ totalItems }}>
+    <PageShell maxWidth="7xl">
       <Link to="/" className="mb-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-700 transition hover:text-slate-900 dark:text-slate-200 dark:hover:text-white">
         <span aria-hidden="true">←</span>
         Back to home
@@ -39,18 +36,13 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ cart, addToCart }
         <ProductGallery productName={product.name} images={product.images} selectedImage={selectedImage} onSelectImage={setSelectedImage} />
 
         <section className="space-y-5">
-          <ProductDetailInfo product={product} addToCart={addToCart} />
+          <ProductDetailInfo product={product} />
         </section>
       </div>
 
-      <RelatedProducts products={relatedProducts} addToCart={addToCart} />
+      <RelatedProducts products={relatedProducts} />
     </PageShell>
   );
 };
 
 export default ProductDetailPage;
-
-type ProductDetailPageProps = {
-  cart: Cart;
-  addToCart: (id: number) => void;
-};

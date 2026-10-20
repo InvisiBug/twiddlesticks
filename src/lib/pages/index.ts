@@ -1,4 +1,4 @@
-export { CheckoutPage } from "./CheckoutPage";
-export { GalleryPage } from "./GalleryPage";
+export { default as CheckoutPage } from "./CheckoutPage";
+export { default as GalleryPage } from "./GalleryPage";
 export { default as ProductDetailPage } from "./ProductDetailPage";
-export { HomePage } from "./HomePage";
+export { default as HomePage } from "./HomePage";

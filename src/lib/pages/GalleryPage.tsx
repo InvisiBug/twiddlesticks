@@ -4,11 +4,13 @@ import { useContext } from "@/lib/context";
 import { galleryPhotos } from "@/data/storefront";
 import { getThemedGalleryPhotos } from "../helpers";
 
-export function GalleryPage({ totalItems }: GalleryPageProps) {
+export const GalleryPage = () => {
   const { theme } = useContext();
+
   const themedGalleryPhotos = useMemo(() => getThemedGalleryPhotos(theme, galleryPhotos), [theme]);
+
   return (
-    <PageShell maxWidth="7xl" navbar={{ totalItems }}>
+    <PageShell maxWidth="7xl">
       <header className="mb-6">
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">How I Build Each Product</h1>
         <p className="mt-2 max-w-3xl text-slate-600 dark:text-slate-300">A photo timeline from materials to finished twiddles. Add new photos in the galleryPhotos array to keep this page updated.</p>
@@ -36,8 +38,5 @@ export function GalleryPage({ totalItems }: GalleryPageProps) {
       )}
     </PageShell>
   );
-}
-
-type GalleryPageProps = {
-  totalItems: number;
 };
+export default GalleryPage;

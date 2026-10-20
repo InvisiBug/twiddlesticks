@@ -1,13 +1,17 @@
 import { Link } from "react-router-dom";
 import { Card, CardSection, Badge, Button } from "@/lib/components";
 import { useContext } from "@/lib/context";
-import { formatMoney } from "@/lib/money";
+import { formatMoney, addItemToCart } from "@/lib/helpers";
 import type { Product } from "@/types";
 
-const ProductGrid = ({ products, addToCart }: ProductGridProps) => {
-  const { onlineOrdersEnabled } = useContext();
+const ProductGrid = ({ products }: ProductGridProps) => {
+  const { onlineOrdersEnabled, cart, setCart } = useContext();
 
   const sortedProducts = [...products].sort((a, b) => a.id - b.id);
+
+  const handleAddToCart = (id: number) => {
+    setCart(addItemToCart(cart, id));
+  };
 
   return (
     <section>
@@ -35,7 +39,7 @@ const ProductGrid = ({ products, addToCart }: ProductGridProps) => {
                     <Button
                       onClick={(event) => {
                         event.preventDefault();
-                        addToCart(product.id);
+                        handleAddToCart(product.id);
                       }}
                       variant="secondary"
                       className="px-3 py-2"
@@ -59,5 +63,4 @@ export default ProductGrid;
 
 type ProductGridProps = {
   products: Product[];
-  addToCart: (id: number) => void;
 };

@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { formatMoney } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
+import { addItemToCart } from "@/lib/helpers";
 import type { Product } from "@/types";
 import { Button, Card } from "@/lib/components";
 
-const RelatedProducts: React.FC<RelatedProductsSectionProps> = ({ products, addToCart }) => {
-  const { onlineOrdersEnabled } = useContext();
+const RelatedProducts: React.FC<RelatedProductsSectionProps> = ({ products }) => {
+  const { onlineOrdersEnabled, cart, setCart } = useContext();
 
   const maxProductsToShow = 4;
   const [randomProducts, setRandomProducts] = useState<Product[]>([]);
@@ -19,6 +20,10 @@ const RelatedProducts: React.FC<RelatedProductsSectionProps> = ({ products, addT
 
     setRandomProducts([...products].sort(() => Math.random() - 0.5).slice(0, maxProductsToShow));
   }, [products, maxProductsToShow]);
+
+  const handleAddToCart = (id: number) => {
+    setCart(addItemToCart(cart, id));
+  };
 
   return (
     <section className="mt-10">
@@ -47,7 +52,7 @@ const RelatedProducts: React.FC<RelatedProductsSectionProps> = ({ products, addT
                   View details
                 </Link>
                 {onlineOrdersEnabled ? (
-                  <Button onClick={() => addToCart(related.id)} variant="secondary" className="px-3 py-2">
+                  <Button onClick={() => handleAddToCart(related.id)} variant="secondary" className="px-3 py-2">
                     Add to bag
                   </Button>
                 ) : (
@@ -66,5 +71,4 @@ export default RelatedProducts;
 
 type RelatedProductsSectionProps = {
   products: Product[];
-  addToCart: (id: number) => void;
 };

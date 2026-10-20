@@ -1,11 +1,15 @@
 import { Link } from "react-router-dom";
 import { Badge, Button, Card } from "@/lib/components";
-import { formatMoney } from "@/lib/helpers";
+import { formatMoney, addItemToCart } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
 import type { Product } from "@/types";
 
-const ProductDetailInfo = ({ product, addToCart }: ProductDetailInfoProps) => {
-  const { onlineOrdersEnabled } = useContext();
+const ProductDetailInfo = ({ product }: ProductDetailInfoProps) => {
+  const { onlineOrdersEnabled, cart, setCart } = useContext();
+
+  const handleAddToCart = (id: number) => {
+    setCart(addItemToCart(cart, id));
+  };
 
   return (
     <section className="space-y-5">
@@ -28,7 +32,7 @@ const ProductDetailInfo = ({ product, addToCart }: ProductDetailInfoProps) => {
 
       {onlineOrdersEnabled ? (
         <div className="flex flex-col gap-3 sm:flex-row">
-          <Button onClick={() => addToCart(product.id)} variant="secondary" className="sm:min-w-40">
+          <Button onClick={() => handleAddToCart(product.id)} variant="secondary" className="sm:min-w-40">
             Add to bag
           </Button>
           <Link to="/checkout" className="rounded-lg border border-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800 sm:min-w-40">
@@ -46,5 +50,4 @@ export default ProductDetailInfo;
 
 type ProductDetailInfoProps = {
   product: Product;
-  addToCart: (id: number) => void;
 };

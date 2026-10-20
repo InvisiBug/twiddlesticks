@@ -3,22 +3,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "@/lib/pages";
 import { CookieBanner, type CookieConsent } from "@/lib/components";
 import { festivals, instagramOrderUrl, onlineOrdersEnabled } from "@/data/storefront";
-import { CART_STORAGE_KEY, addItemToCart, getInitialCart, getTotalItems, removeItemFromCart } from "@/lib/helpers";
 import { ContextProvider } from "@/lib/context";
-import { extractLightboxImageFromClick, getInitialCookieConsent, getStripePaymentLink, persistCookieConsent } from "@/lib/helpers";
-import type { Cart, LightboxImage } from "./types";
+import { extractLightboxImageFromClick, getInitialCookieConsent, persistCookieConsent } from "@/lib/helpers";
+import type { LightboxImage } from "./types";
 import AppConfig from "./AppConfig";
 
-const stripePaymentLink = getStripePaymentLink(import.meta.env.VITE_STRIPE_PAYMENT_LINK);
-
 function App() {
-  const [cart, setCart] = useState<Cart>(getInitialCart);
   const [lightboxImage, setLightboxImage] = useState<LightboxImage | null>(null);
   const [cookieConsent, setCookieConsent] = useState<CookieConsent | null>(getInitialCookieConsent);
-
-  useEffect(() => {
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
-  }, [cart]);
 
   useEffect(() => {
     if (!lightboxImage) {
@@ -54,15 +46,10 @@ function App() {
         >
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<HomePage cart={cart} festivals={festivals} addToCart={(id) => setCart((prev) => addItemToCart(prev, id))} removeFromCart={(id) => setCart((prev) => removeItemFromCart(prev, id))} />} />
-              <Route path="/checkout" element={<CheckoutPage cart={cart} stripePaymentLink={stripePaymentLink} />} />
-              <Route path="/gallery" element={<GalleryPage totalItems={getTotalItems(cart)} />} />
-              <Route path="/products/:productId" element={<ProductDetailPage cart={cart} addToCart={(id) => setCart((prev) => addItemToCart(prev, id))} />} />
-
-              {/* <Route path="/" element={<HomePage festivals={festivals} addToCart={(id) => setCart((prev) => addItemToCart(prev, id))} removeFromCart={(id) => setCart((prev) => removeItemFromCart(prev, id))} />} />
-              <Route path="/checkout" element={<CheckoutPage stripePaymentLink={stripePaymentLink} />} />
-              <Route path="/gallery" element={<GalleryPage totalItems={getTotalItems(cart)} />} />
-              <Route path="/products/:productId" element={<ProductDetailPage addToCart={(id) => setCart((prev) => addItemToCart(prev, id))} />} /> */}
+              <Route path="/" element={<HomePage festivals={festivals} />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/products/:productId" element={<ProductDetailPage />} />
             </Routes>
           </BrowserRouter>
 

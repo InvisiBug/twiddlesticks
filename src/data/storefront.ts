@@ -29,7 +29,7 @@ import triangle1 from "@/lib/images/light/triangle/triangle1.jpg";
 import standCover from "@/lib/images/light/stand/cover.jpg";
 
 // Variables
-export const onlineOrdersEnabled = false;
+export const onlineOrdersEnabled = true;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 
 export const heroImages = [hero1, hero2];
