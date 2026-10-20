@@ -1,4 +1,5 @@
 import { Button } from "@/lib/components";
+import type { CookieConsent } from "@/types";
 
 const CookieBanner: React.FC<CookieBannerProps> = ({ onChoose }) => {
   return (
@@ -28,8 +29,6 @@ const CookieBanner: React.FC<CookieBannerProps> = ({ onChoose }) => {
 };
 
 export default CookieBanner;
-
-export type CookieConsent = "accepted" | "essential";
 
 type CookieBannerProps = {
   onChoose: (choice: CookieConsent) => void;

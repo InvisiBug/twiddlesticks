@@ -1,6 +1,7 @@
 import { createContext, useContext as useReactContext, type ReactNode, useState } from "react";
 
-import { getInitialTheme, type Theme } from "../helpers";
+import { getInitialTheme } from "../helpers";
+import { type Theme } from "@/types";
 
 const context = createContext<contextValue | null>(null);
 

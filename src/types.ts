@@ -28,3 +28,10 @@ export type GalleryPhoto = {
 export type Cart = Record<number, number>;
 
 export type Theme = "light" | "dark";
+
+export type LightboxImage = {
+  src: string;
+  alt: string;
+};
+
+export type CookieConsent = "accepted" | "essential";

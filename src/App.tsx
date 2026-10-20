@@ -5,8 +5,8 @@ import { CookieBanner, type CookieConsent } from "@/lib/components";
 import { festivals, instagramOrderUrl, onlineOrdersEnabled } from "@/data/storefront";
 import { CART_STORAGE_KEY, addItemToCart, getInitialCart, getTotalItems, removeItemFromCart } from "@/lib/cart";
 import { ContextProvider } from "@/lib/context";
-import { extractLightboxImageFromClick, getInitialCookieConsent, getStripePaymentLink, persistCookieConsent, type LightboxImage } from "@/lib/helpers";
-import type { Cart } from "./types";
+import { extractLightboxImageFromClick, getInitialCookieConsent, getStripePaymentLink, persistCookieConsent } from "@/lib/helpers";
+import type { Cart, LightboxImage } from "./types";
 import AppConfig from "./AppConfig";
 
 const stripePaymentLink = getStripePaymentLink(import.meta.env.VITE_STRIPE_PAYMENT_LINK);
