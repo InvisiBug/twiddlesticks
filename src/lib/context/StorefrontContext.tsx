@@ -1,6 +1,7 @@
 import { createContext, useContext as useReactContext, type ReactNode, useState } from "react";
 import { getInitialTheme, getInitialCart } from "../helpers";
 import type { Theme, Cart } from "@/types";
+import { products } from "@/data/storefront";
 
 const context = createContext<contextValue | null>(null);
 
@@ -8,7 +9,9 @@ export const ContextProvider = ({ children, value }: ContextProviderProps) => {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [cart, setCart] = useState<Cart>(getInitialCart);
 
-  return <context.Provider value={{ ...value, theme, setTheme, cart, setCart }}>{children}</context.Provider>;
+  console.log(products);
+
+  return <context.Provider value={{ ...value, theme, setTheme, cart, setCart, products }}>{children}</context.Provider>;
 };
 
 export const useContext = () => {
@@ -35,4 +38,5 @@ type contextValue = {
   setTheme: (theme: Theme) => void;
   cart: Cart;
   setCart: (cart: Cart) => void;
+  products: typeof products;
 };

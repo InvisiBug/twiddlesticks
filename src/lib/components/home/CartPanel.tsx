@@ -3,14 +3,14 @@ import { Button, Card, InstagramOrderBanner } from "@/lib/components";
 import { useContext } from "@/lib/context";
 import { useMemo } from "react";
 import { getThemedProducts, getCartItems } from "@/lib/helpers";
-import { products } from "@/data/storefront";
+
 import { formatMoney, removeItemFromCart, addItemToCart } from "@/lib/helpers";
 import { getTotalItems } from "@/lib/helpers";
 
 const CartPanel = ({ totalPrice }: CartPanelProps) => {
-  const { onlineOrdersEnabled, cart, setCart, theme } = useContext();
+  const { onlineOrdersEnabled, cart, setCart, theme, products } = useContext();
 
-  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme]);
+  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme, products]);
   const cartItems = useMemo(() => getCartItems(cart, themedProducts), [cart, themedProducts]);
 
   const totalItems = getTotalItems(cart);

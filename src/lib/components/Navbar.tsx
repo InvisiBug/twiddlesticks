@@ -6,8 +6,9 @@ import { getTotalItems } from "@/lib/helpers";
 import { getToggledTheme } from "@/lib/helpers";
 
 const Navbar = () => {
-  const location = useLocation();
   const { onlineOrdersEnabled, theme, setTheme, cart } = useContext();
+  const location = useLocation();
+
   const totalItems = useMemo(() => getTotalItems(cart), [cart]);
 
   const onToggleTheme = () => {

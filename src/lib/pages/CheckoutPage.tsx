@@ -6,12 +6,11 @@ import { ButtonLink, Card, Field, PageShell } from "@/lib/components";
 import { getCartItems, getTotalItems, getTotalPrice, formatMoney } from "@/lib/helpers";
 
 import { getThemedProducts } from "../helpers";
-import { products } from "@/data/storefront";
 
 export const CheckoutPage = () => {
-  const { theme, cart } = useContext();
+  const { theme, cart, products } = useContext();
 
-  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme]);
+  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme, products]);
 
   const cartItems = useMemo(() => getCartItems(cart, themedProducts), [cart, themedProducts]);
 

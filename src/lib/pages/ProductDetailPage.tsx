@@ -3,16 +3,15 @@ import { Link, useParams } from "react-router-dom";
 import { PageShell, ProductGallery, ProductDetailInfo, ProductDetailNotFound, RelatedProducts } from "@/lib/components";
 import { useContext } from "@/lib/context";
 import { getThemedProducts } from "@/lib/helpers";
-import { products } from "@/data/storefront";
 
 const ProductDetailPage: React.FC = () => {
-  const { theme } = useContext();
+  const { theme, products } = useContext();
   const { productId } = useParams();
 
-  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme]);
-
+  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme, products]);
   const product = useMemo(() => themedProducts.find((entry) => entry.id === Number(productId)), [themedProducts, productId]);
-  const relatedProducts = useMemo(() => themedProducts.filter((entry) => entry.id !== product?.id), [themedProducts, product?.id]);
+
+  const relatedProducts = useMemo(() => themedProducts.filter((entry) => entry.id !== Number(productId)), [themedProducts, productId]);
 
   const [selectedImage, setSelectedImage] = useState(0);
 
@@ -36,7 +35,7 @@ const ProductDetailPage: React.FC = () => {
         <ProductGallery productName={product.name} images={product.images} selectedImage={selectedImage} onSelectImage={setSelectedImage} />
 
         <section className="space-y-5">
-          <ProductDetailInfo product={product} />
+          <ProductDetailInfo />
         </section>
       </div>
 

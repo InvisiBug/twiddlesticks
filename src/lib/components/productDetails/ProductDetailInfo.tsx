@@ -2,14 +2,24 @@ import { Link } from "react-router-dom";
 import { Badge, Button, Card } from "@/lib/components";
 import { formatMoney, addItemToCart } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
-import type { Product } from "@/types";
+import { useParams } from "react-router-dom";
+import { useMemo } from "react";
+import { getThemedProducts } from "@/lib/helpers";
 
-const ProductDetailInfo = ({ product }: ProductDetailInfoProps) => {
-  const { onlineOrdersEnabled, cart, setCart } = useContext();
+const ProductDetailInfo = () => {
+  const { productId } = useParams();
+  const { onlineOrdersEnabled, cart, setCart, theme, products } = useContext();
+
+  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme, products]);
+  const product = useMemo(() => themedProducts.find((entry) => entry.id === Number(productId)), [themedProducts, productId]);
 
   const handleAddToCart = (id: number) => {
     setCart(addItemToCart(cart, id));
   };
+
+  if (!product) {
+    return null;
+  }
 
   return (
     <section className="space-y-5">
@@ -47,7 +57,3 @@ const ProductDetailInfo = ({ product }: ProductDetailInfoProps) => {
 };
 
 export default ProductDetailInfo;
-
-type ProductDetailInfoProps = {
-  product: Product;
-};
