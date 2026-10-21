@@ -19,25 +19,25 @@ const RelatedProducts: React.FC = () => {
         </Link> */}
       </div>
 
-      <div className="grid gap-10 lg:gap-25 grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-10 lg:gap-25 grid-cols-2 lg:grid-cols-4">
         {relatedProducts.map((product) => (
-          <Card key={product.id} className="overflow-hidden">
+          <Card key={product.id} className="h-full overflow-hidden flex flex-col">
             <Link to={`/products/${product.id}`} className="block">
               <img src={product.images[0]} alt={product.name} className="mx-auto block sm:h-20 lg:h-44 w-full object-cover" />
             </Link>
 
-            <div className="space-y-5 p-5">
+            <div className="flex h-full flex-col gap-5 p-5">
               <div>
                 <p className="text-base font-semibold tracking-tight">{product.name}</p>
                 <p className="text-sm text-slate-600 dark:text-slate-300">{formatMoney(product.price)}</p>
               </div>
 
-              <div className="flex gap-2 justify-between">
+              <div className="mt-auto flex flex-col gap-2 lg:flex-row justify-between">
                 <Link to={`/products/${product.id}`} className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800">
                   View details
                 </Link>
                 {onlineOrdersEnabled ? (
-                  <AddToBagButton productId={product.id} className="sm:min-w-40" />
+                  <AddToBagButton productId={product.id} className="sm:min-w-25" />
                 ) : (
                   <p className="rounded-md border border-dashed border-slate-300 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-600 dark:text-slate-300">
                     Online Orders <br />

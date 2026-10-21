@@ -43,25 +43,18 @@ export const heroImages = [hero1, hero2];
 
 export const festivals: Festival[] = [
   {
-    name: "Leeds Luggling Convention",
-    date: "Nov 2, 2026",
-    location: "Leeds",
-    hours: "10:00 AM - 4:00 PM",
-    note: "Come try prototypes in person and collect pre-ordered pieces.",
-  },
-  {
     name: "BJC",
-    date: "Apr 16, 2026",
+    date: "Some time early 2027",
     location: "South of london somewhere",
-    hours: "its like 5 days",
-    note: "Featuring flowception crew LED space",
+    hours: "It's like 5 days",
+    note: "Im gonna be running the Flowception LED space at this one again :)",
   },
   {
     name: "Slack fest",
     date: "Summer 2027",
     location: "Manchester",
     hours: "4 Days",
-    note: "My first and ongoing favourite circus festival. The Flowception dome will also be there",
+    note: "My first and favourite circus festival. The Flowception dome will also be there",
   },
 ];
 
@@ -83,7 +76,7 @@ export const products: Product[] = [
     price: 50,
     description: "The dark mode twiddle",
     longDescription: "This version has a black body and a clear window to allow the light through",
-    tag: "Super Cool",
+    tag: "Super Cool At Night",
     images: [blackCover, black1],
     availableColours: ["Black"],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
@@ -116,7 +109,7 @@ export const products: Product[] = [
     price: 30,
     description: "The triangle twiddle",
     longDescription: "Kinda sucks but I made one so here it is.",
-    tag: "Kinda sucks",
+    tag: "Lightest",
     images: [triangleCover, triangle1, triangle2],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
   },

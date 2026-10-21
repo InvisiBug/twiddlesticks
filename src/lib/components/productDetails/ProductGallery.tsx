@@ -16,23 +16,24 @@ const ProductGallery: React.FC<ProductDetailGalleryProps> = ({ images, selectedI
   }
 
   return (
-    <section>
+    <section className="px-10">
       <Card className="overflow-hidden rounded-2xl">
-        <div className="relative flex h-50 lg:h-125 items-center justify-center overflow-hidden rounded-2xl bg-slate-100 p-0 dark:bg-slate-800">
+        <div className="relative flex lg:h-full items-center justify-center overflow-hidden rounded-2xl bg-slate-100 p-0 dark:bg-slate-800">
           <img src={activeImage} alt={`${product.name} view ${selectedImage + 1}`} className="h-full w-full cursor-zoom-in object-cover" data-lightbox-trigger="product-main" />
         </div>
       </Card>
-      <div className="mt-4 grid grid-cols-4 gap-5">
+
+      <div className="mt-5 flex    lg:max-h-30">
         {images.map((image, index) => (
-          <button
+          <div
             key={`${product.name}-${index}`}
             onClick={() => onSelectImage(index)}
-            className={`overflow-hidden rounded-xl border bg-white dark:bg-slate-900 ${selectedImage === index ? "border-slate-900 ring-2 ring-slate-300 dark:border-slate-100 dark:ring-slate-600" : "border-slate-200 dark:border-slate-700"}`}
+            className={`overflow-hidden cursor-pointer mx-1 lg:mx-5 lg:max-w-30 rounded-xl  border bg-white dark:bg-slate-900 ${selectedImage === index ? "border-slate-900 ring-2 ring-slate-300 dark:border-slate-100 dark:ring-slate-600" : "border-slate-200 dark:border-slate-700"}`}
           >
-            <div className="flex h-10 lg:h-25 items-center justify-center overflow-hidden rounded-lg bg-slate-100 p-0 dark:bg-slate-800">
-              <img src={image} alt={`${product.name} thumbnail ${index + 1}`} className="h-full w-full object-cover" />
+            <div className="items-start justify-start rounded-lg bg-slate-100 dark:bg-slate-800 touch-auto">
+              <img src={image} alt={`${product.name} thumbnail ${index + 1}`} className="object-fill" />
             </div>
-          </button>
+          </div>
         ))}
       </div>
     </section>

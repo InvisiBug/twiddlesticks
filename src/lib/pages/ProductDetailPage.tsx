@@ -28,7 +28,7 @@ const ProductDetailPage: React.FC = () => {
         Back to home
       </Link>
 
-      <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] ">
+      <div className="grid gap-8 lg:grid-cols-[1fr_1fr] ">
         <ProductGallery productName={product.name} images={product.images} selectedImage={selectedImage} onSelectImage={setSelectedImage} />
 
         <section className="space-y-5">
