@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useProductById } from "@/lib/helpers/product";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { AddToBagButton, Badge, Card } from "@/lib/components";
+import { AddToBagButton, Badge, Card, InstagramOrderBanner } from "@/lib/components";
 import { formatMoney } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
 
@@ -67,7 +67,11 @@ const ProductDetailInfo = () => {
 
       <Card className="p-5 border-red-500! dark:border-red-400!">
         <h2 className="text-base font-semibold text-orange-200">Disclaimer</h2>
-        <p>Something something disclaimer text goes here.</p>
+        <p>
+          Something something disclaimer text goes here.
+          <br />
+          Something about postage
+        </p>
       </Card>
 
       {onlineOrdersEnabled ? (
@@ -78,7 +82,7 @@ const ProductDetailInfo = () => {
           </Link>
         </div>
       ) : (
-        <p className="rounded-xl border border-dashed border-slate-300 px-4 py-4 text-sm font-medium text-slate-600 dark:border-slate-600 dark:text-slate-300">Online orders coming soon.</p>
+        <InstagramOrderBanner />
       )}
     </section>
   );
