@@ -7,6 +7,7 @@ export type Product = {
   tag: string;
   images: string[];
   details: string[];
+  availableColours?: string[];
 };
 
 export type Festival = {

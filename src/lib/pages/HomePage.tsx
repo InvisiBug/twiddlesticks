@@ -9,6 +9,7 @@ export const HomePage = ({ festivals }: HomePageProps) => {
   const { onlineOrdersEnabled, theme, cart, products } = useContext();
 
   const themedHeroImages = useMemo(() => getThemedImageList(heroImages, theme), [theme]);
+
   const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme, products]);
 
   const totalPrice = useMemo(() => getTotalPrice(cart, themedProducts), [cart, themedProducts]);
@@ -19,7 +20,7 @@ export const HomePage = ({ festivals }: HomePageProps) => {
       <Hero heroImages={themedHeroImages} />
 
       <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">
-        <ProductGrid products={themedProducts} />
+        <ProductGrid />
         <CartPanel totalItems={getTotalItems(cart)} totalPrice={totalPrice} />
       </div>
 

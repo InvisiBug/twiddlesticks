@@ -1,15 +1,14 @@
-import { useMemo } from "react";
 import { useParams } from "react-router-dom";
 import { Card } from "@/lib/components";
-import { getThemedProducts } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
+import { useProductById } from "@/lib/helpers/product";
 
 const ProductGallery: React.FC<ProductDetailGalleryProps> = ({ images, selectedImage, onSelectImage }) => {
-  const { theme, products } = useContext();
   const { productId } = useParams();
+  const { products } = useContext();
 
-  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme, products]);
-  const product = useMemo(() => themedProducts.find((entry) => entry.id === Number(productId)), [themedProducts, productId]);
+  const product = useProductById(products, productId);
+
   const activeImage = images[selectedImage] ?? images[0];
 
   if (!product) {

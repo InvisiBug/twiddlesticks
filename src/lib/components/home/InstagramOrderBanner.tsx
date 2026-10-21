@@ -15,7 +15,7 @@ const InstagramOrderBanner = () => {
       </svg>
       <span>
         Online orders disabled. <br />
-        Feel free to browse, then send me a message on Instagram to place an order.
+        Feel free to browse, then click here to send me a message on Instagram to place an order.
       </span>
     </a>
   );

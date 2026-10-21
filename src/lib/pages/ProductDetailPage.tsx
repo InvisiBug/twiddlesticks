@@ -2,18 +2,16 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PageShell, ProductGallery, ProductDetailInfo, ProductDetailNotFound, RelatedProducts } from "@/lib/components";
 import { useContext } from "@/lib/context";
-import { getThemedProducts } from "@/lib/helpers";
+import { useProductById } from "../helpers/product";
 
 const ProductDetailPage: React.FC = () => {
   const { theme, products } = useContext();
   const { productId } = useParams();
 
-  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme, products]);
-  const product = useMemo(() => themedProducts.find((entry) => entry.id === Number(productId)), [themedProducts, productId]);
-
-  const relatedProducts = useMemo(() => themedProducts.filter((entry) => entry.id !== Number(productId)), [themedProducts, productId]);
-
   const [selectedImage, setSelectedImage] = useState(0);
+
+  const product = useProductById(products, productId);
+  const relatedProducts = useMemo(() => products.filter((entry) => entry.id !== Number(productId)), [products, productId]);
 
   useEffect(() => {
     setSelectedImage(0);

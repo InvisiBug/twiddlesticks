@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import { Card, CardSection, Badge, AddToBagButton } from "@/lib/components";
 import { useContext } from "@/lib/context";
 import { formatMoney } from "@/lib/helpers";
-import type { Product } from "@/types";
 
-const ProductGrid = ({ products }: ProductGridProps) => {
-  const { onlineOrdersEnabled } = useContext();
+const ProductGrid = () => {
+  const { onlineOrdersEnabled, products } = useContext();
 
   const sortedProducts = [...products].sort((a, b) => a.id - b.id);
 
@@ -47,7 +46,3 @@ const ProductGrid = ({ products }: ProductGridProps) => {
 };
 
 export default ProductGrid;
-
-type ProductGridProps = {
-  products: Product[];
-};

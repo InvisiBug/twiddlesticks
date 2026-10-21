@@ -11,6 +11,8 @@ import clearLED3 from "@/lib/images/light/clearLED/led-3.jpg";
 import clearLED4 from "@/lib/images/light/clearLED/led-4.jpg";
 
 // Coloured LED
+import blackCover from "@/lib/images/light/colouredLED/cover.jpg";
+import black1 from "@/lib/images/light/colouredLED/1.jpg";
 
 // Spiral
 import spiralCover from "@/lib/images/light/spiral/cover.jpg";
@@ -20,18 +22,22 @@ import spiral2 from "@/lib/images/light/spiral/2.jpg";
 // Circle
 import circle from "@/lib/images/light/circle/cover.jpg";
 import circle1 from "@/lib/images/light/circle/1.jpg";
+import circle2 from "@/lib/images/light/circle/2.jpg";
 
 // Triangle
 import triangleCover from "@/lib/images/light/triangle/cover.jpg";
-import triangle1 from "@/lib/images/light/triangle/triangle1.jpg";
+import triangle1 from "@/lib/images/light/triangle/1.jpg";
+import triangle2 from "@/lib/images/light/triangle/2.jpg";
 
 // Stand
 import standCover from "@/lib/images/light/stand/cover.jpg";
+import stand1 from "@/lib/images/light/stand/1.jpg";
 
 // Variables
 export const onlineOrdersEnabled = false;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 
+// Site data
 export const heroImages = [hero1, hero2];
 
 export const festivals: Festival[] = [
@@ -68,6 +74,7 @@ export const products: Product[] = [
     tag: "Expensive",
     images: [clearLED1, clearLED2, clearLED3, clearLED4],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
+    availableColours: ["Clear"],
   },
   {
     id: 2,
@@ -76,7 +83,8 @@ export const products: Product[] = [
     description: "The dark mode twiddle",
     longDescription: "This version has a black body and a clear window to allow the light through",
     tag: "Super Cool",
-    images: [clearLED1, clearLED2, clearLED3, clearLED4],
+    images: [blackCover, black1],
+    availableColours: ["Black"],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
   },
   {
@@ -88,6 +96,7 @@ export const products: Product[] = [
     tag: "My fave",
     images: [spiralCover, spiral1, spiral2],
     details: ["250mm long", "3mm core diameter", "50 grams"],
+    availableColours: ["Green & Orange Blend, Red, Green & Purple Blend, Purple & Green Blend, Yellow Orange"],
   },
   {
     id: 4,
@@ -96,8 +105,9 @@ export const products: Product[] = [
     description: "The new circle twiddle",
     longDescription: "Slightly heavier than the spiral version, most people prefer this type.",
     tag: "Bestseller",
-    images: [circle],
+    images: [circle, circle1, circle2],
     details: ["250mm long", "3mm core diameter", "500 grams"],
+    availableColours: ["Red", "Green & Purple Blend"],
   },
   {
     id: 5,
@@ -106,7 +116,7 @@ export const products: Product[] = [
     description: "The triangle twiddle",
     longDescription: "Kinda sucks but I made one so here it is.",
     tag: "Kinda sucks",
-    images: [triangleCover, triangle1],
+    images: [triangleCover, triangle1, triangle2],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
   },
   {
@@ -116,7 +126,7 @@ export const products: Product[] = [
     description: "The stand for twiddles",
     longDescription: "Do you have too many twiddles lying around? This stand helps keep them organized.",
     tag: "It's a stand",
-    images: [standCover],
+    images: [standCover, stand1],
     details: ["Needs no batteries", "The ultimate in twiddle organisation"],
   },
 ];

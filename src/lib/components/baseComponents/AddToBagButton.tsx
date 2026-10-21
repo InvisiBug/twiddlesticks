@@ -3,7 +3,7 @@ import { useContext } from "@/lib/context";
 import { addItemToCart } from "@/lib/helpers";
 import { Button } from "./Button";
 
-const AddToBagButton = ({ productId, feedbackDurationMs = 2000, preventNavigation, className, onClick, ...buttonProps }: AddToBagButtonProps) => {
+const AddToBagButton = ({ productId, feedbackDurationMs = 1500, preventNavigation, className, onClick, ...buttonProps }: AddToBagButtonProps) => {
   const { cart, setCart } = useContext();
   const [isRecentlyAdded, setIsRecentlyAdded] = useState(false);
   const feedbackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);

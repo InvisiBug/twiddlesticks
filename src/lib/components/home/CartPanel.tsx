@@ -7,8 +7,8 @@ import { getThemedProducts, getCartItems, getTotalItems, formatMoney, removeItem
 const CartPanel = ({ totalPrice }: CartPanelProps) => {
   const { onlineOrdersEnabled, cart, setCart, theme, products } = useContext();
 
-  const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme, products]);
-  const cartItems = useMemo(() => getCartItems(cart, themedProducts), [cart, themedProducts]);
+  // const themedProducts = useMemo(() => getThemedProducts(theme, products), [theme, products]);
+  // const cartItems = useMemo(() => getCartItems(cart, themedProducts), [cart, themedProducts]);
 
   const totalItems = getTotalItems(cart);
 
@@ -32,7 +32,7 @@ const CartPanel = ({ totalPrice }: CartPanelProps) => {
         <>
           <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{totalItems} item(s) selected</p>
 
-          {cartItems.length === 0 ? (
+          {/* {cartItems.length === 0 ? (
             <p className="mt-6 rounded-xl border border-dashed border-slate-300 px-4 py-5 text-sm text-slate-600 dark:border-slate-600 dark:text-slate-300">Your bag is empty. Add an item to start checkout.</p>
           ) : (
             <div className="mt-5 space-y-3">
@@ -59,7 +59,7 @@ const CartPanel = ({ totalPrice }: CartPanelProps) => {
                 </Card>
               ))}
             </div>
-          )}
+          )} */}
 
           <div className="mt-5 border-t border-slate-200 pt-4 dark:border-slate-700">
             <div className="mb-4 flex items-center justify-between text-base font-semibold">
