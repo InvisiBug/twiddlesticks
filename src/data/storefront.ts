@@ -33,10 +33,17 @@ import triangle2 from "@/lib/images/light/triangle/2.jpg";
 import standCover from "@/lib/images/light/stand/cover.jpg";
 import stand1 from "@/lib/images/light/stand/1.jpg";
 
+import coresImage from "@/lib/images/cores.jpg";
+
+export const cores = coresImage;
+
 // Variables
-export const onlineOrdersEnabled = false;
+export const onlineOrdersEnabled = true;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 export const maxRelatedProducts = 4;
+
+export const coreText =
+  "I don't really think about the cores too much, so there are a few different designs. \n I'm working towards having a way of requesting a specific core on this site when placing an order\n Send me a message if theres a specific type you'd like. \n The image below is what I currently have ready to go";
 
 // Site data
 export const heroImages = [hero1, hero2];
@@ -86,7 +93,7 @@ export const products: Product[] = [
     name: "Spiral Twiddle",
     price: 30,
     description: "The original spiral twiddle",
-    longDescription: "This twiddle spins slower and for longer than other variants due to the thinness of the core",
+    longDescription: "The OG twiddle & my favourite. This was the one that perfected the slow roll thats charecteristic of all my twiddles. Nicely balanced and a decent weight means keeping the spin going is super easy ",
     tag: "My fave",
     images: [spiralCover, spiral1, spiral2],
     details: ["250mm long", "3mm core diameter", "50 grams"],
@@ -97,7 +104,7 @@ export const products: Product[] = [
     name: "Circle Twiddle",
     price: 30,
     description: "The new circle twiddle",
-    longDescription: "Slightly heavier than the spiral version, most people prefer this type.",
+    longDescription: "Slightly heavier than the spiral version meaning it has more balance and a slower roll, most people prefer this type.",
     tag: "Bestseller",
     images: [circle, circle1, circle2],
     details: ["250mm long", "3mm core diameter", "500 grams"],
@@ -108,10 +115,11 @@ export const products: Product[] = [
     name: "Triangle Twiddle",
     price: 30,
     description: "The triangle twiddle",
-    longDescription: "Kinda sucks but I made one so here it is.",
+    longDescription: "The fastes variant I make. Its light weight body means theres less inertia, allowing for a faster roll.",
     tag: "Lightest",
     images: [triangleCover, triangle1, triangle2],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
+    availableColours: ["Blue", "Orange", "Green & Purple Blend", "Green"],
   },
   {
     id: 6,

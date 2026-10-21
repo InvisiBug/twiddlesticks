@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { AddToBagButton, Badge, Card, InstagramOrderBanner } from "@/lib/components";
 import { formatMoney } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
+import CoreInfoAccordion from "./CoreInfoAccordion";
 
 const ProductDetailInfo = () => {
   const { productId } = useParams();
@@ -64,6 +65,8 @@ const ProductDetailInfo = () => {
           </Card>
         ) : null}
       </div>
+
+      <CoreInfoAccordion product={product} />
 
       <Card className="p-5 border-red-500! dark:border-red-400!">
         <h2 className="text-base font-semibold text-orange-200">Disclaimer</h2>
