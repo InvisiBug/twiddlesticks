@@ -14,11 +14,17 @@ export const getInitialCart = (): Cart => {
   }
 };
 
-export const getCartItems = (cart: Cart, products: Product[]): Product[] => products.filter((product) => (cart[product.id] ?? 0) > 0);
+export const getCartItems = (cart: Cart, products: Product[]): Product[] => {
+  return products.filter((product) => (cart[product.id] ?? 0) > 0);
+};
 
-export const getTotalItems = (cart: Cart): number => Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+export const getTotalItems = (cart: Cart): number => {
+  return Object.values(cart).reduce((sum, qty) => sum + qty, 0);
+};
 
-export const getTotalPrice = (cart: Cart, products: Product[]): number => getCartItems(cart, products).reduce((sum, item) => sum + item.price * (cart[item.id] ?? 0), 0);
+export const getTotalPrice = (cart: Cart, products: Product[]): number => {
+  return getCartItems(cart, products).reduce((sum, item) => sum + item.price * (cart[item.id] ?? 0), 0);
+};
 
 export const addItemToCart = (cart: Cart, id: number): Cart => ({
   ...cart,

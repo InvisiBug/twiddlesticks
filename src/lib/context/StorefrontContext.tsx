@@ -1,7 +1,8 @@
 import { createContext, useContext as useReactContext, type ReactNode, useState, useEffect } from "react";
 import type { Theme, Cart, Product } from "@/types";
-import { getInitialTheme, getInitialCart, getThemedProducts, getThemedAsset } from "../helpers";
+import { getInitialTheme, getInitialCart, getThemedProducts } from "../helpers";
 import { products as storeProducts } from "@/data/storefront";
+import { maxRelatedProducts } from "@/data/storefront";
 
 const context = createContext<contextValue | null>(null);
 
@@ -11,13 +12,11 @@ export const ContextProvider = ({ children, value }: ContextProviderProps) => {
 
   const [products, setProducts] = useState<Product[]>(getThemedProducts(theme, storeProducts));
 
-  console.log(getThemedAsset("/src/lib/images/light/circle/cover.jpg", theme));
-
   useEffect(() => {
     setProducts(getThemedProducts(theme, storeProducts));
-  }, [theme, storeProducts]);
+  }, [theme]);
 
-  return <context.Provider value={{ ...value, theme, setTheme, cart, setCart, products }}>{children}</context.Provider>;
+  return <context.Provider value={{ ...value, theme, setTheme, cart, setCart, products, maxRelatedProducts }}>{children}</context.Provider>;
 };
 
 export const useContext = () => {
@@ -45,4 +44,5 @@ type contextValue = {
   cart: Cart;
   setCart: (cart: Cart) => void;
   products: Product[];
+  maxRelatedProducts: number;
 };

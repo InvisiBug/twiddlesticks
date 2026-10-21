@@ -1,17 +1,16 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { PageShell, ProductGallery, ProductDetailInfo, ProductDetailNotFound, RelatedProducts } from "@/lib/components";
 import { useContext } from "@/lib/context";
 import { useProductById } from "../helpers/product";
 
 const ProductDetailPage: React.FC = () => {
-  const { theme, products } = useContext();
+  const { products } = useContext();
   const { productId } = useParams();
 
   const [selectedImage, setSelectedImage] = useState(0);
 
   const product = useProductById(products, productId);
-  const relatedProducts = useMemo(() => products.filter((entry) => entry.id !== Number(productId)), [products, productId]);
 
   useEffect(() => {
     setSelectedImage(0);
@@ -37,7 +36,7 @@ const ProductDetailPage: React.FC = () => {
         </section>
       </div>
 
-      <RelatedProducts products={relatedProducts} />
+      <RelatedProducts />
     </PageShell>
   );
 };
