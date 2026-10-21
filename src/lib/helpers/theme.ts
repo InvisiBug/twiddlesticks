@@ -38,7 +38,6 @@ export const getThemedImageList = (images: string[], theme: Theme) => {
 };
 
 export const getThemedAsset = (asset: string, theme: Theme) => {
-  console.log("🚀 ~ getThemedAsset ~ asset:", asset);
   if (!asset || theme !== "dark") {
     return asset;
   }
@@ -47,6 +46,7 @@ export const getThemedAsset = (asset: string, theme: Theme) => {
   const relativePath = normalizedAsset.replace(/^.*\/src\/lib\/images\//, "");
   const darkAssetPath = relativePath.replace(/^light\//, "dark/").split("?")[0];
   const darkAsset = themedImageMap[`/src/lib/images/${darkAssetPath}`];
+  console.log("🚀 ~ getThemedAsset ~ darkAsset:", darkAsset);
 
   return darkAsset ?? asset;
 };
