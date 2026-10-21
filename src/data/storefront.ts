@@ -34,7 +34,7 @@ import standCover from "@/lib/images/light/stand/cover.jpg";
 import stand1 from "@/lib/images/light/stand/1.jpg";
 
 // Variables
-export const onlineOrdersEnabled = true;
+export const onlineOrdersEnabled = false;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 export const maxRelatedProducts = 4;
 
