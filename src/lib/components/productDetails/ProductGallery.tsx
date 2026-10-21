@@ -23,12 +23,12 @@ const ProductGallery: React.FC<ProductDetailGalleryProps> = ({ images, selectedI
         </div>
       </Card>
 
-      <div className="mt-5 flex lg:max-h-30">
+      <div className="mt-5 flex    lg:max-h-30">
         {images.map((image, index) => (
           <div
             key={`${product.name}-${index}`}
             onClick={() => onSelectImage(index)}
-            className={`overflow-hidden cursor-pointer mx-5 lg:max-w-30 rounded-xl  border bg-white dark:bg-slate-900 ${selectedImage === index ? "border-slate-900 ring-2 ring-slate-300 dark:border-slate-100 dark:ring-slate-600" : "border-slate-200 dark:border-slate-700"}`}
+            className={`overflow-hidden cursor-pointer mx-1 lg:mx-5 lg:max-w-30 rounded-xl  border bg-white dark:bg-slate-900 ${selectedImage === index ? "border-slate-900 ring-2 ring-slate-300 dark:border-slate-100 dark:ring-slate-600" : "border-slate-200 dark:border-slate-700"}`}
           >
             <div className="items-start justify-start rounded-lg bg-slate-100 dark:bg-slate-800 touch-auto">
               <img src={image} alt={`${product.name} thumbnail ${index + 1}`} className="object-fill" />

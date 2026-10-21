@@ -15,7 +15,8 @@ const Navbar = () => {
     setTheme(getToggledTheme(theme));
   };
 
-  const isGalleryPage = location.pathname === "/gallery";
+  // const isGalleryPage = location.pathname === "/gallery";
+  const isGalleryPage = true;
 
   return (
     <nav className="mb-8 flex flex-wrap items-center justify-between gap-3 rounded-3xl border border-white/70 bg-white/75 px-5 py-3 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/70">
