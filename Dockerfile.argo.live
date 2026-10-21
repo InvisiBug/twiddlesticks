@@ -1,18 +1,14 @@
-FROM node:20-alpine as builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 COPY . .
 
-# ENV PATH /app/node_modules.bin:$PATH
-
-# ENV VITE_API https://api.kavanet.io/
-# ENV VITE_SOCKET https://socket.kavanet.io/
-
+# ENV VITE_API=https://api.winterflowspace.com
 
 RUN npm install
 RUN npm run build
 
-FROM --platform=linux/arm64 arm64v8/nginx
+FROM arm64v8/nginx
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf  /etc/nginx/conf.d
 EXPOSE 3000
