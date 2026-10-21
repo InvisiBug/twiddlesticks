@@ -10,7 +10,6 @@ const CartPanel = () => {
   const cartItems = useMemo(() => getCartItems(cart, products), [cart, products]);
 
   const totalItems = getTotalItems(cart);
-
   const totalPrice = useMemo(() => getTotalPrice(cart, products), [cart, products]);
 
   const handleRemoveFromCart = (id: number) => {
