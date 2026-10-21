@@ -54,9 +54,9 @@ const ProductDetailInfo = () => {
         {availableColors?.length > 0 ? (
           <Card className="p-5">
             <h2 className="text-base font-semibold">Available colours</h2>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="mt-3 flex flex-col gap-2">
               {availableColors.map((color) => (
-                <span key={color} className="rounded-full border border-slate-300 px-3 py-1 text-sm font-medium text-slate-700 dark:border-slate-600 dark:text-slate-200">
+                <span key={color} className="inline-flex self-start rounded-full border border-slate-300 px-3 py-1 text-sm font-medium text-slate-700 dark:border-slate-600 dark:text-slate-200">
                   {color}
                 </span>
               ))}

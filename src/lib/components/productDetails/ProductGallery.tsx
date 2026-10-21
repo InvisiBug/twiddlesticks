@@ -18,7 +18,7 @@ const ProductGallery: React.FC<ProductDetailGalleryProps> = ({ images, selectedI
   return (
     <section className="px-10">
       <Card className="overflow-hidden rounded-2xl">
-        <div className="relative flex h-90 lg:h-full items-center justify-center overflow-hidden rounded-2xl bg-slate-100 p-0 dark:bg-slate-800">
+        <div className="relative flex lg:h-full items-center justify-center overflow-hidden rounded-2xl bg-slate-100 p-0 dark:bg-slate-800">
           <img src={activeImage} alt={`${product.name} view ${selectedImage + 1}`} className="h-full w-full cursor-zoom-in object-cover" data-lightbox-trigger="product-main" />
         </div>
       </Card>
