@@ -15,16 +15,16 @@ const ProductGrid = () => {
         <p className="text-sm text-slate-600 dark:text-slate-300">Free local pickup available</p>
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3 ">
         {sortedProducts.map((product) => (
-          <Card key={product.id} className="group overflow-hidden transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-            <Link to={`/products/${product.id}`} className="block">
-              <div className="relative h-44 overflow-hidden">
-                <img src={product.images[0]} alt={`${product.name} placeholder`} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+          <Card key={product.id} className="h-full overflow-hidden transition duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+            <Link to={`/products/${product.id}`} className="h-full flex flex-col">
+              <div className="relative w-full min-h-60 overflow-hidden ">
+                <img src={product.images[0]} alt={`${product.name} placeholder`} className="h-full w-full object-contain transition duration-500 group-hover:scale-105" />
                 <Badge className="absolute left-3 top-3 bg-white/90 text-slate-700 dark:bg-slate-900/85 dark:text-slate-200">{product.tag}</Badge>
               </div>
 
-              <CardSection>
+              <CardSection className="mt-auto ">
                 <h3 className="text-lg font-semibold tracking-tight">{product.name}</h3>
                 <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{product.description}</p>
 

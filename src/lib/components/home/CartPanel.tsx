@@ -22,7 +22,7 @@ const CartPanel = () => {
 
   return (
     <Card className="h-fit p-5 lg:sticky lg:top-6">
-      <h2 className="text-xl mb-5 font-semibold tracking-tight">Your Bag</h2>
+      <h2 className="text-xl mb-5 font-semibold tracking-tight">Your Cart</h2>
       {!onlineOrdersEnabled ? (
         <>
           {/* <p className="mt-3 mb-3 rounded-xl border border-dashed border-slate-300 px-4 py-5 text-sm text-slate-600 dark:border-slate-600 dark:text-slate-300">Online orders coming soon.</p> */}

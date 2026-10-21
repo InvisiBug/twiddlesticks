@@ -38,30 +38,37 @@ const ProductDetailInfo = () => {
       <p className="text-3xl font-semibold text-slate-900 dark:text-slate-100">{formatMoney(product.price)}</p>
       <p className="leading-relaxed text-slate-700 dark:text-slate-300">{product.longDescription}</p>
 
-      <Card className="p-5">
-        <h2 className="text-base font-semibold">Product details</h2>
-        <ul className="mt-3 space-y-2 text-sm text-slate-700 dark:text-slate-300">
-          {product.details.map((detail) => (
-            <li key={detail} className="flex items-start gap-2">
-              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-500 dark:bg-slate-400" aria-hidden="true" />
-              <span>{detail}</span>
-            </li>
-          ))}
-        </ul>
-      </Card>
-
-      {availableColors?.length > 0 ? (
+      <div className="grid gap-5 md:grid-cols-2">
         <Card className="p-5">
-          <h2 className="text-base font-semibold">Available colours</h2>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {availableColors.map((color) => (
-              <span key={color} className="rounded-full border border-slate-300 px-3 py-1 text-sm font-medium text-slate-700 dark:border-slate-600 dark:text-slate-200">
-                {color}
-              </span>
+          <h2 className="text-base font-semibold">Product details</h2>
+          <ul className="mt-3 space-y-2 text-sm text-slate-700 dark:text-slate-300">
+            {product.details.map((detail) => (
+              <li key={detail} className="flex items-start gap-2">
+                <span className="mt-1 h-1.5 w-1.5 rounded-full bg-slate-500 dark:bg-slate-400" aria-hidden="true" />
+                <span>{detail}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </Card>
-      ) : null}
+
+        {availableColors?.length > 0 ? (
+          <Card className="p-5">
+            <h2 className="text-base font-semibold">Available colours</h2>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {availableColors.map((color) => (
+                <span key={color} className="rounded-full border border-slate-300 px-3 py-1 text-sm font-medium text-slate-700 dark:border-slate-600 dark:text-slate-200">
+                  {color}
+                </span>
+              ))}
+            </div>
+          </Card>
+        ) : null}
+      </div>
+
+      <Card className="p-5 border-red-500! dark:border-red-400!">
+        <h2 className="text-base font-semibold text-orange-200">Disclaimer</h2>
+        <p>Something something disclaimer text goes here.</p>
+      </Card>
 
       {onlineOrdersEnabled ? (
         <div className="flex flex-col gap-3 sm:flex-row">
