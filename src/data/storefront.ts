@@ -45,6 +45,12 @@ export const maxRelatedProducts = 4;
 export const coreText =
   "I don't really think about the cores too much, so there are a few different designs. \n I'm working towards having a way of requesting a specific core on this site when placing an order\n Send me a message if theres a specific type you'd like. \n The image below is what I currently have ready to go";
 
+const standardCoreOptions = [
+  { label: "3mm Fiberglass", image: cores },
+  { label: "3mm Carbon", image: cores },
+  { label: "5mm Fiberglass", image: cores },
+];
+
 // Site data
 export const heroImages = [hero1, hero2];
 
@@ -76,6 +82,7 @@ export const products: Product[] = [
     images: [clearLED1, clearLED2, clearLED3, clearLED4],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
     availableColours: ["Clear"],
+    coreOptions: [...standardCoreOptions],
   },
   {
     id: 2,
@@ -87,6 +94,7 @@ export const products: Product[] = [
     images: [blackCover, black1],
     availableColours: ["Black"],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
+    coreOptions: [...standardCoreOptions],
   },
   {
     id: 3,
@@ -98,6 +106,11 @@ export const products: Product[] = [
     images: [spiralCover, spiral1, spiral2],
     details: ["250mm long", "3mm core diameter", "50 grams"],
     availableColours: ["Green & Orange Blend, Red, Green & Purple Blend, Purple & Green Blend, Yellow Orange"],
+    coreOptions: [
+      { label: "2.5mm Fiberglass", image: cores },
+      { label: "3mm Fiberglass", image: cores },
+      { label: "3mm Carbon", image: cores },
+    ],
   },
   {
     id: 4,
@@ -109,6 +122,7 @@ export const products: Product[] = [
     images: [circle, circle1, circle2],
     details: ["250mm long", "3mm core diameter", "500 grams"],
     availableColours: ["Red", "Green & Purple Blend"],
+    coreOptions: [...standardCoreOptions],
   },
   {
     id: 5,
@@ -120,6 +134,11 @@ export const products: Product[] = [
     images: [triangleCover, triangle1, triangle2],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
     availableColours: ["Blue", "Orange", "Green & Purple Blend", "Green"],
+    coreOptions: [
+      { label: "2mm Fiberglass", image: cores },
+      { label: "2.5mm Fiberglass", image: cores },
+      { label: "3mm Carbon", image: cores },
+    ],
   },
   {
     id: 6,
@@ -130,6 +149,7 @@ export const products: Product[] = [
     tag: "It's a stand",
     images: [standCover, stand1],
     details: ["Needs no batteries", "The ultimate in twiddle organisation"],
+    coreOptions: [{ label: "No core required", image: cores }],
   },
 ];
 

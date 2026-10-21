@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Card, CardSection, Badge, AddToBagButton } from "@/lib/components";
 import { useContext } from "@/lib/context";
-import { formatMoney } from "@/lib/helpers";
+import { formatMoney, getDefaultCoreOption } from "@/lib/helpers";
 
 const ProductGrid = () => {
   const { onlineOrdersEnabled, products } = useContext();
@@ -31,7 +31,7 @@ const ProductGrid = () => {
                 <div className="mt-4 flex items-center justify-between">
                   <p className="text-xl font-semibold tracking-tight">{formatMoney(product.price)}</p>
                   {onlineOrdersEnabled ? (
-                    <AddToBagButton productId={product.id} preventNavigation className="sm:min-w-40" />
+                    <AddToBagButton productId={product.id} selectedCore={getDefaultCoreOption(product)} preventNavigation className="sm:min-w-40" />
                   ) : (
                     <p className="max-w-2/3 rounded-md border border-dashed border-slate-300 px-3 py-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-600 dark:text-slate-300">Online Orders Coming soon</p>
                   )}

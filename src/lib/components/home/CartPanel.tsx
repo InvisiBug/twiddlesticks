@@ -12,12 +12,12 @@ const CartPanel = () => {
   const totalItems = getTotalItems(cart);
   const totalPrice = useMemo(() => getTotalPrice(cart, products), [cart, products]);
 
-  const handleRemoveFromCart = (id: number) => {
-    setCart(removeItemFromCart(cart, id));
+  const handleRemoveFromCart = (id: number, selectedCore: string) => {
+    setCart(removeItemFromCart(cart, id, selectedCore));
   };
 
-  const handleAddToCart = (id: number) => {
-    setCart(addItemToCart(cart, id));
+  const handleAddToCart = (id: number, selectedCore: string) => {
+    setCart(addItemToCart(cart, id, selectedCore));
   };
 
   return (
@@ -37,21 +37,22 @@ const CartPanel = () => {
           ) : (
             <div className="mt-5 space-y-3">
               {cartItems.map((item) => (
-                <Card key={item.id} className="rounded-xl p-3">
+                <Card key={item.key} className="rounded-xl p-3">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <p className="font-medium">{item.name}</p>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">{formatMoney(item.price)} each</p>
+                      <p className="font-medium">{item.product.name}</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">Core: {item.selectedCore}</p>
+                      <p className="text-sm text-slate-500 dark:text-slate-400">{formatMoney(item.product.price)} each</p>
                     </div>
 
                     <div className="flex gap-2 items-center ">
-                      <Button onClick={() => handleRemoveFromCart(item.id)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm leading-none flex items-center justify-center">
+                      <Button onClick={() => handleRemoveFromCart(item.productId, item.selectedCore)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm leading-none flex items-center justify-center">
                         -
                       </Button>
 
-                      <span className="w-5 text-center text-sm font-medium">{cart[item.id]}</span>
+                      <span className="w-5 text-center text-sm font-medium">{item.quantity}</span>
 
-                      <Button onClick={() => handleAddToCart(item.id)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm leading-none flex items-center justify-center">
+                      <Button onClick={() => handleAddToCart(item.productId, item.selectedCore)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm leading-none flex items-center justify-center">
                         +
                       </Button>
                     </div>

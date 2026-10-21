@@ -1,3 +1,8 @@
+export type CoreOption = {
+  label: string;
+  image?: string;
+};
+
 export type Product = {
   id: number;
   name: string;
@@ -8,6 +13,7 @@ export type Product = {
   images: string[];
   details: string[];
   availableColours?: string[];
+  coreOptions?: CoreOption[];
 };
 
 export type Festival = {
@@ -26,7 +32,7 @@ export type GalleryPhoto = {
   stage: string;
 };
 
-export type Cart = Record<number, number>;
+export type Cart = Record<string, number>;
 
 export type Theme = "light" | "dark";
 

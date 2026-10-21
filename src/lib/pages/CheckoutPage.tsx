@@ -67,12 +67,12 @@ export const CheckoutPage = () => {
           ) : (
             <div className="mt-4 space-y-2">
               {cartItems.map((item) => (
-                <Card key={item.id} className="rounded-lg px-3 py-2 text-sm">
+                <Card key={item.key} className="rounded-lg px-3 py-2 text-sm">
                   <div className="flex items-center justify-between">
                     <span>
-                      {item.name} x{cart[item.id]}
+                      {item.product.name} ({item.selectedCore}) x{item.quantity}
                     </span>
-                    <span>{formatMoney(item.price * (cart[item.id] ?? 0))}</span>
+                    <span>{formatMoney(item.product.price * item.quantity)}</span>
                   </div>
                 </Card>
               ))}
