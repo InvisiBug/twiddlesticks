@@ -1,0 +1,26 @@
+name: twiddlesticks
+
+namespace: kavanest
+env:
+  APP_VERSION: 3e4147afa0f4600392b4dd4d4bfd745a71715afd
+
+deployment:
+  - name: twiddlesticks
+    image: invisibug/twiddlesticks
+    ports:
+      - port: 80
+    # env:
+    # Handled in Dockerfile.live
+
+ingress:
+  - name: twiddlesticks.co.uk
+    selector: twiddlesticks
+    path: /.*
+    port: 80
+    host: twiddlesticks.co.uk
+
+service:
+  loadBalancer:
+    - name: twiddlesticks
+      selector: twiddlesticks
+      port: 80

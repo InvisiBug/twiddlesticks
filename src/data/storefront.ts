@@ -1,145 +1,164 @@
-import candlePlaceholder from '../components/ui/assets/placeholder-candle.svg'
-import detailA from '../components/ui/assets/placeholder-detail-a.svg'
-import detailB from '../components/ui/assets/placeholder-detail-b.svg'
-import detailC from '../components/ui/assets/placeholder-detail-c.svg'
-import heroPlaceholder from '../components/ui/assets/hero-market-placeholder.svg'
-import mugPlaceholder from '../components/ui/assets/placeholder-mug.svg'
-import totePlaceholder from '../components/ui/assets/placeholder-tote.svg'
-import type { Festival, Product } from '../types'
+import type { Festival, GalleryPhoto, Product } from "../types";
+
+// Hero Images
+import hero1 from "@/lib/images/light/hero/hero1.jpg";
+import hero2 from "@/lib/images/light/hero/hero2.jpg";
+
+// Clear LED
+import clearLED1 from "@/lib/images/light/clearLED/led-1.jpg";
+import clearLED2 from "@/lib/images/light/clearLED/led-2.jpg";
+import clearLED3 from "@/lib/images/light/clearLED/led-3.jpg";
+import clearLED4 from "@/lib/images/light/clearLED/led-4.jpg";
+
+// Coloured LED
+import blackCover from "@/lib/images/light/colouredLED/cover.jpg";
+import black1 from "@/lib/images/light/colouredLED/1.jpg";
+
+// Spiral
+import spiralCover from "@/lib/images/light/spiral/cover.jpg";
+import spiral1 from "@/lib/images/light/spiral/1.jpg";
+import spiral2 from "@/lib/images/light/spiral/2.jpg";
+
+// Circle
+import circle from "@/lib/images/light/circle/cover.jpg";
+import circle1 from "@/lib/images/light/circle/1.jpg";
+import circle2 from "@/lib/images/light/circle/2.jpg";
+
+// Triangle
+import triangleCover from "@/lib/images/light/triangle/cover.jpg";
+import triangle1 from "@/lib/images/light/triangle/1.jpg";
+import triangle2 from "@/lib/images/light/triangle/2.jpg";
+
+// Stand
+import standCover from "@/lib/images/light/stand/cover.jpg";
+import stand1 from "@/lib/images/light/stand/1.jpg";
+
+// Variables
+export const onlineOrdersEnabled = true;
+export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
+export const maxRelatedProducts = 4;
+
+// Site data
+export const heroImages = [hero1, hero2];
+
+export const festivals: Festival[] = [
+  {
+    name: "Leeds Luggling Convention",
+    date: "Nov 2, 2026",
+    location: "Leeds",
+    hours: "10:00 AM - 4:00 PM",
+    note: "Come try prototypes in person and collect pre-ordered pieces.",
+  },
+  {
+    name: "BJC",
+    date: "Apr 16, 2026",
+    location: "South of london somewhere",
+    hours: "its like 5 days",
+    note: "Featuring flowception crew LED space",
+  },
+  {
+    name: "Slack fest",
+    date: "Summer 2027",
+    location: "Manchester",
+    hours: "4 Days",
+    note: "My first and ongoing favourite circus festival. The Flowception dome will also be there",
+  },
+];
 
 export const products: Product[] = [
   {
     id: 1,
-    name: 'Handmade Mug',
-    price: 24,
-    description: 'Ceramic mug, glazed and fired by hand.',
-    longDescription:
-      'A hand-thrown ceramic mug with a comfortable handle and satin glaze. Built for everyday coffee and tea rituals.',
-    tag: 'Bestseller',
-    image: mugPlaceholder,
-    images: [mugPlaceholder, detailA, detailB],
-    details: ['12 oz capacity', 'Microwave safe', 'Top-rack dishwasher safe'],
+    name: "Clear LED Twiddle",
+    price: 50,
+    description: "The dark mode twiddle",
+    longDescription: "This twiddle lights up with LED lights, perfect for dark mode enthusiasts.",
+    tag: "Expensive",
+    images: [clearLED1, clearLED2, clearLED3, clearLED4],
+    details: ["Battery operated", "LED lights", "Durable plastic body"],
+    availableColours: ["Clear"],
   },
   {
     id: 2,
-    name: 'Canvas Tote',
-    price: 18,
-    description: 'Thick cotton tote for books, groceries, or everyday use.',
-    longDescription:
-      'Durable cotton canvas tote with reinforced seams and long handles. Folds flat for travel and market runs.',
-    tag: 'New',
-    image: totePlaceholder,
-    images: [totePlaceholder, detailB, detailC],
-    details: ['100% cotton canvas', 'Machine washable', 'Fits up to 15-inch laptop'],
+    name: "Black LED Twiddle",
+    price: 50,
+    description: "The dark mode twiddle",
+    longDescription: "This version has a black body and a clear window to allow the light through",
+    tag: "Super Cool",
+    images: [blackCover, black1],
+    availableColours: ["Black"],
+    details: ["Battery operated", "LED lights", "Durable plastic body"],
   },
   {
     id: 3,
-    name: 'Scented Candle',
-    price: 16,
-    description: 'Soy wax candle with a soft cedar and vanilla scent.',
-    longDescription:
-      'Small-batch soy wax candle poured in reusable glass. Soft throw designed for bedrooms, offices, and cozy corners.',
-    tag: 'Limited',
-    image: candlePlaceholder,
-    images: [candlePlaceholder, detailC, detailA],
-    details: ['40 hour burn time', 'Soy wax blend', 'Phthalate-free fragrance'],
+    name: "Spiral Twiddle",
+    price: 30,
+    description: "The original spiral twiddle",
+    longDescription: "This twiddle spins slower and for longer than other variants due to the thinness of the core",
+    tag: "My fave",
+    images: [spiralCover, spiral1, spiral2],
+    details: ["250mm long", "3mm core diameter", "50 grams"],
+    availableColours: ["Green & Orange Blend, Red, Green & Purple Blend, Purple & Green Blend, Yellow Orange"],
   },
   {
     id: 4,
-    name: 'Stoneware Bowl',
-    price: 28,
-    description: 'Wide handmade bowl for ramen, salads, and grain bowls.',
-    longDescription:
-      'Stoneware bowl with a broad rim and sturdy base. Perfect for hearty meals and easy plating.',
-    tag: 'Popular',
-    image: mugPlaceholder,
-    images: [mugPlaceholder, detailB, detailA],
-    details: ['Approx. 7.5 inch diameter', 'Oven safe up to 350 F', 'Food-safe glaze'],
+    name: "Circle Twiddle",
+    price: 30,
+    description: "The new circle twiddle",
+    longDescription: "Slightly heavier than the spiral version, most people prefer this type.",
+    tag: "Bestseller",
+    images: [circle, circle1, circle2],
+    details: ["250mm long", "3mm core diameter", "500 grams"],
+    availableColours: ["Red", "Green & Purple Blend"],
   },
   {
     id: 5,
-    name: 'Market Apron',
-    price: 34,
-    description: 'Heavy cotton apron with two deep front pockets.',
-    longDescription:
-      'Workhorse market apron cut from durable cotton with an adjustable neck strap and roomy pockets.',
-    tag: 'Small Batch',
-    image: totePlaceholder,
-    images: [totePlaceholder, detailA, detailC],
-    details: ['Adjustable neck strap', 'Double front pockets', 'One size fits most'],
+    name: "Triangle Twiddle",
+    price: 30,
+    description: "The triangle twiddle",
+    longDescription: "Kinda sucks but I made one so here it is.",
+    tag: "Kinda sucks",
+    images: [triangleCover, triangle1, triangle2],
+    details: ["Battery operated", "LED lights", "Durable plastic body"],
   },
   {
     id: 6,
-    name: 'Travel Tumbler',
-    price: 22,
-    description: 'Lidded tumbler designed for coffee and tea on the go.',
-    longDescription:
-      'Lightweight travel tumbler with secure lid and clean silhouette. Fits most cup holders.',
-    tag: 'Restock',
-    image: mugPlaceholder,
-    images: [mugPlaceholder, detailC, detailB],
-    details: ['14 oz capacity', 'BPA-free lid', 'Hand wash recommended'],
+    name: "Stand",
+    price: 10,
+    description: "The stand for twiddles",
+    longDescription: "Do you have too many twiddles lying around? This stand helps keep them organized.",
+    tag: "It's a stand",
+    images: [standCover, stand1],
+    details: ["Needs no batteries", "The ultimate in twiddle organisation"],
   },
-  {
-    id: 7,
-    name: 'Gift Set Trio',
-    price: 42,
-    description: 'Curated bundle of candle, tote, and ceramic mini cup.',
-    longDescription:
-      'Gift-ready set featuring three customer favorites in one bundle, wrapped and ready for special occasions.',
-    tag: 'Bundle',
-    image: candlePlaceholder,
-    images: [candlePlaceholder, detailA, detailB],
-    details: ['Includes 3 items', 'Seasonal wrapping included', 'Best value bundle'],
-  },
-  {
-    id: 8,
-    name: 'Linen Table Runner',
-    price: 26,
-    description: 'Soft woven runner to style dining and coffee tables.',
-    longDescription:
-      'Textured linen runner that adds warmth and contrast to tablescapes while staying easy to clean.',
-    tag: 'New',
-    image: totePlaceholder,
-    images: [totePlaceholder, detailB, detailC],
-    details: ['72 inch length', 'Linen blend', 'Machine wash cold'],
-  },
-  {
-    id: 9,
-    name: 'Mini Candle Pair',
-    price: 19,
-    description: 'Two small candles in seasonal scents for gifting.',
-    longDescription:
-      'A pair of mini candles in rotating scents. Ideal for testing fragrances or gifting to friends.',
-    tag: 'Giftable',
-    image: candlePlaceholder,
-    images: [candlePlaceholder, detailC, detailA],
-    details: ['Set of 2', '20 hour burn each', 'Reusable tins'],
-  },
-]
+];
 
-export const festivals: Festival[] = [
+export const galleryPhotos: GalleryPhoto[] = [
   {
-    name: 'Riverfront Makers Market',
-    date: 'Nov 2, 2026',
-    location: 'Portland Waterfront Park',
-    hours: '10:00 AM - 4:00 PM',
-    note: 'Great for local pickup and first-time product tryouts.',
+    id: 1,
+    src: hero1,
+    title: "Material Prep",
+    caption: "Sorting cords and shell pieces before cutting and balancing each twiddle.",
+    stage: "Prep",
   },
   {
-    name: 'Autumn Craft Fair',
-    date: 'Nov 16, 2026',
-    location: 'Pearl District Event Hall',
-    hours: '11:00 AM - 5:00 PM',
-    note: 'Smell the candles, feel materials, and pick up your order in person.',
+    id: 2,
+    src: hero2,
+    title: "First Assembly",
+    caption: "Early assembly pass while testing rotation feel and thumb grip comfort.",
+    stage: "Assembly",
   },
   {
-    name: 'Holiday Night Bazaar',
-    date: 'Dec 6, 2026',
-    location: 'SE Community Warehouse',
-    hours: '5:00 PM - 9:00 PM',
-    note: 'Limited edition items available first at this event.',
+    id: 3,
+    src: spiralCover,
+    title: "Spiral Tuning",
+    caption: "Checking the balance and spin of the first spiral prototype before polishing.",
+    stage: "Tuning",
   },
-]
-
-export const heroImage = heroPlaceholder
+  {
+    id: 4,
+    src: circle,
+    title: "Circle Build",
+    caption: "Final adjustments on the round body to keep the motion smooth and consistent.",
+    stage: "Finishing",
+  },
+];
