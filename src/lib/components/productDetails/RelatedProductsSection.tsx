@@ -1,5 +1,5 @@
 import { Link, useParams } from "react-router-dom";
-import { formatMoney, getDefaultCoreOption } from "@/lib/helpers";
+import { formatMoney, getDefaultCoreOption, getDefaultColourOption } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
 import { AddToBagButton, Card } from "@/lib/components";
 import { useRelatedProducts } from "@/lib/helpers";
@@ -37,7 +37,7 @@ const RelatedProducts: React.FC = () => {
                   View details
                 </Link>
                 {onlineOrdersEnabled ? (
-                  <AddToBagButton productId={product.id} selectedCore={getDefaultCoreOption(product)} className="sm:min-w-25" />
+                  <AddToBagButton productId={product.id} selectedCore={getDefaultCoreOption(product)} selectedColour={getDefaultColourOption(product)} className="sm:min-w-25" />
                 ) : (
                   <p className="rounded-md border border-dashed border-slate-300 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-600 dark:text-slate-300">
                     Online Orders <br />

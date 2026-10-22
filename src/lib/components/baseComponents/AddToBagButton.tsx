@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, type ButtonHTMLAttributes, type MouseEvent } from "react";
 import { useContext } from "@/lib/context";
-import { addItemToCart, DEFAULT_CORE_OPTION } from "@/lib/helpers";
+import { addItemToCart, DEFAULT_CORE_OPTION, DEFAULT_COLOUR_OPTION } from "@/lib/helpers";
 import { Button } from "./Button";
 
-const AddToBagButton = ({ productId, selectedCore, feedbackDurationMs = 1500, preventNavigation, className, onClick, ...buttonProps }: AddToBagButtonProps) => {
+const AddToBagButton = ({ productId, selectedCore, selectedColour, feedbackDurationMs = 1500, preventNavigation, className, onClick, ...buttonProps }: AddToBagButtonProps) => {
   const { cart, setCart } = useContext();
   const [isRecentlyAdded, setIsRecentlyAdded] = useState(false);
   const feedbackTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -23,7 +23,7 @@ const AddToBagButton = ({ productId, selectedCore, feedbackDurationMs = 1500, pr
 
     onClick?.(event);
 
-    setCart(addItemToCart(cart, productId, selectedCore ?? DEFAULT_CORE_OPTION));
+    setCart(addItemToCart(cart, productId, selectedCore ?? DEFAULT_CORE_OPTION, selectedColour ?? DEFAULT_COLOUR_OPTION));
     setIsRecentlyAdded(true);
 
     if (feedbackTimer.current) {
@@ -48,6 +48,7 @@ export default AddToBagButton;
 type AddToBagButtonProps = {
   productId: number;
   selectedCore?: string;
+  selectedColour?: string;
   feedbackDurationMs?: number;
   preventNavigation?: boolean;
 } & Omit<ButtonHTMLAttributes<HTMLButtonElement>, "children">;

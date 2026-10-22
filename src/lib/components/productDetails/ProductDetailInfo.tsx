@@ -3,7 +3,7 @@ import { useProductById } from "@/lib/helpers/product";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AddToBagButton, Badge, Card, InstagramOrderBanner } from "@/lib/components";
-import { formatMoney, getDefaultCoreOption } from "@/lib/helpers";
+import { formatMoney, getDefaultCoreOption, getDefaultColourOption } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
 import CoreInfoAccordion from "./CoreInfoAccordion";
 
@@ -13,6 +13,7 @@ const ProductDetailInfo = () => {
 
   const product = useProductById(products, productId);
   const [selectedCore, setSelectedCore] = useState<string>("");
+  const [selectedColour, setSelectedColour] = useState<string>("");
 
   useEffect(() => {
     if (!product) {
@@ -20,6 +21,7 @@ const ProductDetailInfo = () => {
     }
 
     setSelectedCore(getDefaultCoreOption(product));
+    setSelectedColour(getDefaultColourOption(product));
   }, [product]);
 
   const availableColors = useMemo(() => {
@@ -115,8 +117,29 @@ const ProductDetailInfo = () => {
             </details>
           ) : null}
 
+          {availableColors.length ? (
+            <details className="rounded-xl border border-slate-300 p-4 dark:border-slate-600">
+              <summary className="cursor-pointer text-sm font-medium text-slate-700 dark:text-slate-200">Select colour ({selectedColour || getDefaultColourOption(product)})</summary>
+
+              <label className="mt-3 block text-sm font-medium text-slate-700 dark:text-slate-200">
+                Colour
+                <select
+                  value={selectedColour}
+                  onChange={(event) => setSelectedColour(event.target.value)}
+                  className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 dark:border-slate-600 dark:bg-slate-900 dark:text-slate-100"
+                >
+                  {availableColors.map((colour) => (
+                    <option key={colour} value={colour}>
+                      {colour}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </details>
+          ) : null}
+
           <div className="flex flex-col gap-3 sm:flex-row">
-            <AddToBagButton productId={product.id} selectedCore={selectedCore || getDefaultCoreOption(product)} className="sm:min-w-40" />
+            <AddToBagButton productId={product.id} selectedCore={selectedCore || getDefaultCoreOption(product)} selectedColour={selectedColour || getDefaultColourOption(product)} className="sm:min-w-40" />
             <Link to="/checkout" className="rounded-lg border border-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800 sm:min-w-40">
               Go to checkout
             </Link>

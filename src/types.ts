@@ -32,7 +32,25 @@ export type GalleryPhoto = {
   stage: string;
 };
 
-export type Cart = Record<string, number>;
+export type CartCore = {
+  name: string;
+  total: number;
+};
+
+export type CartColour = {
+  name: string;
+  total: number;
+};
+
+export type CartProduct = {
+  id: number;
+  name: string;
+  total: number;
+  cores: CartCore[];
+  colours: CartColour[];
+};
+
+export type Cart = CartProduct[];
 
 export type Theme = "light" | "dark";
 

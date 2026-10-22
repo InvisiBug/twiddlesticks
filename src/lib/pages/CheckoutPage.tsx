@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
-import { getStripePaymentLink, getThemedProducts, getCartItems, getTotalItems, getTotalPrice, formatMoney } from "@/lib/helpers";
+import { getStripePaymentLink, getThemedProducts, getCartItems, getTotalItems, getTotalPrice, formatMoney, DEFAULT_COLOUR_OPTION } from "@/lib/helpers";
 import { ButtonLink, Card, Field, PageShell } from "@/lib/components";
 import { useContext } from "@/lib/context";
 
@@ -70,7 +70,8 @@ export const CheckoutPage = () => {
                 <Card key={item.key} className="rounded-lg px-3 py-2 text-sm">
                   <div className="flex items-center justify-between">
                     <span>
-                      {item.product.name} ({item.selectedCore}) x{item.quantity}
+                      {item.product.name} ({item.selectedCore}
+                      {item.selectedColour !== DEFAULT_COLOUR_OPTION ? `, ${item.selectedColour}` : ""}) x{item.quantity}
                     </span>
                     <span>{formatMoney(item.product.price * item.quantity)}</span>
                   </div>

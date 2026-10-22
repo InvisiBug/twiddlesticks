@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button, Card, InstagramOrderBanner } from "@/lib/components";
 import { useContext } from "@/lib/context";
 import { useMemo } from "react";
-import { getCartItems, getTotalItems, formatMoney, removeItemFromCart, addItemToCart, getTotalPrice } from "@/lib/helpers";
+import { getCartItems, getTotalItems, formatMoney, removeItemFromCart, addItemToCart, getTotalPrice, DEFAULT_COLOUR_OPTION } from "@/lib/helpers";
 
 const CartPanel = () => {
   const { onlineOrdersEnabled, cart, setCart, products } = useContext();
@@ -12,12 +12,12 @@ const CartPanel = () => {
   const totalItems = getTotalItems(cart);
   const totalPrice = useMemo(() => getTotalPrice(cart, products), [cart, products]);
 
-  const handleRemoveFromCart = (id: number, selectedCore: string) => {
-    setCart(removeItemFromCart(cart, id, selectedCore));
+  const handleRemoveFromCart = (id: number, selectedCore: string, selectedColour: string) => {
+    setCart(removeItemFromCart(cart, id, selectedCore, selectedColour));
   };
 
-  const handleAddToCart = (id: number, selectedCore: string) => {
-    setCart(addItemToCart(cart, id, selectedCore));
+  const handleAddToCart = (id: number, selectedCore: string, selectedColour: string) => {
+    setCart(addItemToCart(cart, id, selectedCore, selectedColour));
   };
 
   return (
@@ -42,17 +42,18 @@ const CartPanel = () => {
                     <div>
                       <p className="font-medium">{item.product.name}</p>
                       <p className="text-sm text-slate-500 dark:text-slate-400">Core: {item.selectedCore}</p>
+                      {item.selectedColour !== DEFAULT_COLOUR_OPTION ? <p className="text-sm text-slate-500 dark:text-slate-400">Colour: {item.selectedColour}</p> : null}
                       <p className="text-sm text-slate-500 dark:text-slate-400">{formatMoney(item.product.price)} each</p>
                     </div>
 
                     <div className="flex gap-2 items-center ">
-                      <Button onClick={() => handleRemoveFromCart(item.productId, item.selectedCore)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm leading-none flex items-center justify-center">
+                      <Button onClick={() => handleRemoveFromCart(item.productId, item.selectedCore, item.selectedColour)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm leading-none flex items-center justify-center">
                         -
                       </Button>
 
                       <span className="w-5 text-center text-sm font-medium">{item.quantity}</span>
 
-                      <Button onClick={() => handleAddToCart(item.productId, item.selectedCore)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm leading-none flex items-center justify-center">
+                      <Button onClick={() => handleAddToCart(item.productId, item.selectedCore, item.selectedColour)} variant="outline" className="h-7 w-7 rounded-md p-0 text-sm leading-none flex items-center justify-center">
                         +
                       </Button>
                     </div>
