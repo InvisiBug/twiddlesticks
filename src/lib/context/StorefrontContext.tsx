@@ -11,6 +11,7 @@ export const ContextProvider = ({ children, value }: ContextProviderProps) => {
   const [cart, setCart] = useState<Cart>(getInitialCart);
 
   const [products, setProducts] = useState<Product[]>(getThemedProducts(theme, storeProducts));
+  console.log(cart);
 
   useEffect(() => {
     setProducts(getThemedProducts(theme, storeProducts));
