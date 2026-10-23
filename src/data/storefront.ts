@@ -41,6 +41,7 @@ export const cores = coresImage;
 export const onlineOrdersEnabled = false;
 export const useEtsyOrderBanner = true;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
+export const githubProfileUrl = "https://github.com/InvisiBug";
 export const maxRelatedProducts = 4;
 
 export const gripText = "Grips are chosen as an option in the Etsy listing \n The image below is what I currently have ready to go";

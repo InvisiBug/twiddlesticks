@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { extractLightboxImageFromClick, getInitialCookieConsent, persistCookieConsent } from "@/lib/helpers";
 import { GalleryPage, ProductDetailPage, HomePage } from "@/lib/pages";
-import { festivals, instagramOrderUrl, etsyUrls, onlineOrdersEnabled, useEtsyOrderBanner } from "@/data/storefront";
+import { festivals, githubProfileUrl, instagramOrderUrl, etsyUrls, onlineOrdersEnabled, useEtsyOrderBanner } from "@/data/storefront";
 import type { LightboxImage, CookieConsent } from "./types";
 import { ContextProvider } from "@/lib/context";
 import { CookieBanner } from "@/lib/components";
@@ -34,7 +34,7 @@ function App() {
   }, [lightboxImage]);
 
   return (
-    <ContextProvider value={{ onlineOrdersEnabled, instagramOrderUrl, etsyOrderUrl: etsyUrls.default, useEtsyOrderBanner }}>
+    <ContextProvider value={{ onlineOrdersEnabled, instagramOrderUrl, githubProfileUrl, etsyOrderUrl: etsyUrls.default, useEtsyOrderBanner }}>
       <AppConfig>
         <div
           onClickCapture={(event) => {
