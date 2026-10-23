@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { Card, CardSection, Badge, AddToBagButton } from "@/lib/components";
+import { Card, CardSection, Badge } from "@/lib/components";
 import { useContext } from "@/lib/context";
-import { formatMoney, getDefaultCoreOption, getDefaultColourOption } from "@/lib/helpers";
+import { formatMoney } from "@/lib/helpers";
 
 const ProductGrid = () => {
-  const { onlineOrdersEnabled, products } = useContext();
+  const { products } = useContext();
 
   const sortedProducts = [...products].sort((a, b) => a.id - b.id);
 
@@ -30,11 +30,7 @@ const ProductGrid = () => {
 
                 <div className="mt-4 flex items-center justify-between">
                   <p className="text-xl font-semibold tracking-tight">{formatMoney(product.price)}</p>
-                  {onlineOrdersEnabled ? (
-                    <AddToBagButton productId={product.id} selectedCore={getDefaultCoreOption(product)} selectedColour={getDefaultColourOption(product)} preventNavigation className="sm:min-w-40" />
-                  ) : (
-                    <p className="max-w-2/3 rounded-md border border-dashed border-slate-300 px-3 py-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-600 dark:text-slate-300">Online Orders Coming soon</p>
-                  )}
+                  <span className="rounded-md border border-slate-300 px-3 py-2 text-center text-xs font-semibold uppercase tracking-wide text-slate-600 dark:border-slate-600 dark:text-slate-300">View details</span>
                 </div>
               </CardSection>
             </Link>

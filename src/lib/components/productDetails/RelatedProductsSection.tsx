@@ -1,11 +1,11 @@
 import { Link, useParams } from "react-router-dom";
-import { formatMoney, getDefaultCoreOption, getDefaultColourOption } from "@/lib/helpers";
+import { formatMoney } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
-import { AddToBagButton, Card } from "@/lib/components";
+import { Card } from "@/lib/components";
 import { useRelatedProducts } from "@/lib/helpers";
 
 const RelatedProducts: React.FC = () => {
-  const { onlineOrdersEnabled, products, maxRelatedProducts } = useContext();
+  const { products, maxRelatedProducts } = useContext();
   const { productId } = useParams();
 
   const relatedProducts = useRelatedProducts(products, productId).slice(0, maxRelatedProducts); // Assuming productId is not available here
@@ -36,14 +36,6 @@ const RelatedProducts: React.FC = () => {
                 <Link to={`/products/${product.id}`} className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800">
                   View details
                 </Link>
-                {onlineOrdersEnabled ? (
-                  <AddToBagButton productId={product.id} selectedCore={getDefaultCoreOption(product)} selectedColour={getDefaultColourOption(product)} className="sm:min-w-25" />
-                ) : (
-                  <p className="rounded-md border border-dashed border-slate-300 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:border-slate-600 dark:text-slate-300">
-                    Online Orders <br />
-                    Coming soon
-                  </p>
-                )}
               </div>
             </div>
           </Card>

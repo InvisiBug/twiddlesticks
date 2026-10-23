@@ -51,6 +51,17 @@ const standardCoreOptions = [
   { label: "5mm Fiberglass", image: cores },
 ];
 
+const defaultEtsyUrl = "https://www.etsy.com";
+
+const etsyUrls = {
+  default: "https://www.etsy.com/shop/EmBrrr",
+  blackLED: "https://www.etsy.com/uk/listing/4600959203/black-led-twiddlestick",
+  spiral: "https://www.etsy.com/uk/listing/4600882461/spiral-twiddle-stick",
+  circle: "https://www.etsy.com/uk/listing/4600953779/circle-twiddlestick",
+  triangle: "https://www.etsy.com/uk/listing/4600961175/triangle-twiddle",
+  stand: "https://www.etsy.com/uk/listing/4600983106/twiddle-stand",
+};
+
 // Site data
 export const heroImages = [hero1, hero2];
 
@@ -81,6 +92,7 @@ export const products: Product[] = [
     tag: "Expensive",
     images: [clearLED1, clearLED2, clearLED3, clearLED4],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
+    etsyUrl: etsyUrls.default,
     availableColours: ["Clear"],
     coreOptions: [...standardCoreOptions],
   },
@@ -92,6 +104,7 @@ export const products: Product[] = [
     longDescription: "This version has a black body and a clear window to allow the light through",
     tag: "Super Cool At Night",
     images: [blackCover, black1],
+    etsyUrl: etsyUrls.blackLED,
     availableColours: ["Black"],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
     coreOptions: [...standardCoreOptions],
@@ -104,6 +117,7 @@ export const products: Product[] = [
     longDescription: "The OG twiddle & my favourite. This was the one that perfected the slow roll thats charecteristic of all my twiddles. Nicely balanced and a decent weight means keeping the spin going is super easy ",
     tag: "My fave",
     images: [spiralCover, spiral1, spiral2],
+    etsyUrl: etsyUrls.spiral,
     details: ["250mm long", "3mm core diameter", "50 grams"],
     availableColours: ["Green & Orange Blend, Red, Green & Purple Blend, Purple & Green Blend, Yellow Orange"],
     coreOptions: [
@@ -121,6 +135,7 @@ export const products: Product[] = [
     tag: "Bestseller",
     images: [circle, circle1, circle2],
     details: ["250mm long", "3mm core diameter", "500 grams"],
+    etsyUrl: etsyUrls.circle,
     availableColours: ["Red", "Green & Purple Blend"],
     coreOptions: [...standardCoreOptions],
   },
@@ -132,6 +147,7 @@ export const products: Product[] = [
     longDescription: "The fastes variant I make. Its light weight body means theres less inertia, allowing for a faster roll.",
     tag: "Lightest",
     images: [triangleCover, triangle1, triangle2],
+    etsyUrl: etsyUrls.triangle,
     details: ["Battery operated", "LED lights", "Durable plastic body"],
     availableColours: ["Blue", "Orange", "Green & Purple Blend", "Green"],
     coreOptions: [
@@ -148,6 +164,7 @@ export const products: Product[] = [
     longDescription: "Do you have too many twiddles lying around? This stand helps keep them organized.",
     tag: "It's a stand",
     images: [standCover, stand1],
+    etsyUrl: etsyUrls.stand,
     details: ["Needs no batteries", "The ultimate in twiddle organisation"],
     coreOptions: [{ label: "No core required", image: cores }],
   },

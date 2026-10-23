@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { extractLightboxImageFromClick, getInitialCookieConsent, persistCookieConsent } from "@/lib/helpers";
-import { CheckoutPage, GalleryPage, ProductDetailPage, HomePage } from "@/lib/pages";
+import { GalleryPage, ProductDetailPage, HomePage } from "@/lib/pages";
 import { festivals, instagramOrderUrl, onlineOrdersEnabled } from "@/data/storefront";
 import type { LightboxImage, CookieConsent } from "./types";
 import { ContextProvider } from "@/lib/context";
@@ -47,7 +47,6 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage festivals={festivals} />} />
-              <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/gallery" element={<GalleryPage />} />
               <Route path="/products/:productId" element={<ProductDetailPage />} />
             </Routes>

@@ -12,6 +12,7 @@ export type Product = {
   tag: string;
   images: string[];
   details: string[];
+  etsyUrl?: string;
   availableColours?: string[];
   coreOptions?: CoreOption[];
 };
@@ -31,26 +32,6 @@ export type GalleryPhoto = {
   caption: string;
   stage: string;
 };
-
-export type CartCore = {
-  name: string;
-  total: number;
-};
-
-export type CartColour = {
-  name: string;
-  total: number;
-};
-
-export type CartProduct = {
-  id: number;
-  name: string;
-  total: number;
-  cores: CartCore[];
-  colours: CartColour[];
-};
-
-export type Cart = CartProduct[];
 
 export type Theme = "light" | "dark";
 
