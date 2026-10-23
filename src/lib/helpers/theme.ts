@@ -46,7 +46,7 @@ export const getThemedAsset = (asset: string, theme: Theme) => {
   const relativePath = normalizedAsset.replace(/^.*\/src\/lib\/images\//, "");
   const darkAssetPath = relativePath.replace(/^light\//, "dark/").split("?")[0];
   const darkAsset = themedImageMap[`/src/lib/images/${darkAssetPath}`];
-  console.log("🚀 ~ getThemedAsset ~ darkAsset:", darkAsset);
+  // console.log("🚀 ~ getThemedAsset ~ darkAsset:", darkAsset);
 
   return darkAsset ?? asset;
 };

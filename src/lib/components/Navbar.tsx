@@ -1,15 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import { ThemeToggle } from "@/lib/components";
 import { useContext } from "@/lib/context";
-import { useMemo } from "react";
-import { getTotalItems } from "@/lib/helpers";
 import { getToggledTheme } from "@/lib/helpers";
 
 const Navbar = () => {
-  const { onlineOrdersEnabled, theme, setTheme, cart } = useContext();
+  const { theme, setTheme } = useContext();
   const location = useLocation();
-
-  const totalItems = useMemo(() => getTotalItems(cart), [cart]);
 
   const onToggleTheme = () => {
     setTheme(getToggledTheme(theme));
@@ -28,11 +24,6 @@ const Navbar = () => {
         {!isGalleryPage ? (
           <Link to="/gallery" className="rounded-full border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800">
             Gallery
-          </Link>
-        ) : null}
-        {onlineOrdersEnabled ? (
-          <Link to="/checkout" className="rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white">
-            Cart: {totalItems}
           </Link>
         ) : null}
         <ThemeToggle theme={theme} onToggle={onToggleTheme} />

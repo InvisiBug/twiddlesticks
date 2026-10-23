@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 import { useProductById } from "@/lib/helpers/product";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { AddToBagButton, Badge, Card, InstagramOrderBanner } from "@/lib/components";
+import { Badge, Card, InstagramOrderBanner, EtsyOrderBanner } from "@/lib/components";
 import { formatMoney } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
+import CoreInfoAccordion from "./CoreInfoAccordion";
 
 const ProductDetailInfo = () => {
   const { productId } = useParams();
-  const { onlineOrdersEnabled, products } = useContext();
+  const { products, useEtsyOrderBanner } = useContext();
 
   const product = useProductById(products, productId);
 
@@ -65,6 +65,8 @@ const ProductDetailInfo = () => {
         ) : null}
       </div>
 
+      <CoreInfoAccordion product={product} />
+
       <Card className="p-5 border-red-500! dark:border-red-400!">
         <h2 className="text-base font-semibold text-orange-200">Disclaimer</h2>
         <p>
@@ -74,13 +76,17 @@ const ProductDetailInfo = () => {
         </p>
       </Card>
 
-      {onlineOrdersEnabled ? (
-        <div className="flex flex-col gap-3 sm:flex-row">
-          <AddToBagButton productId={product.id} className="sm:min-w-40" />
-          <Link to="/checkout" className="rounded-lg border border-slate-300 px-4 py-3 text-center text-sm font-semibold text-slate-800 transition hover:bg-slate-100 dark:border-slate-600 dark:text-slate-100 dark:hover:bg-slate-800 sm:min-w-40">
-            Go to checkout
-          </Link>
-        </div>
+      {product.etsyUrl ? (
+        <a
+          href={product.etsyUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center justify-center rounded-lg bg-slate-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white"
+        >
+          Order from Etsy
+        </a>
+      ) : useEtsyOrderBanner ? (
+        <EtsyOrderBanner />
       ) : (
         <InstagramOrderBanner />
       )}

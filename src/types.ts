@@ -1,3 +1,8 @@
+export type CoreOption = {
+  label: string;
+  image?: string;
+};
+
 export type Product = {
   id: number;
   name: string;
@@ -7,7 +12,9 @@ export type Product = {
   tag: string;
   images: string[];
   details: string[];
+  etsyUrl?: string;
   availableColours?: string[];
+  coreOptions?: CoreOption[];
 };
 
 export type Festival = {
@@ -25,8 +32,6 @@ export type GalleryPhoto = {
   caption: string;
   stage: string;
 };
-
-export type Cart = Record<number, number>;
 
 export type Theme = "light" | "dark";
 

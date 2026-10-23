@@ -33,10 +33,33 @@ import triangle2 from "@/lib/images/light/triangle/2.jpg";
 import standCover from "@/lib/images/light/stand/cover.jpg";
 import stand1 from "@/lib/images/light/stand/1.jpg";
 
+import coresImage from "@/lib/images/cores.jpg";
+
+export const cores = coresImage;
+
 // Variables
 export const onlineOrdersEnabled = false;
+export const useEtsyOrderBanner = true;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 export const maxRelatedProducts = 4;
+
+export const coreText =
+  "I don't really think about the cores too much, so there are a few different designs. \n I'm working towards having a way of requesting a specific core on this site when placing an order\n Send me a message if theres a specific type you'd like. \n The image below is what I currently have ready to go";
+
+const standardCoreOptions = [
+  { label: "3mm Fiberglass", image: cores },
+  { label: "3mm Carbon", image: cores },
+  { label: "5mm Fiberglass", image: cores },
+];
+
+export const etsyUrls = {
+  default: "https://www.etsy.com/shop/EmBrrr",
+  blackLED: "https://www.etsy.com/uk/listing/4600959203/black-led-twiddlestick",
+  spiral: "https://www.etsy.com/uk/listing/4600882461/spiral-twiddle-stick",
+  circle: "https://www.etsy.com/uk/listing/4600953779/circle-twiddlestick",
+  triangle: "https://www.etsy.com/uk/listing/4600961175/triangle-twiddle",
+  stand: "https://www.etsy.com/uk/listing/4600983106/twiddle-stand",
+};
 
 // Site data
 export const heroImages = [hero1, hero2];
@@ -68,7 +91,9 @@ export const products: Product[] = [
     tag: "Expensive",
     images: [clearLED1, clearLED2, clearLED3, clearLED4],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
+    etsyUrl: etsyUrls.default,
     availableColours: ["Clear"],
+    coreOptions: [...standardCoreOptions],
   },
   {
     id: 2,
@@ -78,40 +103,57 @@ export const products: Product[] = [
     longDescription: "This version has a black body and a clear window to allow the light through",
     tag: "Super Cool At Night",
     images: [blackCover, black1],
+    etsyUrl: etsyUrls.blackLED,
     availableColours: ["Black"],
     details: ["Battery operated", "LED lights", "Durable plastic body"],
+    coreOptions: [...standardCoreOptions],
   },
   {
     id: 3,
     name: "Spiral Twiddle",
     price: 30,
     description: "The original spiral twiddle",
-    longDescription: "This twiddle spins slower and for longer than other variants due to the thinness of the core",
+    longDescription: "The OG twiddle & my favourite. This was the one that perfected the slow roll thats charecteristic of all my twiddles. Nicely balanced and a decent weight means keeping the spin going is super easy ",
     tag: "My fave",
     images: [spiralCover, spiral1, spiral2],
+    etsyUrl: etsyUrls.spiral,
     details: ["250mm long", "3mm core diameter", "50 grams"],
     availableColours: ["Green & Orange Blend, Red, Green & Purple Blend, Purple & Green Blend, Yellow Orange"],
+    coreOptions: [
+      { label: "2.5mm Fiberglass", image: cores },
+      { label: "3mm Fiberglass", image: cores },
+      { label: "3mm Carbon", image: cores },
+    ],
   },
   {
     id: 4,
     name: "Circle Twiddle",
     price: 30,
     description: "The new circle twiddle",
-    longDescription: "Slightly heavier than the spiral version, most people prefer this type.",
+    longDescription: "Slightly heavier than the spiral version meaning it has more balance and a slower roll, most people prefer this type.",
     tag: "Bestseller",
     images: [circle, circle1, circle2],
     details: ["250mm long", "3mm core diameter", "500 grams"],
+    etsyUrl: etsyUrls.circle,
     availableColours: ["Red", "Green & Purple Blend"],
+    coreOptions: [...standardCoreOptions],
   },
   {
     id: 5,
     name: "Triangle Twiddle",
     price: 30,
     description: "The triangle twiddle",
-    longDescription: "Kinda sucks but I made one so here it is.",
+    longDescription: "The fastes variant I make. Its light weight body means theres less inertia, allowing for a faster roll.",
     tag: "Lightest",
     images: [triangleCover, triangle1, triangle2],
+    etsyUrl: etsyUrls.triangle,
     details: ["Battery operated", "LED lights", "Durable plastic body"],
+    availableColours: ["Blue", "Orange", "Green & Purple Blend", "Green"],
+    coreOptions: [
+      { label: "2mm Fiberglass", image: cores },
+      { label: "2.5mm Fiberglass", image: cores },
+      { label: "3mm Carbon", image: cores },
+    ],
   },
   {
     id: 6,
@@ -121,7 +163,9 @@ export const products: Product[] = [
     longDescription: "Do you have too many twiddles lying around? This stand helps keep them organized.",
     tag: "It's a stand",
     images: [standCover, stand1],
+    etsyUrl: etsyUrls.stand,
     details: ["Needs no batteries", "The ultimate in twiddle organisation"],
+    coreOptions: [{ label: "No core required", image: cores }],
   },
 ];
 

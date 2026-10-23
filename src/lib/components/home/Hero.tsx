@@ -37,7 +37,7 @@ const Hero = ({ heroImages }: ShopHeroProps) => {
         <div>
           <p className="inline-flex rounded-full bg-slate-900 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white dark:bg-slate-100 dark:text-slate-900">Twiddle Sticks</p>
           <h1 className="mt-4 max-w-3xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">Handmade stim / fidget toys that keep your hands & brain busy.</h1>
-          <p className="mt-4 max-w-2xl text-slate-600 dark:text-slate-300">Explore twiddles and head to the checkout when you're ready.</p>
+          <p className="mt-4 max-w-2xl text-slate-600 dark:text-slate-300">Explore twiddles and open any product to view full details.</p>
         </div>
 
         <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm dark:border-slate-700 dark:bg-slate-800">

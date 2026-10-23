@@ -12,7 +12,7 @@ const CookieBanner: React.FC<CookieBannerProps> = ({ onChoose }) => {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="text-sm font-semibold text-slate-900 dark:text-white">Cookies on Twiddlesticks</p>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">We use essential cookies to keep your cart and checkout working. Optional cookies help us improve your shopping experience.</p>
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">We use essential cookies to keep this site working. Optional cookies help us improve your browsing experience.</p>
         </div>
 
         <div className="flex gap-2 sm:shrink-0">
