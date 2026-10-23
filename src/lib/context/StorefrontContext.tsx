@@ -32,6 +32,7 @@ type ContextProviderProps = {
   value: {
     onlineOrdersEnabled: boolean;
     instagramOrderUrl: string;
+    githubProfileUrl: string;
     etsyOrderUrl: string;
     useEtsyOrderBanner: boolean;
   };
@@ -40,6 +41,7 @@ type ContextProviderProps = {
 type contextValue = {
   onlineOrdersEnabled: boolean;
   instagramOrderUrl: string;
+  githubProfileUrl: string;
   etsyOrderUrl: string;
   useEtsyOrderBanner: boolean;
   theme: Theme;
