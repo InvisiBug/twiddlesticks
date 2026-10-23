@@ -43,8 +43,7 @@ export const useEtsyOrderBanner = true;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 export const maxRelatedProducts = 4;
 
-export const coreText =
-  "I don't really think about the cores too much, so there are a few different designs. \n I'm working towards having a way of requesting a specific core on this site when placing an order\n Send me a message if theres a specific type you'd like. \n The image below is what I currently have ready to go";
+export const gripText = "Grips are chosen as an option in the Etsy listing \n The image below is what I currently have ready to go";
 
 const standardCoreOptions = [
   { label: "3mm Fiberglass", image: cores },

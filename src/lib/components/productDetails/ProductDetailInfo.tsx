@@ -67,14 +67,14 @@ const ProductDetailInfo = () => {
 
       <CoreInfoAccordion product={product} />
 
-      <Card className="p-5 border-red-500! dark:border-red-400!">
+      {/* <Card className="p-5 border-red-500! dark:border-red-400!">
         <h2 className="text-base font-semibold text-orange-200">Disclaimer</h2>
         <p>
           Something something disclaimer text goes here.
           <br />
           Something about postage
         </p>
-      </Card>
+      </Card> */}
 
       {product.etsyUrl ? (
         <a
