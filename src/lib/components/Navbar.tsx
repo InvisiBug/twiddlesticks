@@ -21,8 +21,8 @@ const Navbar = () => {
   isGalleryPage = true;
 
   return (
-    <nav className="mb-8 rounded-3xl border border-white/70 bg-white/75 px-5 py-3 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/70">
-      <div className="flex items-center justify-between gap-3">
+    <nav className="relative isolate z-40 mb-8 rounded-3xl border border-white/70 bg-white/75 px-5 py-3 shadow-sm backdrop-blur dark:border-slate-700 dark:bg-slate-900/70 sm:flex sm:items-center sm:justify-between sm:gap-3">
+      <div className="flex items-center justify-between gap-3 sm:justify-start">
         <Link to="/" className="rounded-lg transition hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 dark:focus-visible:ring-slate-500">
           <p className="text-xs font-medium uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">Em Kay</p>
           <p className="text-lg font-semibold tracking-tight">TwiddleSticks</p>
@@ -42,7 +42,10 @@ const Navbar = () => {
         </button>
       </div>
 
-      <div id="primary-nav-links" className={`${isMenuOpen ? "mt-3 flex" : "hidden"} flex-col gap-2 sm:mt-0 sm:flex sm:flex-row sm:items-center sm:justify-end`}>
+      <div
+        id="primary-nav-links"
+        className={`${isMenuOpen ? "flex" : "hidden"} absolute right-5 top-[calc(100%+0.5rem)] z-50 w-64 flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-3 shadow-lg dark:border-slate-700 dark:bg-slate-900 sm:static sm:z-auto sm:flex sm:w-auto sm:flex-row sm:items-center sm:justify-end sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none`}
+      >
         {!isGalleryPage ? (
           <Link
             to="/gallery"
@@ -73,9 +76,7 @@ const Navbar = () => {
           </svg>
           GitHub
         </a>
-        <div className="self-end sm:self-auto">
-          <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-        </div>
+        <ThemeToggle theme={theme} onToggle={onToggleTheme} />
       </div>
     </nav>
   );
