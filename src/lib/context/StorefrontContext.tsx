@@ -32,12 +32,16 @@ type ContextProviderProps = {
   value: {
     onlineOrdersEnabled: boolean;
     instagramOrderUrl: string;
+    etsyOrderUrl: string;
+    useEtsyOrderBanner: boolean;
   };
 };
 
 type contextValue = {
   onlineOrdersEnabled: boolean;
   instagramOrderUrl: string;
+  etsyOrderUrl: string;
+  useEtsyOrderBanner: boolean;
   theme: Theme;
   setTheme: (theme: Theme) => void;
   products: Product[];

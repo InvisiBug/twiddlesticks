@@ -1,14 +1,14 @@
 import { useMemo } from "react";
 import { useProductById } from "@/lib/helpers/product";
 import { useParams } from "react-router-dom";
-import { Badge, Card, InstagramOrderBanner } from "@/lib/components";
+import { Badge, Card, InstagramOrderBanner, EtsyOrderBanner } from "@/lib/components";
 import { formatMoney } from "@/lib/helpers";
 import { useContext } from "@/lib/context";
 import CoreInfoAccordion from "./CoreInfoAccordion";
 
 const ProductDetailInfo = () => {
   const { productId } = useParams();
-  const { products } = useContext();
+  const { products, useEtsyOrderBanner } = useContext();
 
   const product = useProductById(products, productId);
 
@@ -85,6 +85,8 @@ const ProductDetailInfo = () => {
         >
           Order from Etsy
         </a>
+      ) : useEtsyOrderBanner ? (
+        <EtsyOrderBanner />
       ) : (
         <InstagramOrderBanner />
       )}

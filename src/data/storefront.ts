@@ -39,6 +39,7 @@ export const cores = coresImage;
 
 // Variables
 export const onlineOrdersEnabled = false;
+export const useEtsyOrderBanner = true;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 export const maxRelatedProducts = 4;
 
@@ -51,9 +52,7 @@ const standardCoreOptions = [
   { label: "5mm Fiberglass", image: cores },
 ];
 
-const defaultEtsyUrl = "https://www.etsy.com";
-
-const etsyUrls = {
+export const etsyUrls = {
   default: "https://www.etsy.com/shop/EmBrrr",
   blackLED: "https://www.etsy.com/uk/listing/4600959203/black-led-twiddlestick",
   spiral: "https://www.etsy.com/uk/listing/4600882461/spiral-twiddle-stick",
