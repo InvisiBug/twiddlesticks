@@ -38,7 +38,7 @@ import coresImage from "@/lib/images/cores.jpg";
 export const cores = coresImage;
 
 // Variables
-export const onlineOrdersEnabled = true;
+export const onlineOrdersEnabled = false;
 export const instagramOrderUrl = "https://www.instagram.com/em.brrrr/";
 export const maxRelatedProducts = 4;
 
