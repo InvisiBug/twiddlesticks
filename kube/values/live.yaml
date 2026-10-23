@@ -2,7 +2,7 @@ name: twiddlesticks
 
 namespace: kavanest
 env:
-  APP_VERSION: 924ffa2d29b869c0f6acc281e80d1f235ec2685c
+  APP_VERSION: 7451562fb385d5f7520ca722346d5dcb232e2e76
 
 deployment:
   - name: twiddlesticks
