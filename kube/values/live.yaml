@@ -12,15 +12,30 @@ deployment:
     # env:
     # Handled in Dockerfile.live
 
-ingress:
-  - name: twiddlesticks.co.uk
-    selector: twiddlesticks
-    path: /.*
-    port: 80
-    host: twiddlesticks.co.uk
-
 service:
-  loadBalancer:
-    - name: twiddlesticks
-      selector: twiddlesticks
-      port: 80
+  name: twiddlesticks
+  selector: twiddlesticks
+  port: 80
+  targetPort: 80
+
+httpRoute:
+  name: twiddlesticks
+  gatewayName: kavanetes-gateway
+  gatewayNamespace: nginx-gateway
+  host: twiddlesticks.co.uk
+  path: /
+  serviceName: twiddlesticks
+  servicePort: 80
+
+# ingress:
+#   - name: twiddlesticks.co.uk
+#     selector: twiddlesticks
+#     path: /.*
+#     port: 80
+#     host: twiddlesticks.co.uk
+
+# service:
+#   loadBalancer:
+#     - name: twiddlesticks
+#       selector: twiddlesticks
+#       port: 80
