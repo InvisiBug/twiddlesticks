@@ -1,0 +1,15 @@
+FROM node AS builder
+
+WORKDIR /app
+COPY . .
+
+# ENV VITE_API=https://api.winterflowspace.com
+
+RUN npm install
+RUN npm run build
+
+FROM nginx
+COPY --from=builder /app/dist /usr/share/nginx/html
+# COPY nginx.conf  /etc/nginx/conf.d
+EXPOSE 3000
+CMD ["nginx", "-g", "daemon off;"]

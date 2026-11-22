@@ -5,7 +5,7 @@ services:
     image: twiddlesticks
     build:
       context: .
-      dockerfile: ./Dockerfile.local
+      dockerfile: ./Dockerfile
     environment:
       NODE_ENV: production
     ports:
